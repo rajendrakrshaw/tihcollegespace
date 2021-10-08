@@ -461,9 +461,21 @@ h1 span:nth-child(11){
 }
 
 .homeimage img{
-    margin: 123px 0px 0px 738px;
+    margin: 123px 0px 0px 800px;
     height: 500px;
     width: 500px;
+}
+.homeimage{
+    position: relative;
+    animation-name: leftshift;
+    animation-duration: 4s;
+}
+@keyframes leftshift{
+    0%   { left:400px; top:0px;}
+    
+    50%  {left:200px; top:0px;}
+
+    100% {left:0px; top:0px;}
 }
 
 /* About Us Section */
