@@ -472,8 +472,14 @@ h1 span:nth-child(11){
 
 
 /* Activity section */
-
-
+/* Club Section */
+.club-wrapper{
+    border: 2px solid blue;
+}
+.club-container{
+    border: 2px solid red;
+    width: auto;
+}
 
 /* Our Team Section  */
 .ContainerOfLeaders{
