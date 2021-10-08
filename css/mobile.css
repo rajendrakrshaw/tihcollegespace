@@ -1,0 +1,152 @@
+/* h1 {
+    font-size: 30px;
+    text-align: center;
+    padding-top: 50px;
+    /* box-shadow: 0 0 10px red; 
+} */
+
+/* First Carrousel  */
+.imgcontainer{
+    width: 85%;
+    height:375px ;
+}
+/* About Us Section  */
+#AboutUs{
+    width: 98%;
+    height: 100%;
+    padding-top: 50px;
+    /* border: 1px solid blue; */
+    display:block;
+    margin: 10px auto;
+}
+ #AboutUs .center h2, #AboutUs .jour_box h2{
+    text-align: center;
+    font-size: 35px;
+    color:white;
+    margin: 15px auto;
+}
+#AboutUs .center p{
+    width: 80%;
+    text-align: left;
+    font-size: 15px;
+    margin:75px auto;
+}
+em{
+    color:white;
+}
+.Abt_container .card{
+    position: relative;
+    max-width:100%;
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+}
+.Abt_container .card:hover{
+    height:75%;
+}
+.Abt_container .card .imgBx{
+    width: 88%;
+    height: 170px;
+    top: -60px;
+}
+.Abt_container .card .imgBx img{
+    height: 100%;
+    max-width: 100%;
+    border-radius: 4px;
+    /* box-shadow: 0 5px 10px solid red; */
+}
+.Abt_container .card .imgBx h2{
+    font-size: 26px;
+    margin-top: 14%;
+}
+
+
+#AboutUs .jour_box p{
+    width:85%;
+    font-size: 15px;
+    text-align: left;
+    margin:50px auto;
+} 
+/* 3d Image Carrousel  */
+.slideshow{
+    width: 100%;
+    padding: 100px;
+    height:300px;
+    box-sizing: border-box;
+    margin:0 auto;
+}
+.about-carrousel{
+    width: 70%;
+    position: absolute;
+    float: right;
+    animation: rotar 25s infinite linear;
+    transform-style: preserve-3d;
+}
+.about-carrousel figure{
+    width:100%;
+    height:80px;
+    border: 1px solid #4d444d;
+    overflow: hidden;
+    position: absolute;
+}
+.shadow{
+    position: absolute;
+    box-shadow: 0px 0px 20px 0px #000;
+    border-radius: 2px;
+}
+.about-carrousel img{
+    image-rendering: auto;
+    transition: all 1000ms;
+    width: 100%;
+    height: 100%;
+}
+/* About Us Ends here  */
+/* Notification Bell Starts here  */
+.intro-banner-vdo-play-btn{
+    width: 40px;
+    height: 40px;
+    left:8%;
+}
+.intro-banner-vdo-play-btn i{
+    line-height:38px;
+    font-size:19px;
+}
+/* Notification Bell ends here  */
+/* Top Button Start here  */
+#myBtn {
+    font-size: 17px;
+    padding: 14px;
+    top:70%;
+    left:85%;
+}
+/* Top Button Ends here  */
+/* Activity First Image  */
+.rounded-lg-3{
+    width: 100%;
+    height: 100%;
+}
+/* Spqrk Quest Activity  */
+.container .box {
+    margin: 70px 20px;
+}
+
+/* MODAL POSTPONDED */
+.modaltext{
+    color: #e60000; 
+    display:inline-block;
+    height:50px;
+    position: absolute;
+     font-size: 40px; 
+     left: 22%;
+
+
+}
+
+
+/*
+.ContainerOfLeaders{
+    flex-direction: column;
+    
+    justify-content: space-around;
+}
+*/
