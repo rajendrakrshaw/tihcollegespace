@@ -467,7 +467,7 @@ h1 span:nth-child(11){
 }
 
 .homeimage img{
-    margin: -350px 0px 0px 800px;
+    margin: -350px 0px 0px 65%;
     height: 500px;
     width: 500px;
 }
