@@ -152,7 +152,7 @@ body::before{
     border-top: 2px solid transparent;
     /*border-radius: 50px;*/
     cursor: pointer;
-    color: #edf5e1;
+    color: red;
     box-shadow: 0px 8px 7px -5px #05386b;
 }
 #navbar ul li .active{
@@ -160,7 +160,7 @@ body::before{
     border-top: 2px solid transparent;
    /* border-radius: 50px;*/
     cursor: pointer;
-    color: #edf5e1;
+    color: red;
     box-shadow: 0px 8px 7px -5px #05386b;
 }
 
@@ -298,7 +298,7 @@ body::before{
 }
 
 .topdesign{
-    background:  linear-gradient(57deg, #379683, #8ee4af);
+    background:  linear-gradient(57deg, #5cdb95, #edf5e1);
     clip-path: polygon(0% 0%, 100% 0%, 100% 70%, 0% 100%);
     height: 65%;
 }
