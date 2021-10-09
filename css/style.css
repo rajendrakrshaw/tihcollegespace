@@ -526,14 +526,20 @@ h1 span:nth-child(11){
 }
 
 .homeimage img{
-    margin: -32% 0px 0px 65%;
+    margin: 20vh 0px 0px 0;
     height: 500px;
     width: 500px;
+    float: right;
 }
 .homeimage{
-    position: relative;
+    position: absolute;
     animation-name: leftshift;
     animation-duration: 4s;
+    border: 2px solid red;
+    align-items: right;
+    display: block;
+   
+    width: 100%;
 }
 @keyframes leftshift{
     0%   { left:800px; top:0px;}
