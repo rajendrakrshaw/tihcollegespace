@@ -127,7 +127,7 @@ div:after{
 }*/
 
 section{
-    height: 1000px;
+    height: 800px;
 }
 section .Heading{
     font-family: Bai Jamjuree;
@@ -494,12 +494,7 @@ h1 span:nth-child(11){
         color: #5cdb95;
     }
     5%,95%{
-<<<<<<< HEAD
-        color: #fff;
-=======
         color: #05386b;
-        
->>>>>>> fc6dbf4f59cdafee88b05cd27ea811c61a3da31a
     }
 }
 
