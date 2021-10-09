@@ -483,8 +483,36 @@ h1 span:nth-child(11){
 }
 
 /* About Us Section */
+@import url('https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&display=swap');
 
+.inner_container{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    background-color: #2dc592;
+    overflow: hidden;
+    background: url(kok.jpg);
+    background-size: 55%;
+margin:auto;
+color:#164942;
+padding:10px 20px;
+text-align:center;
+}
 
+.aboutus .text{
+    max-width: 500px;
+    margin-left: 100px;
+    display: inline-block;
+
+}
+.inner_container p{
+    width: 80%;
+    font-size: 17px;
+    margin: 25px 0;
+    color: hsl(256, 75%, 37%);
+    font-style: italic;
+    text-align: left;
+}
 
 
 /* Activity section */
