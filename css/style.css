@@ -67,6 +67,65 @@ body{
     }
 
 }
+/*
+#pencil{
+    height: 320px;
+    width: 160px;
+    border: 3px solid #0d2436;
+    position: absolute;
+    border-left: none;
+    border-radius: 0 160px 160px 0;
+    transform-origin: 0 50%;
+    animation: draw 8s infinite linear;
+    top: calc(50vh - 75px);
+    left: calc(50vw - 75px);
+}
+@keyframes draw {
+    100%{
+        transform: rotate(360deg);
+    }
+}
+#pencil:before{
+    content: "";
+    position: absolute;
+    height: 242px;
+    width: 70px;
+    left: -35px;
+    top: -5px;
+    border: 1px solid black;
+    background: linear-gradient(
+                #745960 60%, 
+                #d2dfe8 60%) 
+                no-repeat,
+                linear-gradient(to right,
+                #f26c37 33.33%,
+                #eb852c 33.33%,
+                #eb852c 66.66%,
+                #f19f22 66.66%
+                );
+    background-size: 100% 40%, 100% 60%;
+    background-position: 0 0, 0 100%;
+    border-radius: 10px 10px 0 0;
+}
+div:after{
+    content: "";
+    position: absolute;
+    height: 81px;
+    width: 70px;
+    background: linear-gradient(
+        #f4c09b 70%,
+        #0d2436 70%
+    );
+    left: -35px;
+    bottom: -3px;
+    clip-path: polygon(
+        0 0,
+        100% 0,
+        50% 100%
+    );
+
+}*/
+
 section{
     height: 800px;
 }
@@ -393,7 +452,7 @@ h1{
 
 h1 span{
     text-transform: uppercase;
-    animation: animateH 2s linear infinite;
+    animation: animateH 3s linear infinite;
     font-family: Bai Jamjuree;
 }
 h1 span:nth-child(1){
@@ -432,10 +491,11 @@ h1 span:nth-child(11){
 
 @keyframes animateH{
     0%,100%{
-        color: #05386b;
+        color: #5cdb95;
     }
     5%,95%{
-        color: #edf5e1;
+        color: #05386b;
+        
     }
 }
 
