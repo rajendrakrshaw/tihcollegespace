@@ -393,7 +393,7 @@ h1{
 
 h1 span{
     text-transform: uppercase;
-    animation: animateH 2s linear infinite;
+    animation: animateH 3s linear infinite;
     font-family: Bai Jamjuree;
 }
 h1 span:nth-child(1){
@@ -432,10 +432,11 @@ h1 span:nth-child(11){
 
 @keyframes animateH{
     0%,100%{
-        color: #05386b;
+        color: #5cdb95;
     }
     5%,95%{
-        color: #edf5e1;
+        color: #05386b;
+        
     }
 }
 
