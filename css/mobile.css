@@ -10,13 +10,13 @@
     width: 85%;
     height:375px ;
 }
-/* About Us Section  */
+/* About Us Section */
 #AboutUs{
-    width: 98%;
+     width: 98%;
     height: 100%;
     padding-top: 50px;
-    /* border: 1px solid blue; */
-    display:block;
+     border: 1px solid blue;
+    display:block; 
     margin: 10px auto;
 }
  #AboutUs .center h2, #AboutUs .jour_box h2{
@@ -30,7 +30,7 @@
     text-align: left;
     font-size: 15px;
     margin:75px auto;
-}
+} 
 em{
     color:white;
 }
@@ -61,12 +61,12 @@ em{
 }
 
 
-#AboutUs .jour_box p{
+/* #AboutUs .jour_box p{
     width:85%;
     font-size: 15px;
     text-align: left;
     margin:50px auto;
-} 
+}  */
 /* 3d Image Carrousel  */
 .slideshow{
     width: 100%;
