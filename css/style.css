@@ -127,7 +127,7 @@ div:after{
 }*/
 
 section{
-    height: 800px;
+    height: 1000px;
 }
 section .Heading{
     font-family: Bai Jamjuree;
@@ -767,8 +767,12 @@ h1 span:nth-child(11){
 
 
 /* Our Team Section  */
+.team{
+    background: #2dc592;
+}
 
-.team .container{
+.team .team_container{
+    width: 80%;
     position: relative;
     display: flex;
     justify-content: center;
@@ -777,10 +781,10 @@ h1 span:nth-child(11){
     /* border: 1px solid red; */
     margin: 40px auto;
 }
-.team .container .card{
+.team .team_container .team_card{
     position: relative;
-    width: 21%;
-    height: 400px;
+    width: 18%;
+    height: 300px;
     margin: 30px;
     overflow: hidden;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
@@ -788,12 +792,12 @@ h1 span:nth-child(11){
     display: flex;
     justify-content: center;
     align-items: center;
-    box-shadow: 0 10px 10px 3px #05386b;
+    box-shadow: 0 12px 12px 8px #05386b;
 
 }
-.team .container .card .content{
+.team .team_container .team_card .team_content{
     position: absolute;
-    top: -200px;
+    top: -160px;
     width: 100%;
     height:160px;
     display: flex;
@@ -801,51 +805,42 @@ h1 span:nth-child(11){
     align-items:center;
     /* z-index: 1; */
     flex-direction: column;
-    backdrop-filter:blur(3px);
+    backdrop-filter:blur(8px);
     box-shadow:  0 -10px 10px rgba(0,0,0,0.1);
     border: 1px solid rgba(255,255,255,0.2);
     transition: 0.5s;
     transition-delay: 0.8s;
     background: rgba(53, 155, 158, 0.2);
 }
-.team .container .card:hover .content{
-   top: 250px;
+.team .team_container .team_card:hover .team_content{
+   top: 150px;
     transition-delay: 0.8s;
 }
-.team .container .card .content .contentBx h3{
+.team .team_container .team_card .team_content .team_contentBx h3{
     color: #e60000;
     text-transform: uppercase;
     letter-spacing: 2px;
     font-weight: bolder;
-    font-size: 25px;
+    font-size: 18px;
     text-align: center;
     margin:300px  30px;
-    line-height: 1.4rem;
+    line-height: 1rem;
     transition: 0.5s;
     opacity: 0;
     transform: translateX(-20px);
     transition-delay: 0.2s ;
     /* text-shadow: 0 0 50px #e60000; */
 }
-.team .container .card .content .contentBx h3:after{
-    position: absolute;
-    top: 0;
-    left: 0;
-    padding: 0 20px;
-    z-index: -1;
-    color: #e60000;
-    filter: blur(15px);
-}
-.team .container .card:hover .content .contentBx h3{
+.team .team_container .team_card:hover .team_content .team_contentBx h3{
     opacity: 1;
     transform: translateY(0px);
 
 }
-.team .container .card .content .contentBx h3 span{
-    font-size: 18px;
+.team .team_container .team_card .team_content .team_contentBx h3 span{
+    font-size: 12px;
     font-weight: bold;
     text-transform: initial;
-
+    line-height: 0mm;
 
 } 
 
