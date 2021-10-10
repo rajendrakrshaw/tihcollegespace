@@ -127,7 +127,7 @@ div:after{
 }*/
 
 section{
-    height: 1000px;
+    height: 800px;
 }
 section .Heading{
     font-family: Bai Jamjuree;
@@ -367,6 +367,9 @@ body::before{
     align-items: center;
     justify-content: center;
 }
+.home{
+    height: auto;
+}
 /*Welcome text*/
 .welcome {
     font-family: 'Baloo Bhai 2', cursive;
@@ -495,7 +498,10 @@ h1 span:nth-child(11){
     }
     5%,95%{
         color: #05386b;
+<<<<<<< HEAD
         
+=======
+>>>>>>> 963737307f3f6775d21b0cda006f586a69171769
     }
 }
 
@@ -527,14 +533,20 @@ h1 span:nth-child(11){
 }
 
 .homeimage img{
-    margin: -32% 0px 0px 65%;
+    margin: 20vh 0px 0px 0;
     height: 500px;
     width: 500px;
+    float: right;
 }
 .homeimage{
-    position: relative;
+    position: absolute;
     animation-name: leftshift;
     animation-duration: 4s;
+   
+    align-items: right;
+    display: block;
+   
+    width: 100%;
 }
 @keyframes leftshift{
     0%   { left:800px; top:0px;}
@@ -545,38 +557,216 @@ h1 span:nth-child(11){
 /* About Us Section */
 @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&display=swap');
 
-.inner_container{
+.about_section {
+    background: #2dc592;
+}
+
+
+
+
+.custom_row {
     display: flex;
     align-items: center;
-    flex-direction: row;
-    background-color: #2dc592;
-    overflow: hidden;
-    background: url(kok.jpg);
-    background-size: 55%;
-margin:auto;
-color:#164942;
-padding:10px 20px;
-text-align:center;
-}
-
-.aboutus .text{
-    max-width: 500px;
-    margin-left: 100px;
-    display: inline-block;
+    margin: 60 auto;
+    flex-wrap: wrap;
+    justify-content: space-around;
 
 }
-.inner_container p{
-    width: 80%;
+
+.left_about {
+    width: 550px;
+    max-width: 100%;
+    padding: 0% 10px;
+}
+
+.left_about h1 {
+    color: rgb(15, 35, 100);
+    font-size: 80px;
+    margin-bottom: 20px;
+    text-transform: capitalize;
+}
+
+.left_about h3 {
+    color:#05386b;
+    font-size: 20px;
+    text-transform: capitalize;
+    margin-top: 26px;
+}
+
+
+.left_about p {
+    line-height: 18px;
     font-size: 17px;
-    margin: 25px 0;
-    color: hsl(256, 75%, 37%);
+    margin-top: 45px;
+    letter-spacing: 1px;
+    color:#EDF5E1;
     font-style: italic;
-    text-align: left;
 }
+
+.right_about img {
+    height: auto;
+    width: 600px;
+    max-width: 100%;
+}
+@media screen and (max-width:1180px) {
+    .about_section {
+        width: 100%;
+        height: auto;
+        padding: 70px 0px;
+    }
+}
+
+@media screen and(max-width:650px) {
+    .right_about img {
+        margin-top: 35px;
+    }
+
+    .left_about h1 {
+        font-size: 65px;
+        margin: 20px;
+    }
+}
+
 
 
 /* Activity section */
+#activity{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    min-height: 100vh;
+    background: #fbe9e7;
+    width: 100%;
+    /* height: 2500px; */
+    border: 2px solid rebeccapurple;
+}
+.club-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    /* height: 1500px; */
+    border: 2px solid rgb(54, 153, 51);
 
+}
+.card{
+    border: 2px solid red;
+    position: relative;
+    width: 300px;
+    height: 400px;
+    margin: 10px;
+    background: #fff;
+    transform-style: preserve-3d;
+    transform: perspective(1000px);
+    box-shadow: 10px 20px 40px rgb(0, 0, 0, 0.25);
+    transition: 1s;
+}
+.card:hover{
+    transform: translateX(50%);
+    /* transform: translateY(-50%); */
+
+}
+.card .imgBox{
+    border: 2px solid blue;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    transform-origin: left;
+    transform-style: preserve-3d;
+    background: transparent;
+    transition: 1s;
+    display: flex;
+    align-items: center;
+}
+.card:hover .imgBox{
+    transform: rotateY(-180deg);
+        /* transform: rotateX(-180deg); */
+}
+.card .imgBox img{
+    border: 2px solid yellow;
+    position: absolute;
+    /* top: 0;
+    left: 0; */
+    width: 100%;
+    height: auto;
+    margin: auto;
+    object-fit: cover;
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+}
+.card .imgBox img:nth-child(2){
+    transform: rotateY(180deg);
+}
+.card .details{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+    display: flex;
+    /* justify-content: center; */
+    /* align-items: center; */
+}
+
+.card .details .content{
+    display: flex;
+    /* justify-content: center; */
+    flex-direction: column;
+}
+.card .details .content h2{
+    border: 2px solid green;
+    position: fixed;
+    top: 10px;
+    margin: 10px 10px 5px 10px;
+    font-size: 40px;
+    text-align: center;
+    font-weight: 700;
+    line-height: 1em;
+}
+.card .details .content h2 span{
+    color: #e21212;
+    font-size: 0.8em;
+}
+.card .details .content .social-icons{
+    position: fixed;
+    margin: 90px 60px 10px ;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* margin: auto; */
+    border: 2px solid black;
+}
+.card .details .content .social-icons a{
+    display: inline-block;
+    width: 35px;
+    height: 35px;
+    background: rgb(0, 102, 255);
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    margin: 5px;
+    font-size: 18px;
+    transition: 0.2s;
+}
+.card .details .content .social-icons a:hover{
+    background: #e21212;
+}
+.card .details .content .club-about{
+    /* background: #e21212; */
+    margin-top: 150px;
+    overflow: scroll;
+    font-size: 20px;
+    text-align: justify;
+}
+.card .details .content .club-about::-webkit-scrollbar{
+    display: none;
+}
 
 
 /* Our Team Section  */
