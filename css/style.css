@@ -661,7 +661,7 @@ h1 span:nth-child(11){
     transition: 1s;
 }
 .card:hover{
-    transform: translateX(50%);
+    transform: translateX(100%);
     /* transform: translateY(-50%); */
 
 }
