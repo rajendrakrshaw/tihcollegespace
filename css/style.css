@@ -367,6 +367,9 @@ body::before{
     align-items: center;
     justify-content: center;
 }
+.home{
+    height: auto;
+}
 /*Welcome text*/
 .welcome {
     font-family: 'Baloo Bhai 2', cursive;
@@ -555,16 +558,12 @@ h1 span:nth-child(11){
 }
 
 
-.custom_container {
-    padding: 100px 80px;
 
-
-}
 
 .custom_row {
     display: flex;
     align-items: center;
-    margin: 0 auto;
+    margin: 60 auto;
     flex-wrap: wrap;
     justify-content: space-around;
 
