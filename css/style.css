@@ -498,10 +498,6 @@ h1 span:nth-child(11){
     }
     5%,95%{
         color: #05386b;
-<<<<<<< HEAD
-        
-=======
->>>>>>> 963737307f3f6775d21b0cda006f586a69171769
     }
 }
 
@@ -554,11 +550,12 @@ h1 span:nth-child(11){
     100% {left:0px; top:0px;}
 }
 
+/*wave*/
 /* About Us Section */
 @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&display=swap');
 
 .about_section {
-    background: #2dc592;
+    background:  linear-gradient(57deg, #5cdb95, #edf5e1);
 }
 
 
