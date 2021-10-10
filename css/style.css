@@ -564,7 +564,7 @@ h1 span:nth-child(11){
 .custom_row {
     display: flex;
     align-items: center;
-    margin: 60 auto;
+    margin: 50px auto;
     flex-wrap: wrap;
     justify-content: space-around;
 
