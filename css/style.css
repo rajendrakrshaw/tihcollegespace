@@ -494,12 +494,8 @@ h1 span:nth-child(11){
         color: #5cdb95;
     }
     5%,95%{
-<<<<<<< HEAD
-        color: #fff;
-=======
         color: #05386b;
         
->>>>>>> fc6dbf4f59cdafee88b05cd27ea811c61a3da31a
     }
 }
 
@@ -596,7 +592,7 @@ text-align:center;
 }
 .team .container .card{
     position: relative;
-    width: 300px;
+    width: 21%;
     height: 400px;
     margin: 30px;
     overflow: hidden;
@@ -605,31 +601,32 @@ text-align:center;
     display: flex;
     justify-content: center;
     align-items: center;
-    box-shadow: 0 10px 10px 3px #5cdb95;
+    box-shadow: 0 10px 10px 3px #05386b;
 
 }
 .team .container .card .content{
     position: absolute;
     top: -200px;
     width: 100%;
-    height: 160px;
+    height:160px;
     display: flex;
     justify-content: center;
     align-items:center;
     /* z-index: 1; */
     flex-direction: column;
-    backdrop-filter:blur(15px);
+    backdrop-filter:blur(3px);
     box-shadow:  0 -10px 10px rgba(0,0,0,0.1);
     border: 1px solid rgba(255,255,255,0.2);
     transition: 0.5s;
     transition-delay: 0.8s;
+    background: rgba(53, 155, 158, 0.2);
 }
 .team .container .card:hover .content{
    top: 250px;
     transition-delay: 0.8s;
 }
 .team .container .card .content .contentBx h3{
-    color: #05386b;
+    color: #e60000;
     text-transform: uppercase;
     letter-spacing: 2px;
     font-weight: bolder;
@@ -641,15 +638,28 @@ text-align:center;
     opacity: 0;
     transform: translateX(-20px);
     transition-delay: 0.2s ;
+    /* text-shadow: 0 0 50px #e60000; */
+}
+.team .container .card .content .contentBx h3:after{
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 0 20px;
+    z-index: -1;
+    color: #e60000;
+    filter: blur(15px);
 }
 .team .container .card:hover .content .contentBx h3{
     opacity: 1;
     transform: translateY(0px);
+
 }
 .team .container .card .content .contentBx h3 span{
     font-size: 18px;
     font-weight: bold;
     text-transform: initial;
+
+
 } 
 
 /* Contact Us Section  */
