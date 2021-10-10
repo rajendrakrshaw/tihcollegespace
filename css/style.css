@@ -535,7 +535,7 @@ h1 span:nth-child(11){
     position: absolute;
     animation-name: leftshift;
     animation-duration: 4s;
-    border: 2px solid red;
+   
     align-items: right;
     display: block;
    
