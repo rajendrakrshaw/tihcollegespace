@@ -171,7 +171,7 @@ body::before{
     float: right;
     color: #05386b;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-size: 22px;
+    font-size: 12px;
     margin: 16px 0px 0px 12px;
     font-family: Bai Jamjuree;
 }
@@ -1048,24 +1048,22 @@ h1 span:nth-child(11){
     -webkit-animation-delay:.6s
 }
 
-/* MODAL */
-.modal{
-    opacity:90%;
-}
+/* MODAL LOGIN AND SIGNUP */
+
 .modal-body {
-    background-color:black;
+    background-color:white;
     border:collapse;
 
    
 }
 .modal-header{
-    background-color:#000;
-    color: wheat;
+    background-color:white;
+    color:black;
     border: collapse;
 }
 .modal-footer{
-    background-color: #000;
-    color: wheat;
+    background-color: white;
+    color: black;
 }
 .center-modal-img {
     margin: auto;
@@ -1079,3 +1077,43 @@ h1 span:nth-child(11){
 {
     font-family: Bai Jamjuree; margin-bottom: 1%; color: #e60000; height:50px;  position: absolute; font-size: 40px; display:inline-block; margin-top:8%; left: 22%;  border-bottom:solid 2px white;
 }
+/* SIGNUP MODAL */
+
+.card-2 {
+    width: 400px;
+    border: none
+  }
+  
+  .form-control {
+    height: 45px;
+    border-radius: 10px
+  }
+  
+  .form-control:focus {
+    box-shadow: none
+  }
+  
+  .btn-signup {
+    height: 50px;
+    border-radius: 10px
+  }
+
+/*LOGIN*/
+.fspace{
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.form-signin {
+    width: 100%;
+    max-width: 330px;
+    padding: 15px;
+    margin: auto;
+}
+.picshift{
+   
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    
+}
+

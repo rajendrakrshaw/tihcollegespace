@@ -75,6 +75,10 @@
                 </ul> -->
             </li>
             <li><a class="ContactUs" href="#ContactUs">Contact Us</a></li>
+            <li><a class="Login" href="#Login" data-bs-toggle="modal"
+                data-bs-target="#LoginModal">Login</a></li>
+            <li><a class="Sign-Up" href="#Sign-Up" data-bs-toggle="modal"
+                data-bs-target="#SignUpnModal">Sign-Up</a></li>
         </ul>
         <label for="nav-toggle" class="icon-burger">
             <div class="line"></div>
@@ -394,6 +398,89 @@
         }
     </script>
 
+
+    <!-- SIGNUP MODAL -->
+    <div class="modal fade" id="SignUpnModal" tabindex="-1" aria-labelledby="SignupModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="SignupModalLabel">TIH SIGNUP</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <!-- SIGN-UP FORM -->
+                    <div class="container-fluid d-flex justify-content-center align-items-center h-100">
+                        <div class="card-2 p-3 text-center py-4">
+                            <h4>Create account</h4>
+                            <div> <span>Already have an account?</span> 
+                                <a href="#LoginModal" class="text-decoration-none" data-bs-toggle="modal"
+                                data-bs-target="#LoginModal">Signin</a> 
+                            </div>
+                            <div class="mt-3 px-3"> <input class="form-control" placeholder="Username"> </div>
+                            <div class="input-group px-3 mt-3"> <input type="text" class="form-control"
+                                    placeholder="First Name" aria-label="Username"> <span></span> <input type="text"
+                                    class="form-control" placeholder="Last Name" aria-label="Server"> </div>
+                            <div class="mt-3 px-3"> <input class="form-control" placeholder="E-mail"> </div>
+                            <div class="mt-3 d-grid px-3"> <button
+                                    class="btn btn-primary btn-block btn-signup text-uppercase"> <span>Signup</span>
+                                </button> </div>
+                            <div class="px-3">
+                                <div class="mt-2 form-check d-flex flex-row"> <input class="form-check-input"
+                                        type="checkbox" value="" id="services"> <label class="form-check-label ms-2"
+                                        for="services"> I have read and agree to the terms. </label> </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+              
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <!-- LOGIN Modal -->
+    <div class="modal fade" id="LoginModal" tabindex="-1" aria-labelledby="LoginModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="LoginModalLabel">TIH LOGIN </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <!-- LOGIN FORM -->
+                    <main class="form-signin">
+                        <form action="signin">
+                            <img class="mb-4 picshift image-fluid" src="images/logo.png" alt="logo" width="60"
+                                height="60">
+
+                            <div class="form-floating fspace">
+                                <input type="email" class="form-control" id="floatingInput"
+                                    placeholder="name@example.com">
+                                <label for="floatingInput">Email address</label>
+                            </div>
+                            <div class="form-floating fspace">
+                                <input type="password" class="form-control" id="floatingPassword"
+                                    placeholder="Password">
+                                <label for="floatingPassword">Password</label>
+                            </div>
+
+                            <div class="checkbox mb-3">
+                                <label>
+                                    <input type="checkbox" value="remember-me"> Remember me
+                                </label>
+                            </div>
+                            <button class=" btn btn-sm btn-success d-grid gap-2 col-4 mx-auto" type="submit">Sign
+                                in</button>
+                            <p class="mt-5 mb-3 text-muted">© 2021 TIH College Space.</p>
+                        </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
 
 
 
