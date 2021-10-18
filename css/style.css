@@ -150,12 +150,11 @@ body::before{
     float: left;
 }
 #logo img {
-    height: 60px;
-    margin: 0px;
+    height: 100px;
+    margin-top: 25px;
     border: 1px solid transparent;
     border-radius: 50%;
 }
-
 #navbar{
     display: flex;
     align-items: center;
@@ -171,8 +170,8 @@ body::before{
     float: right;
     color: #05386b;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-size: 22px;
-    margin: 16px 0px 0px 12px;
+    font-size: 17px;
+    margin: 60px 0px 0px 12px;
     font-family: Bai Jamjuree;
 }
 #navbar::before{
@@ -564,7 +563,7 @@ h1 span:nth-child(11){
 .custom_row {
     display: flex;
     align-items: center;
-    margin: 60 auto;
+    margin: 50px auto;
     flex-wrap: wrap;
     justify-content: space-around;
 
@@ -1111,24 +1110,22 @@ h1 span:nth-child(11){
     -webkit-animation-delay:.6s
 }
 
-/* MODAL */
-.modal{
-    opacity:90%;
-}
+/* MODAL LOGIN AND SIGNUP */
+
 .modal-body {
-    background-color:black;
+    background-color:white;
     border:collapse;
 
    
 }
 .modal-header{
-    background-color:#000;
-    color: wheat;
+    background-color:white;
+    color:black;
     border: collapse;
 }
 .modal-footer{
-    background-color: #000;
-    color: wheat;
+    background-color: white;
+    color: black;
 }
 .center-modal-img {
     margin: auto;
@@ -1141,4 +1138,62 @@ h1 span:nth-child(11){
 .modaltext
 {
     font-family: Bai Jamjuree; margin-bottom: 1%; color: #e60000; height:50px;  position: absolute; font-size: 40px; display:inline-block; margin-top:8%; left: 22%;  border-bottom:solid 2px white;
+}
+/* SIGNUP MODAL */
+
+.card-2 {
+    width: 400px;
+    border: none
+  }
+  
+  .form-control {
+    height: 45px;
+    border-radius: 10px
+  }
+  
+  .form-control:focus {
+    box-shadow: none
+  }
+  
+  .btn-signup {
+    height: 50px;
+    border-radius: 10px
+  }
+
+/*LOGIN*/
+.fspace{
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.form-signin {
+    width: 100%;
+    max-width: 330px;
+    padding: 15px;
+    margin: auto;
+}
+.picshift{
+   
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    
+}
+
+/*CONTACT US*/
+
+
+.card-3 {
+    padding: 10px;
+    height: 250px;
+    border: none;
+    -webkit-box-shadow: 0px 1px 9px 3px rgba(219, 210, 219, 1);
+    -moz-box-shadow: 0px 1px 9px 3px rgba(219, 210, 219, 1);
+    box-shadow: 0px 1px 9px 3px rgba(219, 210, 219, 1);
+  
+  
+}
+.cdd
+{
+  margin-top:25%;
+  text-align: center;
 }
