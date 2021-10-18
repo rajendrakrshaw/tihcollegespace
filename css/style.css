@@ -127,7 +127,7 @@ div:after{
 }*/
 
 section{
-    height: 900px;
+    height: 800px;
 }
 section .Heading{
     font-family: Bai Jamjuree;
@@ -271,12 +271,12 @@ body::before{
 #navbar .line {
     width: 30px;
     height: 5px;
-    background: blue;
+    background: #2e1263;
     margin: 5px;
     border-radius: 3px;
     transition: all .3s ease-in-out;
 }
-@media (max-width: 908px){
+@media (max-width: 1100px){
    /* #navbar{
         align-items: center;
         flex-direction: column;
@@ -352,7 +352,16 @@ body::before{
         opacity: 0.20;
         z-index: -1;
     }
-    
+
+    .welcome #p2{
+        font-size: 68px;
+    }
+
+    .welcome #p4{
+        font-size: 28px;
+    }
+  
+  
 }
 
 .topdesign{
@@ -500,48 +509,51 @@ h1 span:nth-child(11){
     }
 }
 
-@media (max-width: 652px){
+@media (max-width: 800px){
     .welcome{
         width: 336px;
     }
     .welcome #p1 {
-        font-size: 18px;
+        font-size: 12px;
         margin: 0px 0px -21px;
     }
     .welcome #p2 {
-        font-size: 64px;
+        font-size: 55px;
+        position: absolute;
     }
     .welcome #p2::before {
         height: 101%;
     }
     .welcome #p3 {
-        font-size: 16px;
+        font-size: 12px;
         margin: -1px 0px 0px;
     }
     .welcome #p4{
-        font-size: 27px;
+        font-size: 23px;
     }
     .underline {
-        width: 336px;
-        margin: -35px 0px 0px 0px;
+        width: 304px;
+        margin: 70px 0px 0px 0px;
     }
 }
 
 .homeimage img{
-    margin: 20vh 0px 0px 0;
-    height: 500px;
-    width: 500px;
+    margin: -30vw 0px 0px 0;
+    height: auto;
+    width:38%;
     float: right;
+    z-index: 1000000;
+
 }
 .homeimage{
-    position: absolute;
+    position: relative;
     animation-name: leftshift;
     animation-duration: 4s;
    
     align-items: right;
     display: block;
-   
-    width: 100%;
+    z-index: 100000;
+    width: 99%;
 }
 @keyframes leftshift{
     0%   { left:800px; top:0px;}
