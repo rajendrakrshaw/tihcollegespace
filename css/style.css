@@ -635,8 +635,9 @@ h1 span:nth-child(11){
     min-height: 100vh;
     background: #fbe9e7;
     width: 100%;
-    /* height: 2500px; */
-    border: 2px solid rebeccapurple;
+    height: 2500px;
+    /* border: 2px solid rebeccapurple; */
+    /* height: auto; */
 }
 .club-container{
     display: flex;
@@ -644,11 +645,73 @@ h1 span:nth-child(11){
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-    /* height: 1500px; */
     border: 2px solid rgb(54, 153, 51);
-
 }
-.card{
+
+.club-container .club-card-box{
+    border: 2px solid red;
+    width: 300px;
+    height: 300px;
+    margin: 10px;
+    perspective: 800px;
+    transition: all 0.3s ease 0s;
+}
+
+.club-container .club-card-box:hover .club-card-main{
+    transform: rotateY(180deg);
+}
+
+
+.club-container .club-card-box .club-card-main{
+    border: 2px solid blue;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: transform 2s ease 0s;
+}
+
+.club-container .club-card-box .club-card-main .club-card-front{
+    backface-visibility: hidden;
+    position: absolute;
+}
+
+.club-container .club-card-box .club-card-main .club-card-front img{
+    width: 100%;
+    height: 100%;
+}
+
+.club-container .club-card-box .club-card-main .club-card-back{
+    border: 2px solid brown;
+    width: 100%;
+    /* height: 100%; */
+    height: auto;
+    position: absolute;
+    transform: rotateY(180deg);
+    backface-visibility: hidden;
+}
+
+.club-container .club-card-box .club-card-main .club-card-back .club-name{
+    border: 2px solid black;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.club-container .club-card-box .club-card-main .club-card-back .club-name h2{
+    text-align: center;
+}
+
+.club-container .club-card-box .club-card-main .club-card-back .club-name h3{
+    font-size: 20px;
+    margin-top: -10px;
+}
+
+
+
+
+/* .card{
     border: 2px solid red;
     position: relative;
     width: 300px;
@@ -763,7 +826,7 @@ h1 span:nth-child(11){
 }
 .card .details .content .club-about::-webkit-scrollbar{
     display: none;
-}
+} */
 
 
 /* Our Team Section  */
