@@ -855,19 +855,20 @@ h1 span:nth-child(11){
 
 /* Our Team Section  */
 .team{
+    width: 100%;
+    height: auto;
     background:  linear-gradient(57deg, #5cdb95, #edf5e1);
-
-    padding:25px 100px;
-
 }
 
 .team_content{
-    width: 100%;
+    width: 60%;
+    margin: 0 auto;
+    padding: 25px 10px;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
-    padding: 25px 200px;
+    /* border: 1px solid red; */
     
 }
 .team_card{
@@ -879,7 +880,7 @@ h1 span:nth-child(11){
     cursor: pointer;
     border: 5px solid #fff;
     margin-bottom: 20px;
-    margin-left: 35px;
+    margin-left: 30px;
 }
 .team_box img{
     width: 100%;
