@@ -12,9 +12,8 @@
     <!-- Google Font for class="MemberName" -->
     <link href="https://fonts.googleapis.com/css2?family=PT+Serif&display=swap" rel="stylesheet">
 
-
-    <script src="https://www.gstatic.com/firebasejs/8.9.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.9.0/firebase-firestore.js"></script>
+    <!--AOS-->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />  
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -64,7 +63,7 @@
     <nav id="navbar">
         <!--This is Navigation Bar-->
         <input type="checkbox" id="nav-toggle">
-        <div id="logo">
+        <div id="logo" data-aos="fade-right">
             <img src="images/logo.png" alt="tihcollegespace.in">
             <h3>TIH College Space</h3>
         </div>
@@ -92,10 +91,10 @@
     </nav>
 
     <!--Home-->
-    <div class="home">
+    <div class="home" data-aos="fade-down">
         <section id="Home">
-            <div class="topdesign">
-                <div class="welcome overlay ">
+            <div class="topdesign" data-aos="fade-up">
+                <div class="welcome overlay " data-aos="fade-down" >
                     <p id="p1">WELCOME TO</p>
                     <p data-text="College&nbsp;Space" id="p2">
                         College&nbsp;Space
@@ -113,14 +112,14 @@
     </div>
     
     <!-- About Us Section  -->
-    <section class="about_section" id="AboutUs">
+    <section class="about_section" id="AboutUs" data-aos="fade-up">
         <h1 class="Heading">
             <span>A</span><span>b</span><span>o</span><span>u</span><span>t</span>
             <span>U</span><span>s</span>
         </h1>
         <div class="custom_container">
             <div class="custom_row about_flex">
-                <div class="left_about">
+                <div class="left_about" data-aos="fade-right">
                     <p>We are a team of young and energetic folks,pursing Balchelor's of Computer Application from
                         Techno India Hooghly College.Since, we have partially shifted to online education system due to this current 
                         pandemic situation,we are facing lots problems like scheduling classes,uploading notes,attendance,etc.,which we taught should be overcomed.This took us to a conclusion 
@@ -131,7 +130,7 @@
                         <h3>“Education is the key that unlocks the golden door to freedom.”</h3>
                     </span>
                 </div>
-                <div class="right_about">
+                <div class="right_about" data-aos="fade-left">
                     <img src="images/main.svg" width="400" alt="" srcset="">
                 </div>
             </div>
@@ -140,13 +139,13 @@
     <!--/About-Section-->
 
     <!--Activity-->
-    <div class="clubs">
-        <section id="Activity" style="height: auto;">
+    <div class="clubs" >
+        <section id="Activity" style="height: auto;" data-aos="zoom-in">
             <h1 class="Heading">
                 <span>C</span><span>L</span><span>U</span><span>B</span><span>S</span>
             </h1>
-            <div class="club-container">
-                <div class="club-card-box">
+            <div class="club-container" data-aos="zoom-in">
+                <div class="club-card-box" data-aos="zoom-in">
                     <div class="club-card-main">
                         <div class="club-card-front">
                             <img src="images/codechef_logo.jpeg" alt="">
@@ -174,7 +173,7 @@
                 </div> 
                 <!-- club-card-box -->
             
-                <div class="club-card-box">
+                <div class="club-card-box" data-aos="zoom-in">
                     <div class="club-card-main">
                         <div class="club-card-front">
                             <img src="images/cybertronix_logo.jpeg" alt="">
@@ -202,7 +201,7 @@
                 </div> 
                 <!-- club-card-box -->
 
-                <div class="club-card-box">
+                <div class="club-card-box" data-aos="zoom-in">
                     <div class="club-card-main">
                         <div class="club-card-front">
                             <img src="images/sparkquest_logo.jpeg" alt="">
@@ -231,7 +230,7 @@
                 </div> 
                 <!-- club-card-box -->
 
-                <div class="club-card-box">
+                <div class="club-card-box" data-aos="zoom-in">
                     <div class="club-card-main">
                         <div class="club-card-front">
                             <img src="images/verbana_logo.jpeg" alt="">
@@ -269,16 +268,16 @@
         </section>
     </div>
     <!--Team-->
-    <div class="team">
+    <div class="team" data-aos="fade-up">
         <section id="Team">
-            <div class="OurTeam">
+            <div class="OurTeam" data-aos="zoom-in">
                 <h1 class="Heading">
                     <span>O</span><span>u</span><span>r</span>
                     <span>T</span><span>e</span><span>a</span><span>m</span>
                 </h1>
             </div>
-            <div class="team_content">
-                <div class="team_card">
+            <div class="team_content" data-aos="zoom-in">
+                <div class="team_card" data-aos="zoom-in">
                     <div class="team_box">
                         <img src="images/AtulKumarGiri.jpg" alt="">
                     </div>
@@ -293,7 +292,7 @@
                     </div>
                 </div>
 
-                <div class="team_card">
+                <div class="team_card" data-aos="zoom-in">
                     <div class="team_box">
                         <img src="images/DEBOJYOTI_DAS_40.jpg" alt="">
                     </div>
@@ -307,7 +306,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="team_card">
+                <div class="team_card" data-aos="zoom-in">
                     <div class="team_box">
                         <img src="images/afshan1.jpg" alt="">
                     </div>
@@ -321,7 +320,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="team_card">
+                <div class="team_card" data-aos="zoom-in">
                     <div class="team_box">
                         <img src="images/manish.jpeg" alt="">
                     </div>
@@ -335,7 +334,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="team_card">
+                <div class="team_card" data-aos="zoom-in">
                     <div class="team_box">
                         <img src="images/RajendraKumarShaw.jpg" alt="">
                     </div>
@@ -349,7 +348,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="team_card">
+                <div class="team_card" data-aos="zoom-in">
                     <div class="team_box">
                         <img src="images/RonitSingh.jpg" alt="">
                     </div>
@@ -369,13 +368,13 @@
 
 
     <!--Contact Us-->
-    <div class="contactus">
+    <div class="contactus" data-aos="fade-up">
         <section id="ContactUs">
             <h1 class="Heading">
                 <span>C</span><span>o</span><span>n</span><span>t</span><span>a</span><span>c</span><span>t</span>
                 <span>U</span><span>s</span>
             </h1>
-            <div class="container mt-5">
+            <div class="container mt-5" data-aos="zoom-in">
 
                 <div class="row g-2">
                     <div class="col-md-4">
@@ -591,7 +590,16 @@
         }, 2000);
 
     </script>
-
+    <!--AOS-->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init({
+           offset: 200,
+           delay: 100,
+           duration: 1000,
+         });
+      </script>
+      <script src="app.js"></script>
 </body>
 
 </html>
