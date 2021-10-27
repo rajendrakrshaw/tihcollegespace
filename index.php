@@ -65,7 +65,7 @@
         <input type="checkbox" id="nav-toggle">
         <div id="logo" data-aos="fade-right">
             <img src="images/logo.png" alt="tihcollegespace.in">
-            <h3>TIH College Space</h3>
+            <h3><a href="./admin/index.php"> TIH College Space</a></h3>
         </div>
         <ul>
             <li class="a"><a class="Home active" href="#Home">Home</a></li>
