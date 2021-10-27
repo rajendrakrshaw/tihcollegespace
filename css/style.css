@@ -222,6 +222,14 @@ body::before{
     box-shadow: 0px 8px 7px -5px #05386b;
 }
 
+.mark{
+    background: transparent;
+    display: flex;
+    height: 100%;
+    width: 100%;
+}
+
+
 /*Team*/
 #navbar ul ul{
     position: absolute;

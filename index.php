@@ -93,8 +93,11 @@
     <!--Home-->
     <div class="home" data-aos="fade-down">
         <section id="Home">
+            
             <div class="topdesign" data-aos="fade-up">
+                
                 <div class="welcome overlay " data-aos="fade-down" >
+                    
                     <p id="p1">WELCOME TO</p>
                     <p data-text="College&nbsp;Space" id="p2">
                         College&nbsp;Space
