@@ -174,9 +174,7 @@ body::before{
     margin: 60px 0px 0px 12px;
     font-family: Bai Jamjuree;
 }
-#navbar a{
-    text-decoration: none;
-}
+
 #navbar::before{
     content: "";
     background-color: transparent;
