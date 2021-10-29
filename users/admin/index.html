@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../../css/Overlay.css">
     <title>Document</title>
 </head>
 <body>
@@ -22,7 +23,7 @@
                 <span>Designation</span>
                 </h3>
                 <ul>
-                    <li><img src="images/user.png" alt="">My Profile</li>
+                    <li data-target="MyProfile"><img src="images/user.png" alt="">My Profile</li>
                     <li><img src="images/edit.png" alt="">Edit Profile</li>
                     <li><img src="images/envelope.png" alt="">Inbox</li>
                     <li><img src="images/settings.png" alt="">settings</li>
@@ -34,6 +35,24 @@
             </div>
         </div>
     </div>
+
+    <div class="modal-container" id="MyProfile">
+        <div class="modal-wrapper">
+          <div class="title">MyProfile</div>
+          <button class="btn close-modal">&times;</button>
+        </div>
+        <div>
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Facere ea
+          officia consectetur. Laborum, dolor? Assumenda quo corrupti eveniet
+          velit fugit fugiat odit, dolorum labore obcaecati quia. Commodi
+          assumenda sed maxime!
+        </div>
+    </div>
+
+
+    <!-- Adding Overlay -->
+    <div id="overlay"></div>
     <script src="admin.js"></script>
+    <script src="../../Javascripts/Overlay.js"></script>
 </body>
 </html>
