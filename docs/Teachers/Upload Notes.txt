@@ -1,0 +1,37 @@
+Upload Notes:
+
+
+Choose Course: 
+	MCA 
+	BCA
+	BBA
+|
+|
+BCA
+-----Choose Semester:
+	1st
+	2nd
+	3rd
+	4th
+	5th
+	6th
+|
+|
+5th
+-----Choose Subject:
+	Unix
+	Cybersecurity
+	Accounting
+	Industrial Training
+|
+|
+Unix
+-----Select Date and Time
+-----Chapter Name:
+-----Topic Name:
+-----Upload pdf:
+-----Upload Class Recording Link
+
+
+	 
+	
