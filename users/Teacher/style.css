@@ -151,3 +151,8 @@ body{
 .action .menu ul li:hover a{
     color: linear-gradient(57deg, #5cdb95, #edf5e1);
 }
+
+#MyProfile,#EditProfile,#Inbox,#SC,#UN,#Updates,#Settings,#Help {
+    background: rgba(233, 230, 229, 0.863);
+}
+
