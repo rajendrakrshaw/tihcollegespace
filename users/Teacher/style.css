@@ -123,10 +123,10 @@ body{
     color: #cecece;
     font-weight: 400;
 }
-
-ul {
-    padding-left: 0px;
+.action .menu ul{
+    padding: 0px;
 }
+
 .action .menu ul li{
     list-style: none;
     padding: 10px 0;
