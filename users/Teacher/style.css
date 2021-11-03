@@ -123,6 +123,9 @@ body{
     color: #cecece;
     font-weight: 400;
 }
+.action .menu ul{
+    padding: 0px;
+}
 
 .action .menu ul li{
     list-style: none;
