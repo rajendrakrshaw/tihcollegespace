@@ -1,10 +1,10 @@
-.sc-container{
+.sc-container {
     display: block;
     text-align: center;
     border: 1px solid gray;
     width: 85%;
     margin: 0 auto;
-
+    height: 70%;
 }
  #left,#update-left{
     width: 100%;
@@ -90,13 +90,14 @@
 
 /* UPDATE NOTES SECTION  */
 
-.un-container{
+.un-container {
     display: block;
     text-align: center;
     border: 1px solid gray;
     width: 85%;
     margin: 0 auto;
-
+    position: relative;
+    height: 80%;
 }
 #mid{
     display: flex;
