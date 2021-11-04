@@ -6,55 +6,55 @@
     margin: 0 auto;
 
 }
- #left{
+ #left,#update-left{
     width: 100%;
-    margin-top: 5%;
+    margin-top: 3%;
     /* border: 1px solid red; */
     display: flex;
     justify-content: left;
     align-items: center;
 }
-#right{
+#right,#update-right{
     width: 100%;
     /* border: 1px solid blue; */
     display: flex;
     justify-content: left;
     align-items: center;
-    margin-top: 5%;
+    margin-top: 3%;
 }
 .sc-container h5, .crs-mid-update h5{
     font-size: 20px;
     font-weight: 600; 
 }
-.crs-left{
+.crs-left,.update-crs-left{
    display:flex;
    margin-left: 100px;
 
 }
-.crs-left select{
+.crs-left select, .update-crs-left select{
     width: 200px;
     margin: 0px 20px;
     border: 1px solid gray;
     outline: none;
     border-radius: 3px;
 }
-.crs-left input[type="radio"]{
+.crs-left input[type="radio"],.update-crs-left input[type="radio"]{
     margin: 0 auto;
     text-align: center;
     margin-left: 20px;
 }
-.crs-right{
+.crs-right,.update-crs-right{
     display: flex;
     margin-left: 100px;
 } 
-.crs-right select{
+.crs-right select, .update-crs-right select{
     width: 200px;
     margin: 0px 20px;
     border: 1px solid gray;
     outline: none;
     border-radius: 3px;
 }
-.crs-right input[type="datetime-local"]{
+.crs-right input[type="datetime-local"],.update-crs-right input[type="datetime-local"]{
     width: 200px;
     margin: 0px 20px;
     border: 1px solid gray;
@@ -87,17 +87,46 @@
     margin-bottom: 3%;
 
 }
+
+/* UPDATE NOTES SECTION  */
+
+.un-container{
+    display: block;
+    text-align: center;
+    border: 1px solid gray;
+    width: 85%;
+    margin: 0 auto;
+
+}
 #mid{
     display: flex;
     justify-content: center;
     align-items: center;
     margin-top: 3%;
 }
-.crs-mid-update input[type="text"]{
+.update-crs input[type="text"]{
     width: 35%;
     border: none;
     border-bottom: 1.5px solid grey;
     background: rgba(211, 211, 211, 0.685);
     color: blue;
     outline: none;
+}
+#update-mid{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 3.5%;
+    margin-bottom: 2.5%;
+}
+.update-crs-mid{
+    display: flex;
+    font-size: 12px;
+    
+}
+.update-crs-mid h5{
+    font-size: 15px;
+}
+.update-crs-mid input[type="file"]{
+    margin-left: 20px;
 }
