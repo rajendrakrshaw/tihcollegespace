@@ -16,7 +16,7 @@
 <?php
   include_once 'connection.php';
   $query = "SELECT * FROM streams";
-  $result = $db->query($query);
+  $result = mysqli_query($conn,$query);
 ?>
     <div class="home">
         <div class="topdesign" >
