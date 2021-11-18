@@ -10,9 +10,14 @@
     <title>Document</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-
+    
 </head>
 <body>
+<?php
+  include_once 'connection.php';
+  $query = "SELECT * FROM streams";
+  $result = $db->query($query);
+?>
     <div class="home">
         <div class="topdesign" >
 
@@ -109,8 +114,7 @@
               <option>Cybertronix</option>
               <option>Industrial Training</option>
               <option>Unix</option>
-              <!-- <option></option>
-                <option></option> -->
+              
               </select>
           </div>
         </div>
@@ -142,6 +146,9 @@
     </div>
 </div>
 
+  
+
+
 <!--Update Notes Modal-->
 <div class="modal-container" id="UN">
     <div class="modal-header">
@@ -168,8 +175,6 @@
               <option>Cybertronix</option>
               <option>Industrial Training</option>
               <option>Unix</option>
-              <!-- <option></option>
-                <option></option> -->
               </select>
           </div>
         </div>
@@ -257,8 +262,11 @@
       assumenda sed maxime!
     </div>
 </div>
+
+
     <!-- Adding Overlay -->
     <div id="overlay"></div>
+    
     <script src="admin.js"></script>
     <script src="../../Javascripts/Overlay.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
