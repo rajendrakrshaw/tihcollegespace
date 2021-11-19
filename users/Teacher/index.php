@@ -10,13 +10,15 @@
     <title>Document</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     
 </head>
 <body>
 <?php
-  include_once 'connection.php';
+  include 'connection.php';
   $query = "SELECT * FROM streams";
-  $result = mysqli_query($conn,$query);
+  $result = $db->query($query);
 ?>
     <div class="home">
         <div class="topdesign" >
@@ -86,7 +88,7 @@
 </div>
 
 <!--Schedule Class Modal-->
-<div class="modal-container" id="SC">
+<!-- <div class="modal-container" id="SC">
     <div class="modal-header">
       <div class="title">
         <h3><strong>Schedule Class</strong></h3>
@@ -144,13 +146,87 @@
       </form>
       <button type="submit" class="sc-btn">Schedule</button>
     </div>
-</div>
+</div> -->
 
+<div class="modal-container" id="SC">
+    <div class="modal-header">
+      <div class="title">
+        <h3><strong>Schedule Class</strong></h3>
+      </div>
+      <button class="btn close-modal">&times;</button>
+    </div>
+    <div class="sc-container">
+    <form>
+        <div class="form-group">
+          <label>Stream</label>
+          <select name="stream" id="stream" class="form-control" onchange="FetchSemester(this.value)"  required>
+            <option selected disabled>Select Stream</option>
+          <?php
+            if ($result->num_rows > 0 ) {
+               while ($row = $result->fetch_assoc()) {
+                echo '<option value='.$row['id'].'>'.$row['stream'].'</option>';
+               }
+            }
+          ?> 
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Semester</label>
+          <select name="semester" id="semester" class="form-control" onchange="FetchSubject(this.value)"  required>
+            <option selected disabled>Select Semester</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Section</label>
+          <select name="section" id="section" class="form-control" required>
+            <option selected disabled>Select Section</option>
+            <option value="alpha">Alpha</option>
+            <option value="beta">Beta</option>
+            <option value="combined">Combined</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Subject</label>
+          <select name="subject" id="subject" class="form-control" required>
+            <option selected disabled>Select Subject</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Topic Name</label>
+          <input type="text" name="topic" class="form-control" id="topic" placeholder="Write the Topics" required>
+        </div>
+        
+        <div class="form-group">
+          <label>Date of the Class</label>
+          <input type="date" name="date" class="form-control" id="date" required>
+        </div>
+        
+        <div class="form-group">
+          <label>Timing of the Class</label>
+          <input type="time" name="time" class="form-control" id="time" required>
+        </div>
+        
+        <div class="form-group">
+          <label>Class Link</label>
+          <input type="url" name="classlink" class="form-control" id="classlink" placeholder="Enter a valid url">
+        </div>
+
+        <div class="form-group">
+          <input type="submit" value="Schedule Class">
+          <input type="reset" value="Clear Entries">
+        </div>
+
+      </form>
+    </div>
+</div>
   
 
 
 <!--Update Notes Modal-->
-<div class="modal-container" id="UN">
+<!-- <div class="modal-container" id="UN">
     <div class="modal-header">
       <div class="title"><strong>Upload Notes</strong></div>
       <button class="btn close-modal">&times;</button>
@@ -218,6 +294,94 @@
       </form>
       <button type="submit" class="un-btn">Schedule</button>
     </div>
+</div> -->
+
+<div class="modal-container" id="UN">
+    <div class="modal-header">
+      <div class="title"><strong>Upload Notes</strong></div>
+      <button class="btn close-modal">&times;</button>
+    </div>
+    <div class="un-container">
+      <form>
+      <?php
+        include_once 'connection.php';
+        $query = "SELECT * FROM streams Order by stream";
+        $result = $db->query($query);
+      ?>  
+        <div class="form-group">
+          <label>Stream</label>
+          <select name="stream" id="streamUN" class="form-control" onchange="FetchSemesterUN(this.value)"  required>
+            <option selected disabled>Select Stream</option>
+          <?php
+            if ($result->num_rows > 0 ) {
+               while ($row = $result->fetch_assoc()) {
+                echo '<option value='.$row['id'].'>'.$row['stream'].'</option>';
+               }
+            }
+          ?> 
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Semester</label>
+          <select name="semester" id="semesterUN" class="form-control" onchange="FetchSubjectUN(this.value)"  required>
+            <option selected disabled>Select Semester</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Section</label>
+          <select name="section" id="sectionUN" class="form-control" required>
+            <option selected disabled>Select Section</option>
+            <option value="alpha">Alpha</option>
+            <option value="beta">Beta</option>
+            <option value="combined">Combined</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Subject</label>
+          <select name="subject" id="subjectUN" class="form-control" required>
+            <option selected disabled>Select Subject</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Topic Name</label>
+          <input type="text" name="topic" class="form-control" id="topicUN" placeholder="Write the Topics" required>
+        </div>
+        
+        <div class="form-group">
+          <label>Date of the Class</label>
+          <input type="date" name="date" class="form-control" id="dateUN" required>
+        </div>
+        
+        <div class="form-group">
+          <label>Timing of the Class</label>
+          <input type="time" name="time" class="form-control" id="timeUN" required>
+        </div>
+        
+        <div class="form-group">
+          <label>Upload Notes</label>
+          <input type="file" multiple name="file" id="file" onchange="javascript:updateList()" />
+
+          <p>Selected files:</p>
+
+          <div id="fileList"></div>
+        </div>
+
+        <div class="form-group">
+          <label>Class Recording Link</label>
+          <input type="url" name="classlink" class="form-control" id="classlinkUN" placeholder="Enter a valid url">
+        </div>
+
+        <div class="form-group">
+          <input type="submit" value="upload Notes">
+          <input type="reset" value="Clear Entries">
+        </div>
+
+      </form>
+
+    </div>
 </div>
 
 <!--Updates Modal-->
@@ -270,5 +434,71 @@
     <script src="admin.js"></script>
     <script src="../../Javascripts/Overlay.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+  function FetchSemester(id){
+    $('#semester').html('');
+    $('#subject').html('<option>Select Subject</option>');
+    $.ajax({
+      type:'post',
+      url: 'ajaxdata.php',
+      data : { stream_id : id},
+      success : function(data){
+         $('#semester').html(data);
+      }
+
+    })
+  }
+
+  function FetchSubject(id){ 
+    $('#subject').html('');
+    $.ajax({
+      type:'post',
+      url: 'ajaxdata.php',
+      data : { semester_id : id},
+      success : function(data){
+         $('#subject').html(data);
+      }
+
+    })
+  }
+
+  function FetchSemesterUN(id){
+    $('#semesterUN').html('');
+    $('#subjectUN').html('<option>Select Subject</option>');
+    $.ajax({
+      type:'post',
+      url: 'ajaxdata.php',
+      data : { stream_id : id},
+      success : function(data){
+         $('#semesterUN').html(data);
+      }
+
+    })
+  }
+
+  function FetchSubjectUN(id){ 
+    $('#subjectUN').html('');
+    $.ajax({
+      type:'post',
+      url: 'ajaxdata.php',
+      data : { semester_id : id},
+      success : function(data){
+         $('#subjectUN').html(data);
+      }
+
+    })
+  }
+  updateList = function() {
+    var input = document.getElementById('file');
+    var output = document.getElementById('fileList');
+    var children = "";
+    for (var i = 0; i < input.files.length; ++i) {
+        children += '<li>' + input.files.item(i).name + '</li>';
+    }
+    output.innerHTML = '<ul>'+children+'</ul>';
+}
+
+  
+</script>
 </body>
 </html>
