@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style_teacher.css">
     <link rel="stylesheet" href="../../css/Overlay.css">
     <link rel="stylesheet" href="../../css/schedule.css">
     <title>Document</title>
@@ -47,7 +47,7 @@
         </div>
     </div>
 <!--My Profile Modal-->
-    <div class="modal-container" id="MyProfile">
+    <div class="modal-container modal-lg" style="margin-top:50px;"  id="MyProfile">
         <div class="modal-header">
           <div class="title"><Strong>My Profile</Strong></div>
           <button class="btn close-modal" class="close cl">&times;</button>
@@ -60,7 +60,7 @@
         </div>
     </div>
 <!--Edit Profile Modal-->
-<div class="modal-container" id="EditProfile">
+<div class="modal-container modal-lg" style="margin-top:50px;" id="EditProfile">
   <div class="modal-header">
     <div class="title"><Strong>Edit Profile</Strong></div>
     <button class="btn close-modal" class="close cl">&times;</button>
@@ -74,7 +74,7 @@
 </div>
 
 <!--Inbox Modal-->
-<div class="modal-container" id="Inbox">
+<div class="modal-container modal-lg" style="margin-top:50px;" id="Inbox">
     <div class="modal-header">
       <div class="title"><strong>Inbox</strong></div>
       <button class="btn close-modal">&times;</button>
@@ -148,7 +148,7 @@
     </div>
 </div> -->
 
-<div class="modal-container" id="SC">
+<div class="modal-container modal-lg" style="margin-top:50px;"  id="SC">
     <div class="modal-header">
       <div class="title">
         <h3><strong>Schedule Class</strong></h3>
@@ -222,7 +222,7 @@
       </form>
     </div>
 </div>
-  
+
 
 
 <!--Update Notes Modal-->
@@ -296,7 +296,7 @@
     </div>
 </div> -->
 
-<div class="modal-container" id="UN">
+<div class="modal-container modal-lg" style="margin-top:50px;" id="UN">
     <div class="modal-header">
       <div class="title"><strong>Upload Notes</strong></div>
       <button class="btn close-modal">&times;</button>
@@ -385,7 +385,7 @@
 </div>
 
 <!--Updates Modal-->
-<div class="modal-container" id="Updates">
+<div class="modal-container modal-lg" style="margin-top:50px;" id="Updates">
     <div class="modal-header">
       <div class="title"><strong>Updates</strong></div>
       <button class="btn close-modal">&times;</button>
@@ -399,7 +399,7 @@
 </div>
 
 <!--Settings Modal-->
-<div class="modal-container" id="Settings">
+<div class="modal-container modal-lg" style="margin-top:50px;" id="Settings">
     <div class="modal-header">
       <div class="title"><strong>Settings</strong></div>
       <button class="btn close-modal">&times;</button>
@@ -414,7 +414,7 @@
 
 
 <!--Help Modal-->
-<div class="modal-container" id="Help">
+<div class="modal-container modal-lg" style="margin-top:50px;" id="Help">
     <div class="modal-header">
       <div class="title"><strong>Help</strong></div>
       <button class="btn close-modal">&times;</button>

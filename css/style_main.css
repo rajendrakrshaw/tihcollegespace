@@ -1263,3 +1263,22 @@ h1 span:nth-child(11){
 #modal {
     background: rgba(233, 230, 229, 0.863);
 }
+/*CONTACT US*/
+
+
+.card-40 {
+    padding: 10px;
+    height: 250px;
+    border: none;
+    -webkit-box-shadow: 0px 1px 9px 3px rgba(219, 210, 219, 1);
+    -moz-box-shadow: 0px 1px 9px 3px rgba(219, 210, 219, 1);
+    box-shadow: 0px 1px 9px 3px rgba(219, 210, 219, 1);
+    display: flex;
+    justify-content: center;
+    align-items: center
+}
+.cdd
+{
+  margin-top:25%;
+  text-align: center;
+}
