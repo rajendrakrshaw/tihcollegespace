@@ -1,0 +1,29 @@
+unique id verification:
+
+1.enter your id: 
+
+found		/	not found -> retry
+  |
+  |
+Not Registered		/ Already Registered | Login here
+  |
+  |
+
+2.enter your email:
+Matched 	/ 	not Matching
+  |
+  |
+enter verification code:
+Matched		/ 	Wrong/ Resend?
+  |
+  |
+check your details, edit details
+
+Teacher : ID Card Number
+Name: 
+Post: 
+Mobile: 
+Email:
+
+
+
