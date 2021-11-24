@@ -151,3 +151,17 @@ body{
 .action .menu ul li:hover a{
     color: linear-gradient(57deg, #5cdb95, #edf5e1);
 }
+.stu
+{
+   padding-top:3%;
+    text-align: center;
+    font-size:40px;
+}
+/*MODAL */
+#MyProfile,#EditProfile,#Inbox,#SC,#UN,#Updates,#Settings,#Help {
+    background: rgba(233, 230, 229, 0.863);
+}
+
+.cc{
+    margin-top: 200px;
+}
