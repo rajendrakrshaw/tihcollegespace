@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 17, 2021 at 11:37 AM
+-- Generation Time: Nov 24, 2021 at 11:52 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.10
 
@@ -24,20 +24,46 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `schedule_class`
+--
+
+CREATE TABLE `schedule_class` (
+  `id` int(250) NOT NULL,
+  `faculty_id` int(50) NOT NULL,
+  `faculty_name` varchar(50) NOT NULL,
+  `stream` varchar(10) NOT NULL,
+  `sem` varchar(10) NOT NULL,
+  `section` varchar(10) NOT NULL,
+  `subject` varchar(50) NOT NULL,
+  `topic` varchar(250) NOT NULL,
+  `date` date NOT NULL,
+  `time` time NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `schedule_class`
+--
+
+INSERT INTO `schedule_class` (`id`, `faculty_id`, `faculty_name`, `stream`, `sem`, `section`, `subject`, `topic`, `date`, `time`) VALUES
+(1, 1, 'Subrata Saha', 'BCA', 'SEM1', 'Alpha', 'C Programming', 'Algorithms and Flow Chart', '2021-11-27', '11:20:00');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `semesters`
 --
 
 CREATE TABLE `semesters` (
   `id` int(11) NOT NULL,
   `sem` varchar(10) NOT NULL,
-  `stream_id` int(11) NOT NULL
+  `streams_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `semesters`
 --
 
-INSERT INTO `semesters` (`id`, `sem`, `stream_id`) VALUES
+INSERT INTO `semesters` (`id`, `sem`, `streams_id`) VALUES
 (1, 'SEM1', 1),
 (2, 'SEM2', 1),
 (3, 'SEM3', 1),
@@ -75,10 +101,10 @@ CREATE TABLE `streams` (
 --
 
 INSERT INTO `streams` (`id`, `stream`) VALUES
-(1, 'bca'),
-(2, 'bba'),
-(3, 'mca'),
-(4, 'msc');
+(1, 'BCA'),
+(2, 'BBA'),
+(3, 'MCA'),
+(4, 'MSC');
 
 -- --------------------------------------------------------
 
@@ -89,14 +115,14 @@ INSERT INTO `streams` (`id`, `stream`) VALUES
 CREATE TABLE `subjects` (
   `id` int(11) NOT NULL,
   `subject` varchar(30) NOT NULL,
-  `semester_id` int(11) NOT NULL
+  `semesters_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `subjects`
 --
 
-INSERT INTO `subjects` (`id`, `subject`, `semester_id`) VALUES
+INSERT INTO `subjects` (`id`, `subject`, `semesters_id`) VALUES
 (1, 'C Programming', 1),
 (2, 'Digital Electronics', 1),
 (3, 'Basic Mathematics Computation', 1),
@@ -120,6 +146,12 @@ INSERT INTO `subjects` (`id`, `subject`, `semester_id`) VALUES
 --
 
 --
+-- Indexes for table `schedule_class`
+--
+ALTER TABLE `schedule_class`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `semesters`
 --
 ALTER TABLE `semesters`
@@ -140,6 +172,12 @@ ALTER TABLE `subjects`
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `schedule_class`
+--
+ALTER TABLE `schedule_class`
+  MODIFY `id` int(250) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `semesters`

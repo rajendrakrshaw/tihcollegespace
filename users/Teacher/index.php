@@ -215,8 +215,8 @@
         </div>
 
         <div class="form-group">
-          <input type="submit" value="Schedule Class">
-          <input type="reset" value="Clear Entries">
+          <input class="btn btn-primary" type="submit" value="Schedule Class">
+          <input class="btn btn-primary" type="reset" value="Clear Entries">
         </div>
 
       </form>
@@ -296,7 +296,7 @@
     </div>
 </div> -->
 
-<div class="modal-container modal-lg" style="margin-top:50px;" id="UN">
+<div class="modal-container modal-lg" style="margin-top:20px;" id="UN">
     <div class="modal-header">
       <div class="title"><strong>Upload Notes</strong></div>
       <button class="btn close-modal">&times;</button>
