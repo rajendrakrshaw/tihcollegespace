@@ -1,3 +1,7 @@
+
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,9 +10,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style_admin.css">
     <link rel="stylesheet" href="../../css/Overlay.css">
-    <title>Document</title>
+    <title>Admin</title>
 </head>
 <body>
+<?php
+if($_SESSION['login']){
+?>
     <div class="home">
         <div class="topdesign" >
         <h3 class="adm">ADMIN PANEL</h3>
@@ -52,5 +59,11 @@
     <div id="overlay"></div>
     <script src="admin.js"></script>
     <script src="../../Javascripts/Overlay.js"></script>
+<?php
+}
+else{
+    header("location:../not_allowed.html");
+}
+?>
 </body>
 </html>
