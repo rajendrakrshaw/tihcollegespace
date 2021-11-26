@@ -15,12 +15,14 @@ const sections = document.querySelectorAll('section');
 const navLiA = document.querySelectorAll('nav ul li a');
 window.addEventListener('scroll', ()=>{
     let current = "";
-    //console.log(pageYOffset);
+    console.log(pageYOffset);
+    //console.log(sections);
     sections.forEach( section => {
-        
-        const sectionTop = section.offsetTop;
+        console.log();
+        const sectionTop = $(section).offset().top;
         const sectionHeight = section.clientHeight;
-      //  console.log(sectionTop);
+        //console.log("sectiontop: "+sectionTop);
+        //console.log("sectionHeight: "+sectionHeight);
         if(pageYOffset >= (sectionTop) - sectionHeight/3) {
             current = section.getAttribute('id');
         }
@@ -29,7 +31,7 @@ window.addEventListener('scroll', ()=>{
     navLiA.forEach( a =>{
         a.classList.remove('active');
         if(a.classList.contains(current)){
-            //console.log(current);
+            console.log(current);
             a.classList.add('active');
         }
     })
