@@ -1,3 +1,8 @@
+<?php
+session_start();
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,6 +19,9 @@
     
 </head>
 <body>
+<?php
+if($_SESSION['login']){
+?>
     <div class="home">
         <div class="topdesign" >
             <h3 class="stu">STUDENT PANEL</h3>
@@ -127,5 +135,11 @@ assumenda sed maxime!
     <div id="overlay"></div>
     <script src="admin.js"></script>
     <script src="../../Javascripts/Overlay.js"></script>
+<?php
+}
+else{
+  header("location:../not_allowed.html");
+}
+?>
 </body>
 </html>

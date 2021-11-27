@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,6 +20,7 @@
 </head>
 <body>
 <?php
+  if($_SESSION['login']){
   include 'connection.php';
   $query = "SELECT * FROM streams";
   $result = $db->query($query);
@@ -518,5 +523,11 @@
 
   
 </script>
+<?php
+}
+else{
+  header("location:../not_allowed.html");
+}
+?>
 </body>
 </html>

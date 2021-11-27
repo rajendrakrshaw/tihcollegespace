@@ -10,17 +10,18 @@ if(isset($_POST['submit'])){
 
     if(mysqli_num_rows($query) > 0){
         $_SESSION['uid'] = $uid;
+        $_SESSION['login'] = true;
         while($row = mysqli_fetch_array($query)){
             $role = $row['role'];
         }
         if($role == "admin"){
-            header("location:users/Admin/index.html");
+            header("location:users/Admin/index.php");
         }
         elseif($role == "teacher"){
             header("location:users/Teacher/index.php");
         }
         elseif($role == "student"){
-            header("location:users/Student/index.html");
+            header("location:users/Student/index.php");
         }
         
     }
