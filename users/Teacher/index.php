@@ -35,12 +35,14 @@
                 <ul>
                     <li><img src="images/user.png" alt=""><a  data-target="#MyProfile" href="#MyProfile">My Profile</a></li>
                     <li><img src="images/edit.png" alt=""><a  data-target="#EditProfile" href="#EditProfile">Edit Profile</a></li>
-                    <li><img src="images/envelope.png" alt=""><a  data-target="#Inbox" href="#Inbox">Inbox</a></li>
+                    <!-- <li><img src="images/envelope.png" alt=""><a  data-target="#Inbox" href="#Inbox">Inbox</a></li> -->
                     <li><img src="images/schedule.png" alt=""><a  data-target="#SC" href="#SC">Schedule Class</a></li>
                     <li><img src="images/envelope.png" alt=""><a  data-target="#UN" href="#UN">Upload Notes</a></li>
                     <li><img src="images/envelope.png" alt=""><a  data-target="#Updates" href="#Updates">Updates</a></li>
-                    <li><img src="images/settings.png" alt=""><a  data-target="#Settings" href="#Settings">Settings</a></li>
-                    <li><img src="images/question.png" alt=""><a  data-target="#Help" href="#Help">Help</a></li>
+                    <!-- <li><img src="images/settings.png" alt=""><a  data-target="#Settings" href="#Settings">Settings</a></li> -->
+                    <!-- <li><img src="images/question.png" alt=""><a  data-target="#Help" href="#Help">Help</a></li> -->
+                    <li><img src="images/question.png" alt=""><a  data-target="#Doubts" href="#Doubts">Doubts</a></li>
+
                     <li><a href="../../logout.php"><img src="images/log-out.png" alt="">Logout</a></li>
                 </ul>
             </div>
@@ -426,6 +428,22 @@
       assumenda sed maxime!
     </div>
 </div>
+
+
+<!--Doubts Modal-->
+<div class="modal-container modal-lg" style="margin-top:50px;" id="Doubts">
+    <div class="modal-header">
+      <div class="title"><strong>Doubts</strong></div>
+      <button class="btn close-modal">&times;</button>
+    </div>
+    <div>
+      Lorem ipsum dolor, sit amet consectetur adipisicing elit. Facere ea
+      officia consectetur. Laborum, dolor? Assumenda quo corrupti eveniet
+      velit fugit fugiat odit, dolorum labore obcaecati quia. Commodi
+      assumenda sed maxime!
+    </div>
+</div>
+
 
 
     <!-- Adding Overlay -->
