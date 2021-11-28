@@ -166,14 +166,14 @@ session_start();
       <button class="close-modal modal-close-btn">&times;</button>
     </div>
     <div class="SC-form-container">
-    <form>
+    <form action="scheduleclass.php" method="post">
       <div class="form-row">
         <div class="form-half">
           <div class="form-half-left">
-            Stream
+            <label for="">Stream</label>
           </div>
           <div class="form-half-right">
-            <select name="stream" id="stream"  onchange="FetchSemester(this.value)"  required>
+            <select name="streamSC" id="stream"  onchange="FetchSemester(this.value)"  required>
               <option selected disabled>Select Stream</option>
             <?php
               if ($result->num_rows > 0 ) {
@@ -190,7 +190,7 @@ session_start();
             <label>Semester</label>
           </div>
           <div class="form-half-right">
-            <select name="semester" id="semester"  onchange="FetchSubject(this.value)"  required>
+            <select name="semesterSC" id="semester"  onchange="FetchSubject(this.value)"  required>
               <option selected disabled>Select Semester</option>
             </select>
           </div>
@@ -202,7 +202,7 @@ session_start();
             <label>Section</label>
           </div>
           <div class="form-half-right">
-            <select name="section" id="section"  required>
+            <select name="sectionSC" id="section"  required>
               <option selected disabled>Select Section</option>
               <option value="alpha">Alpha</option>
               <option value="beta">Beta</option>
@@ -216,19 +216,9 @@ session_start();
             <label>Subject</label>
           </div>
           <div class="form-half-right">
-            <select name="subject" id="subject"  required>
+            <select name="subjectSC" id="subject"  required>
               <option selected disabled>Select Subject</option>
             </select>
-          </div>
-        </div>
-        </div>
-        <div class="form-row">
-        <div class="form-full">
-          <div class="form-full-left">
-            <label>Topic Name</label>
-          </div>
-          <div class="form-full-right">
-            <input type="text" name="topic"  id="topic" placeholder="Write the Topics" required>
           </div>
         </div>
         </div>
@@ -238,7 +228,7 @@ session_start();
               <label>Date of the Class</label>
             </div>
             <div class="form-half-right">
-              <input type="date" name="date"  id="date" required>
+              <input type="date" name="dateSC"  id="date" required>
             </div>
           </div>
           
@@ -247,9 +237,19 @@ session_start();
               <label>Timing of the Class</label>
             </div>
             <div class="form-half-right">
-              <input type="time" name="time"  id="time" required>
+              <input type="time" name="timeSC"  id="time" required>
             </div>
           </div>
+        </div>
+        <div class="form-row">
+        <div class="form-full">
+          <div class="form-full-left">
+            <label>Topic Name</label>
+          </div>
+          <div class="form-full-right">
+            <input type="text" name="topicSC"  id="topic" placeholder="Write the Topics" required>
+          </div>
+        </div>
         </div>
         <div class="form-row">
           <div class="form-full">
@@ -257,12 +257,10 @@ session_start();
               <label>Class Link</label>
             </div>
             <div class="form-full-right">
-              <input type="url" name="classlink"  id="classlink" placeholder="Enter a valid url">
+              <input type="url" name="classlinkSC"  id="classlink" placeholder="Enter a valid url">
             </div>
           </div>
         </div>
-        <!-- <div class="">
-          </div> -->
           <div class="form-row">
             <div class="form-half">
               <div class="form-half-btn">  
@@ -354,7 +352,128 @@ session_start();
     </div>
 </div> -->
 
-<div class="modal-container modal-lg" style="margin-top:20px;" id="UN">
+<div class="modal-container modal-lg" style="margin-top:50px;"  id="UN">
+    <div class="modal-header">
+      <div class="title">
+        <h3><strong>Upload Notes</strong></h3>
+      </div>
+      <button class="close-modal modal-close-btn">&times;</button>
+    </div>
+    <div class="SC-form-container">
+    <form action="uploadnotes.php" method="post" enctype="multipart/form-data">
+      <div class="form-row">
+        <div class="form-half">
+          <div class="form-half-left">
+            <label for="">Stream</label>
+          </div>
+          <div class="form-half-right">
+            <select name="stream" id="streamUN"  onchange="FetchSemesterUN(this.value)"  required>
+              <option selected disabled>Select Stream</option>
+            <?php
+              if ($result->num_rows > 0 ) {
+                while ($row = $result->fetch_assoc()) {
+                  echo '<option value='.$row['id'].'>'.$row['stream'].'</option>';
+                }
+              }
+            ?> 
+            </select>
+          </div>
+        </div>
+        <div class="form-half">
+          <div class="form-half-left">
+            <label>Semester</label>
+          </div>
+          <div class="form-half-right">
+            <select name="semester" id="semesterUN"  onchange="FetchSubjectUN(this.value)"  required>
+              <option selected disabled>Select Semester</option>
+            </select>
+          </div>
+        </div>
+        </div>
+        <div class="form-row">
+        <div class="form-half">
+          <div class="form-half-left">
+            <label>Section</label>
+          </div>
+          <div class="form-half-right">
+            <select name="section" id="sectionUN"  required>
+              <option selected disabled>Select Section</option>
+              <option value="alpha">Alpha</option>
+              <option value="beta">Beta</option>
+              <option value="combined">Combined</option>
+            </select>
+            </div>
+        </div>
+
+        <div class="form-half">
+          <div class="form-half-left">
+            <label>Subject</label>
+          </div>
+          <div class="form-half-right">
+            <select name="subject" id="subjectUN"  required>
+              <option selected disabled>Select Subject</option>
+            </select>
+          </div>
+        </div>
+        </div>
+        <div class="form-row">
+          <div class="form-half">
+            <div class="form-half-left">
+              <label>Date of the Class</label>
+            </div>
+            <div class="form-half-right">
+              <input type="date" name="dateUN"  id="dateUN" required>
+            </div>
+          </div>
+          
+          <div class="form-half">
+            <div class="form-half-left">
+              <label>Study Material</label>
+            </div>
+            <div class="form-half-right">
+            <input type="file" multiple name="fileUN" id="fileUN" >
+            </div>
+          </div>
+        </div>
+        <div class="form-row">
+        <div class="form-full">
+          <div class="form-full-left">
+            <label>Topic Name</label>
+          </div>
+          <div class="form-full-right">
+            <input type="text" name="topic"  id="topicUN" placeholder="Write the Topics" required>
+          </div>
+        </div>
+        </div>
+        <div class="form-row">
+          <div class="form-full">
+            <div class="form-full-left">
+              <label>Class Recording Link</label>
+            </div>
+            <div class="form-full-right">
+              <input type="url" name="classlink"  id="classlinkUN" placeholder="Enter a valid url">
+            </div>
+          </div>
+        </div>
+          <div class="form-row">
+            <div class="form-half">
+              <div class="form-half-btn">  
+                <input class="btn btn-primary" type="submit" value="Upload Notes">
+              </div>
+            </div>
+            <div class="form-half">
+              <div class="form-half-btn">  
+                <input class="btn btn-primary" type="reset" value="Clear Entries">
+              </div>
+          </div>
+        </div>
+
+      </form>
+    </div>
+    
+</div>
+
+<!-- <div class="modal-container modal-lg" style="margin-top:20px;" id="UN">
     <div class="modal-header">
       <div class="title"><strong>Upload Notes</strong></div>
       <button class="btn close-modal">&times;</button>
@@ -413,10 +532,6 @@ session_start();
           <input type="date" name="date" class="form-control" id="dateUN" required>
         </div>
         
-        <div class="form-group">
-          <label>Timing of the Class</label>
-          <input type="time" name="time" class="form-control" id="timeUN" required>
-        </div>
         
         <div class="form-group">
           <label>Upload Notes</label>
@@ -440,7 +555,7 @@ session_start();
       </form>
 
     </div>
-</div>
+</div> -->
 
 <!--Updates Modal-->
 <div class="modal-container modal-lg" style="margin-top:50px;" id="Updates">

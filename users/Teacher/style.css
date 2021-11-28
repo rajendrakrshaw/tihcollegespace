@@ -14,6 +14,7 @@
 .SC-Container form{
     /* width: 400px; */
     /* border: 2px solid black; */
+    overflow: scroll;
 }
 .form-row{
     width: 500px;
@@ -30,6 +31,7 @@
     justify-content: center;
     align-self: center;
     flex-direction: column;
+    /* border: 2px solid rebeccapurple; */
 }
 .form-half-left{
     width: 200px;
@@ -41,7 +43,9 @@
     margin: auto;
     font-size: 20px;
 }
-
+.form-half-left label,.form-full-left label,.form-half-right,.form-full-right{
+    font-family: 'El Messiri', sans-serif;
+}
 .form-half-right{
     width: 200px;
     /* border: 2px solid rgb(76, 0, 255); */
@@ -95,6 +99,19 @@ select{
 }
 
 .form-half-btn{
-    width: 150px;
+    width: 200px;
     margin:auto;
+    /* border: 2px solid red; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+/* Responsive schedule class */
+@media only screen and (max-width: 550px){
+    .form-row{
+        flex-direction: column;
+    }
 }
