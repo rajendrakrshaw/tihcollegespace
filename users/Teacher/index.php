@@ -11,11 +11,14 @@ session_start();
     <link rel="stylesheet" href="style_teacher2.css">
     <link rel="stylesheet" href="../../css/Overlay.css">
     <link rel="stylesheet" href="../../css/schedule.css">
+    <link rel="stylesheet" type="" href="style.css">
     <title>Document</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <!-- jQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=El+Messiri&family=Great+Vibes&family=Raleway:wght@300&display=swap" rel="stylesheet">
     
 </head>
 <body>
@@ -160,74 +163,122 @@ session_start();
       <div class="title">
         <h3><strong>Schedule Class</strong></h3>
       </div>
-      <button class="btn close-modal">&times;</button>
+      <button class="close-modal modal-close-btn">&times;</button>
     </div>
-    <div class="sc-container">
+    <div class="SC-form-container">
     <form>
-        <div class="form-group">
-          <label>Stream</label>
-          <select name="stream" id="stream" class="form-control" onchange="FetchSemester(this.value)"  required>
-            <option selected disabled>Select Stream</option>
-          <?php
-            if ($result->num_rows > 0 ) {
-               while ($row = $result->fetch_assoc()) {
-                echo '<option value='.$row['id'].'>'.$row['stream'].'</option>';
-               }
-            }
-          ?> 
-          </select>
+      <div class="form-row">
+        <div class="form-half">
+          <div class="form-half-left">
+            Stream
+          </div>
+          <div class="form-half-right">
+            <select name="stream" id="stream"  onchange="FetchSemester(this.value)"  required>
+              <option selected disabled>Select Stream</option>
+            <?php
+              if ($result->num_rows > 0 ) {
+                while ($row = $result->fetch_assoc()) {
+                  echo '<option value='.$row['id'].'>'.$row['stream'].'</option>';
+                }
+              }
+            ?> 
+            </select>
+          </div>
         </div>
-        <div class="form-group">
-          <label>Semester</label>
-          <select name="semester" id="semester" class="form-control" onchange="FetchSubject(this.value)"  required>
-            <option selected disabled>Select Semester</option>
-          </select>
+        <div class="form-half">
+          <div class="form-half-left">
+            <label>Semester</label>
+          </div>
+          <div class="form-half-right">
+            <select name="semester" id="semester"  onchange="FetchSubject(this.value)"  required>
+              <option selected disabled>Select Semester</option>
+            </select>
+          </div>
         </div>
-
-        <div class="form-group">
-          <label>Section</label>
-          <select name="section" id="section" class="form-control" required>
-            <option selected disabled>Select Section</option>
-            <option value="alpha">Alpha</option>
-            <option value="beta">Beta</option>
-            <option value="combined">Combined</option>
-          </select>
         </div>
-
-        <div class="form-group">
-          <label>Subject</label>
-          <select name="subject" id="subject" class="form-control" required>
-            <option selected disabled>Select Subject</option>
-          </select>
-        </div>
-
-        <div class="form-group">
-          <label>Topic Name</label>
-          <input type="text" name="topic" class="form-control" id="topic" placeholder="Write the Topics" required>
-        </div>
-        
-        <div class="form-group">
-          <label>Date of the Class</label>
-          <input type="date" name="date" class="form-control" id="date" required>
-        </div>
-        
-        <div class="form-group">
-          <label>Timing of the Class</label>
-          <input type="time" name="time" class="form-control" id="time" required>
-        </div>
-        
-        <div class="form-group">
-          <label>Class Link</label>
-          <input type="url" name="classlink" class="form-control" id="classlink" placeholder="Enter a valid url">
+        <div class="form-row">
+        <div class="form-half">
+          <div class="form-half-left">
+            <label>Section</label>
+          </div>
+          <div class="form-half-right">
+            <select name="section" id="section"  required>
+              <option selected disabled>Select Section</option>
+              <option value="alpha">Alpha</option>
+              <option value="beta">Beta</option>
+              <option value="combined">Combined</option>
+            </select>
+            </div>
         </div>
 
-        <div class="form-group">
-          <input class="btn btn-primary" type="submit" value="Schedule Class">
-          <input class="btn btn-primary" type="reset" value="Clear Entries">
+        <div class="form-half">
+          <div class="form-half-left">
+            <label>Subject</label>
+          </div>
+          <div class="form-half-right">
+            <select name="subject" id="subject"  required>
+              <option selected disabled>Select Subject</option>
+            </select>
+          </div>
+        </div>
+        </div>
+        <div class="form-row">
+        <div class="form-full">
+          <div class="form-full-left">
+            <label>Topic Name</label>
+          </div>
+          <div class="form-full-right">
+            <input type="text" name="topic"  id="topic" placeholder="Write the Topics" required>
+          </div>
+        </div>
+        </div>
+        <div class="form-row">
+          <div class="form-half">
+            <div class="form-half-left">
+              <label>Date of the Class</label>
+            </div>
+            <div class="form-half-right">
+              <input type="date" name="date"  id="date" required>
+            </div>
+          </div>
+          
+          <div class="form-half">
+            <div class="form-half-left">
+              <label>Timing of the Class</label>
+            </div>
+            <div class="form-half-right">
+              <input type="time" name="time"  id="time" required>
+            </div>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-full">
+            <div class="form-full-left">
+              <label>Class Link</label>
+            </div>
+            <div class="form-full-right">
+              <input type="url" name="classlink"  id="classlink" placeholder="Enter a valid url">
+            </div>
+          </div>
+        </div>
+        <!-- <div class="">
+          </div> -->
+          <div class="form-row">
+            <div class="form-half">
+              <div class="form-half-btn">  
+                <input class="btn btn-primary" type="submit" value="Schedule Class">
+              </div>
+            </div>
+            <div class="form-half">
+              <div class="form-half-btn">  
+                <input class="btn btn-primary" type="reset" value="Clear Entries">
+              </div>
+          </div>
         </div>
 
       </form>
     </div>
+    
 </div>
 
 
