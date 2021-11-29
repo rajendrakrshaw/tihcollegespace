@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 28, 2021 at 12:57 PM
+-- Generation Time: Nov 29, 2021 at 06:15 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.10
 
@@ -47,8 +47,9 @@ CREATE TABLE `schedule_class` (
 
 INSERT INTO `schedule_class` (`id`, `faculty_id`, `faculty_name`, `stream`, `sem`, `section`, `subject`, `topic`, `date`, `time`, `classlink`) VALUES
 (1, 1, 'Subrata Saha', 'BCA', 'SEM1', 'Alpha', 'C Programming', 'Algorithms and Flow Chart', '2021-11-27', '11:20:00', NULL),
-(2, 1, 'Subrata Saha', 'BCA', 'SEM!', 'Beta', 'C Programming', 'Conditional Flowchart', '2021-11-30', '11:20:00', ''),
-(3, 1, 'Subrata Saha', 'BCA', 'SEM1', 'Combined', 'C', 'Installing Turbo C', '2021-12-01', '11:20:00', '');
+(2, 1, 'Subrata Saha', 'BCA', 'SEM1', 'Beta', 'C Programming', 'Conditional Flowchart', '2021-11-30', '11:20:00', ''),
+(3, 1, 'Subrata Saha', 'BCA', 'SEM1', 'Combined', 'C', 'Installing Turbo C', '2021-12-01', '11:20:00', ''),
+(4, 1, 'Subrata Saha', 'BCA', 'SEM2', 'Combined', 'Data', 'Structure', '2021-12-03', '10:00:00', '');
 
 -- --------------------------------------------------------
 
@@ -165,13 +166,6 @@ CREATE TABLE `upload_notes` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `upload_notes`
---
-
-INSERT INTO `upload_notes` (`id`, `faculty_id`, `faculty_name`, `stream`, `sem`, `section`, `subject`, `topic`, `date`, `file`, `recordinglink`) VALUES
-(1, 1, 'Subrata Saha', 'BCA', 'SEM1', 'Alpha', 'C Programming', 'Algorithms and Flow Chart', '2021-11-27', '11:20:00', NULL);
-
---
 -- Indexes for dumped tables
 --
 
@@ -200,6 +194,12 @@ ALTER TABLE `subjects`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `upload_notes`
+--
+ALTER TABLE `upload_notes`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -207,7 +207,7 @@ ALTER TABLE `subjects`
 -- AUTO_INCREMENT for table `schedule_class`
 --
 ALTER TABLE `schedule_class`
-  MODIFY `id` int(250) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(250) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `semesters`
