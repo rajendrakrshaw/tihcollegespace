@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 24, 2021 at 11:52 AM
+-- Generation Time: Nov 28, 2021 at 12:57 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.10
 
@@ -37,15 +37,18 @@ CREATE TABLE `schedule_class` (
   `subject` varchar(50) NOT NULL,
   `topic` varchar(250) NOT NULL,
   `date` date NOT NULL,
-  `time` time NOT NULL
+  `time` time NOT NULL,
+  `classlink` varchar(250) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `schedule_class`
 --
 
-INSERT INTO `schedule_class` (`id`, `faculty_id`, `faculty_name`, `stream`, `sem`, `section`, `subject`, `topic`, `date`, `time`) VALUES
-(1, 1, 'Subrata Saha', 'BCA', 'SEM1', 'Alpha', 'C Programming', 'Algorithms and Flow Chart', '2021-11-27', '11:20:00');
+INSERT INTO `schedule_class` (`id`, `faculty_id`, `faculty_name`, `stream`, `sem`, `section`, `subject`, `topic`, `date`, `time`, `classlink`) VALUES
+(1, 1, 'Subrata Saha', 'BCA', 'SEM1', 'Alpha', 'C Programming', 'Algorithms and Flow Chart', '2021-11-27', '11:20:00', NULL),
+(2, 1, 'Subrata Saha', 'BCA', 'SEM!', 'Beta', 'C Programming', 'Conditional Flowchart', '2021-11-30', '11:20:00', ''),
+(3, 1, 'Subrata Saha', 'BCA', 'SEM1', 'Combined', 'C', 'Installing Turbo C', '2021-12-01', '11:20:00', '');
 
 -- --------------------------------------------------------
 
@@ -141,6 +144,33 @@ INSERT INTO `subjects` (`id`, `subject`, `semesters_id`) VALUES
 (16, 'Soft Skills', 3),
 (17, 'Aptitude', 3);
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `upload_notes`
+--
+
+CREATE TABLE `upload_notes` (
+  `id` int(250) NOT NULL DEFAULT 0,
+  `faculty_id` int(50) NOT NULL,
+  `faculty_name` varchar(50) NOT NULL,
+  `stream` varchar(10) NOT NULL,
+  `sem` varchar(10) NOT NULL,
+  `section` varchar(10) NOT NULL,
+  `subject` varchar(50) NOT NULL,
+  `topic` varchar(250) NOT NULL,
+  `date` date NOT NULL,
+  `file` varchar(250) NOT NULL,
+  `recordinglink` varchar(250) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `upload_notes`
+--
+
+INSERT INTO `upload_notes` (`id`, `faculty_id`, `faculty_name`, `stream`, `sem`, `section`, `subject`, `topic`, `date`, `file`, `recordinglink`) VALUES
+(1, 1, 'Subrata Saha', 'BCA', 'SEM1', 'Alpha', 'C Programming', 'Algorithms and Flow Chart', '2021-11-27', '11:20:00', NULL);
+
 --
 -- Indexes for dumped tables
 --
@@ -177,7 +207,7 @@ ALTER TABLE `subjects`
 -- AUTO_INCREMENT for table `schedule_class`
 --
 ALTER TABLE `schedule_class`
-  MODIFY `id` int(250) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(250) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `semesters`

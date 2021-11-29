@@ -22,7 +22,7 @@ if (isset($_POST['stream_id'])) {
 	if ($result->num_rows > 0 ) {
 			echo '<option selected disabled>Select Subject</option>';
 		 while ($row = $result->fetch_assoc()) {
-		 	echo '<option value='.$row['id'].'>'.$row['subject'].'</option>';
+		 	echo '<option value='.$row['subject'].'>'.$row['subject'].'</option>';
 		 }
 	}else{
 

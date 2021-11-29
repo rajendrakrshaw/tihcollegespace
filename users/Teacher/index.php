@@ -165,116 +165,8 @@ session_start();
       </div>
       <button class="close-modal modal-close-btn">&times;</button>
     </div>
-    <div class="SC-form-container">
-    <form action="scheduleclass.php" method="post">
-      <div class="form-row">
-        <div class="form-half">
-          <div class="form-half-left">
-            <label for="">Stream</label>
-          </div>
-          <div class="form-half-right">
-            <select name="streamSC" id="stream"  onchange="FetchSemester(this.value)"  required>
-              <option selected disabled>Select Stream</option>
-            <?php
-              if ($result->num_rows > 0 ) {
-                while ($row = $result->fetch_assoc()) {
-                  echo '<option value='.$row['id'].'>'.$row['stream'].'</option>';
-                }
-              }
-            ?> 
-            </select>
-          </div>
-        </div>
-        <div class="form-half">
-          <div class="form-half-left">
-            <label>Semester</label>
-          </div>
-          <div class="form-half-right">
-            <select name="semesterSC" id="semester"  onchange="FetchSubject(this.value)"  required>
-              <option selected disabled>Select Semester</option>
-            </select>
-          </div>
-        </div>
-        </div>
-        <div class="form-row">
-        <div class="form-half">
-          <div class="form-half-left">
-            <label>Section</label>
-          </div>
-          <div class="form-half-right">
-            <select name="sectionSC" id="section"  required>
-              <option selected disabled>Select Section</option>
-              <option value="alpha">Alpha</option>
-              <option value="beta">Beta</option>
-              <option value="combined">Combined</option>
-            </select>
-            </div>
-        </div>
-
-        <div class="form-half">
-          <div class="form-half-left">
-            <label>Subject</label>
-          </div>
-          <div class="form-half-right">
-            <select name="subjectSC" id="subject"  required>
-              <option selected disabled>Select Subject</option>
-            </select>
-          </div>
-        </div>
-        </div>
-        <div class="form-row">
-          <div class="form-half">
-            <div class="form-half-left">
-              <label>Date of the Class</label>
-            </div>
-            <div class="form-half-right">
-              <input type="date" name="dateSC"  id="date" required>
-            </div>
-          </div>
-          
-          <div class="form-half">
-            <div class="form-half-left">
-              <label>Timing of the Class</label>
-            </div>
-            <div class="form-half-right">
-              <input type="time" name="timeSC"  id="time" required>
-            </div>
-          </div>
-        </div>
-        <div class="form-row">
-        <div class="form-full">
-          <div class="form-full-left">
-            <label>Topic Name</label>
-          </div>
-          <div class="form-full-right">
-            <input type="text" name="topicSC"  id="topic" placeholder="Write the Topics" required>
-          </div>
-        </div>
-        </div>
-        <div class="form-row">
-          <div class="form-full">
-            <div class="form-full-left">
-              <label>Class Link</label>
-            </div>
-            <div class="form-full-right">
-              <input type="url" name="classlinkSC"  id="classlink" placeholder="Enter a valid url">
-            </div>
-          </div>
-        </div>
-          <div class="form-row">
-            <div class="form-half">
-              <div class="form-half-btn">  
-                <input class="btn btn-primary" type="submit" value="Schedule Class">
-              </div>
-            </div>
-            <div class="form-half">
-              <div class="form-half-btn">  
-                <input class="btn btn-primary" type="reset" value="Clear Entries">
-              </div>
-          </div>
-        </div>
-
-      </form>
+    <div id="change-scheduleclass">
+      <?php include 'scheduleclasslist.php'; ?>
     </div>
     
 </div>
@@ -359,116 +251,8 @@ session_start();
       </div>
       <button class="close-modal modal-close-btn">&times;</button>
     </div>
-    <div class="SC-form-container">
-    <form action="uploadnotes.php" method="post" enctype="multipart/form-data">
-      <div class="form-row">
-        <div class="form-half">
-          <div class="form-half-left">
-            <label for="">Stream</label>
-          </div>
-          <div class="form-half-right">
-            <select name="stream" id="streamUN"  onchange="FetchSemesterUN(this.value)"  required>
-              <option selected disabled>Select Stream</option>
-            <?php
-              if ($result->num_rows > 0 ) {
-                while ($row = $result->fetch_assoc()) {
-                  echo '<option value='.$row['id'].'>'.$row['stream'].'</option>';
-                }
-              }
-            ?> 
-            </select>
-          </div>
-        </div>
-        <div class="form-half">
-          <div class="form-half-left">
-            <label>Semester</label>
-          </div>
-          <div class="form-half-right">
-            <select name="semester" id="semesterUN"  onchange="FetchSubjectUN(this.value)"  required>
-              <option selected disabled>Select Semester</option>
-            </select>
-          </div>
-        </div>
-        </div>
-        <div class="form-row">
-        <div class="form-half">
-          <div class="form-half-left">
-            <label>Section</label>
-          </div>
-          <div class="form-half-right">
-            <select name="section" id="sectionUN"  required>
-              <option selected disabled>Select Section</option>
-              <option value="alpha">Alpha</option>
-              <option value="beta">Beta</option>
-              <option value="combined">Combined</option>
-            </select>
-            </div>
-        </div>
-
-        <div class="form-half">
-          <div class="form-half-left">
-            <label>Subject</label>
-          </div>
-          <div class="form-half-right">
-            <select name="subject" id="subjectUN"  required>
-              <option selected disabled>Select Subject</option>
-            </select>
-          </div>
-        </div>
-        </div>
-        <div class="form-row">
-          <div class="form-half">
-            <div class="form-half-left">
-              <label>Date of the Class</label>
-            </div>
-            <div class="form-half-right">
-              <input type="date" name="dateUN"  id="dateUN" required>
-            </div>
-          </div>
-          
-          <div class="form-half">
-            <div class="form-half-left">
-              <label>Study Material</label>
-            </div>
-            <div class="form-half-right">
-            <input type="file" multiple name="fileUN" id="fileUN" >
-            </div>
-          </div>
-        </div>
-        <div class="form-row">
-        <div class="form-full">
-          <div class="form-full-left">
-            <label>Topic Name</label>
-          </div>
-          <div class="form-full-right">
-            <input type="text" name="topic"  id="topicUN" placeholder="Write the Topics" required>
-          </div>
-        </div>
-        </div>
-        <div class="form-row">
-          <div class="form-full">
-            <div class="form-full-left">
-              <label>Class Recording Link</label>
-            </div>
-            <div class="form-full-right">
-              <input type="url" name="classlink"  id="classlinkUN" placeholder="Enter a valid url">
-            </div>
-          </div>
-        </div>
-          <div class="form-row">
-            <div class="form-half">
-              <div class="form-half-btn">  
-                <input class="btn btn-primary" type="submit" value="Upload Notes">
-              </div>
-            </div>
-            <div class="form-half">
-              <div class="form-half-btn">  
-                <input class="btn btn-primary" type="reset" value="Clear Entries">
-              </div>
-          </div>
-        </div>
-
-      </form>
+    <div id="change-uploadnotes">
+      <?php include 'uploadnotesform.php'; ?>
     </div>
     
 </div>
@@ -480,11 +264,7 @@ session_start();
     </div>
     <div class="un-container">
       <form>
-      <?php
-        include_once 'connection.php';
-        $query = "SELECT * FROM streams Order by stream";
-        $result = $db->query($query);
-      ?>  
+        
         <div class="form-group">
           <label>Stream</label>
           <select name="stream" id="streamUN" class="form-control" onchange="FetchSemesterUN(this.value)"  required>
@@ -687,6 +467,45 @@ session_start();
     output.innerHTML = '<ul>'+children+'</ul>';
 }
 
+  $(document).ready(function(){
+            $('#sc-new').click(function(){
+                // $.get('get.html',function(data,status){
+                //     $('#changehere').html(data);
+                //     alert(status);
+                // });
+                $.post('scheduleclassform.php',function(data,status){
+                    $('#change-scheduleclass').html(data);
+                })
+            });
+            $('#sc-list').click(function(){
+                // $.get('get.html',function(data,status){
+                //     $('#changehere').html(data);
+                //     alert(status);
+                // });
+                $.post('scheduleclasslist.php',function(data,status){
+                    $('#change-scheduleclass').html(data);
+                })
+            });
+        });
+        $('#un-new').click(function(){
+                // $.get('get.html',function(data,status){
+                //     $('#changehere').html(data);
+                //     alert(status);
+                // });
+                $.post('uploadnotesform.php',function(data,status){
+                    $('#change-uploadnotes').html(data);
+                })
+            });
+            $('#un-list').click(function(){
+                // $.get('get.html',function(data,status){
+                //     $('#changehere').html(data);
+                //     alert(status);
+                // });
+                $.post('uploadnoteslist.php',function(data,status){
+                    $('#change-uploadnotes').html(data);
+                })
+            });
+        });
   
 </script>
 <?php
