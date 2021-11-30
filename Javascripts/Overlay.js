@@ -14,6 +14,7 @@ close_modals.forEach((btn) => {
     const modal = btn.closest(".modal-container");
     modal.classList.remove("active");
     overlay.classList.remove("active");
+    location.reload();
   });
 });
 
@@ -22,6 +23,7 @@ window.onclick = (event) => {
     const modals = document.querySelectorAll(".modal-container");
     modals.forEach((modal) => modal.classList.remove("active"));
     overlay.classList.remove("active");
+    location.reload();
   }
 };
 
@@ -30,5 +32,6 @@ document.addEventListener('keydown', function(e){
       const modalss = document.querySelectorAll(".modal-container");
       modalss.forEach((modal) => modal.classList.remove("active"));
       overlay.classList.remove("active");
+      location.reload();
   }
 })

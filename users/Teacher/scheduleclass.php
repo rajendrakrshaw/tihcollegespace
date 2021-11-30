@@ -35,6 +35,19 @@ else if($sem==6||$sem==12)
 
 $section=$_POST['sectionSC'];
 $subject=$_POST['subjectSC'];
+
+// code to extract subject by id
+$q_subject="select * from subjects";
+$query_subject=mysqli_query($conn,$q_subject);
+while($result_subject=mysqli_fetch_array($query_subject)){
+    if($result_subject['id']==$subject){
+        $subject=$result_subject['subject'];
+        break;
+    }
+}
+
+
+
 $date=$_POST['dateSC'];
 $time=$_POST['timeSC'];
 $topic=$_POST['topicSC'];

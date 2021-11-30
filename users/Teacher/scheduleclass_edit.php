@@ -1,7 +1,14 @@
 <?php
 include 'connection.php';
-$query = "SELECT * FROM streams";
-$result = $db->query($query);
+$query="SELECT * FROM streams";
+$result=$db->query($query);
+// $row=$result->fetch_assoc();
+$viewid=$_POST['viewid'];
+// $viewid=1;
+$a = "SELECT * FROM schedule_class WHERE id='$viewid'";
+// $a=" select * from schedule_class where id='$viewid'";
+$b = $db->query($a);
+$res = $b->fetch_assoc();
 ?>
 <html>
 <body>    
@@ -10,11 +17,11 @@ $result = $db->query($query);
         <button type="button" class="btn btn-success btn-lg btn-block" id="sc-list" onclick="ScheduleList()">List of Classes</button>
       </div>
       <div class="sc-heading-part">
-        <button type="button" class="btn btn-success btn-lg btn-block" id="sc-new" onclick="ScheduleNew()" disabled>New Class</button>
+        <button type="button" class="btn btn-success btn-lg btn-block" id="sc-new" onclick="ScheduleNew()">New Class</button>
       </div>
 </div>
 <div class="SC-form-container">
-    <form action="scheduleclass.php" method="post">
+    <form method="post">
       <div class="form-row">
         <div class="form-half">
           <div class="form-half-left">
@@ -22,12 +29,12 @@ $result = $db->query($query);
           </div>
           <div class="form-half-right">
             <select name="streamSC" id="stream"  onchange="FetchSemester(this.value)"  required>
-              <option selected disabled>Select Stream</option>
+              <option selected><?php echo $res['stream']; ?></option>
             <?php
               if ($result->num_rows > 0 ) {
                 while ($row = $result->fetch_assoc()) {
                   echo '<option value='.$row['id'].'>'.$row['stream'].'</option>';
-                }
+              }
               }
             ?> 
             </select>
@@ -76,7 +83,7 @@ $result = $db->query($query);
               <label>Date of the Class</label>
             </div>
             <div class="form-half-right">
-              <input type="date" name="dateSC"  id="date" required>
+              <input type="date" name="dateSC"  id="date" value="<?php echo $res['date']; ?>" required>
             </div>
           </div>
           
@@ -85,7 +92,7 @@ $result = $db->query($query);
               <label>Timing of the Class</label>
             </div>
             <div class="form-half-right">
-              <input type="time" name="timeSC"  id="time" required>
+              <input type="time" name="timeSC"  id="time" value="<?php echo $res['time']; ?>" required>
             </div>
           </div>
         </div>
@@ -95,7 +102,7 @@ $result = $db->query($query);
             <label>Topic Name</label>
           </div>
           <div class="form-full-right">
-            <input type="text" name="topicSC"  id="topic" placeholder="Write the Topics" required>
+            <input type="text" name="topicSC"  id="topic" placeholder="Write the Topics" value="<?php echo $res['topic']; ?>" required>
           </div>
         </div>
         </div>
@@ -105,14 +112,14 @@ $result = $db->query($query);
               <label>Class Link</label>
             </div>
             <div class="form-full-right">
-              <input type="url" name="classlinkSC"  id="classlink" placeholder="Enter a valid url">
+              <input type="url" name="classlinkSC"  id="classlink" placeholder="Enter a valid url" value="<?php echo $res['classlink']; ?>">
             </div>
           </div>
         </div>
           <div class="form-row">
             <div class="form-half">
               <div class="form-half-btn">  
-                <input class="btn btn-success" type="submit" value="Schedule Class">
+                <input class="btn btn-success" type="submit" value="Update">
               </div>
             </div>
             <div class="form-half">
@@ -125,7 +132,7 @@ $result = $db->query($query);
       </form>
     </div>
     <script>
-      function FetchSemester(id){
+function FetchSemester(id){
     $('#semester').html('');
     $('#subject').html('<option>Select Subject</option>');
     $.ajax({
@@ -151,8 +158,8 @@ $result = $db->query($query);
 
     })
   }
-  
       $(document).ready(function(){
+        
             $('#sc-new').click(function(){
                 // $.get('get.html',function(data,status){
                 //     $('#changehere').html(data);

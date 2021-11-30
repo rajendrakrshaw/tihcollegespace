@@ -1,6 +1,6 @@
 <?php
 include 'connection.php';
-$query = "SELECT * FROM schedule_class";
+$query = "SELECT * FROM schedule_class order by date";
 $result = $db->query($query);
 ?>
 <!DOCTYPE html>
@@ -50,8 +50,8 @@ $result = $db->query($query);
                     <td><?php echo $row['section']; ?></td>
                     <td><?php echo $row['date']; ?></td>
                     <td><?php echo $row['time']; ?></td>
-                    <td><button class="btn btn-outline-success" id="sc-view" <?php $viewid=$row['id'];?>> View </button></td>
-                    <td><a><button class="btn btn-outline-success" disabled> Delete </button> </a></td>
+                    <td><button class="btn btn-outline-success" data-role="view" data-id="<?php echo $row['id'];?>"> View </button></td>
+                    <td><a href="scheduleclass_deleteclass.php?viewid=<?php echo $row['id'];?>"><button class="btn btn-outline-success"> Delete </button> </a></td>
 
                 </tr>
                 <?php
@@ -88,14 +88,12 @@ $result = $db->query($query);
                     $('#change-scheduleclass').html(data);
                 })
             });
-            $('#sc-view').click(function(){
-                // $.get('get.html',function(data,status){
-                //     $('#changehere').html(data);
-                //     alert(status);
-                // });
-                $.post('scheduleclassview.php',{
-                    viewid : "<?php echo $viewid;?>"
-                },function(data,status){
+            $(document).on('click','button[data-role=view]',function(){
+              // alert($(this).data('id'));
+              var dataid=$(this).data('id');
+              $.post('scheduleclassview.php',{
+                viewid : dataid },
+                function(data,status){
                     $('#change-scheduleclass').html(data);
                 })
             });
