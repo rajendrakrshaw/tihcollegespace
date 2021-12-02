@@ -3,7 +3,7 @@ include 'connection.php';
 $viewid=$_POST['viewid'];
 $query = "SELECT * FROM schedule_class WHERE id='$viewid'";
 $result = $db->query($query);
-$row = $result->fetch_assoc()
+$row = $result->fetch_assoc();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -18,6 +18,36 @@ $row = $result->fetch_assoc()
             margin:auto;
             margin-top:5px;
         }
+        
+        .SC-form-container{
+            display:flex;
+            flex-direction:column;
+            /* justify-content:center;
+            align-items:center; */
+        }
+        .sc-action button{ 
+            float: right;
+            margin:10px;
+        }
+        .faculty-details{
+            margin:auto;
+            margin-top: -20px;
+            margin-bottom: 20px;
+        }
+        .faculty{
+            display : flex;
+            justify-content:center;
+            align-items:center;
+        }
+        .faculty-left{
+            width:150px;
+            font-weight: bold;
+        }
+        .faculty-right{
+            width:150px;
+            font-weight: bold;
+            font-style: italic;
+        }
     </style>
 </head>
 <body>
@@ -30,7 +60,28 @@ $row = $result->fetch_assoc()
       </div>
 </div>
 <div class="SC-form-container">
-    <button type="button" class="btn btn-success" id="sc-action">Action</button>
+    <div class="sc-action d-block mr-0 ml-auto" id="sc-action-change">
+        <?php include 'sc_action_remove.php'; ?>
+    </div>
+    <div class="faculty-details">
+        <div class="faculty">
+            <div class="faculty-left">
+                Faculty Id
+            </div>
+            <div class="faculty-right">
+                <?php echo $row['faculty_id'];?>
+            </div>
+        </div>
+        <div class="faculty">
+            <div class="faculty-left">
+                Faculty Name
+            </div>
+            <div class="faculty-right">
+                <?php echo $row['faculty_name'];?>
+            </div>
+        </div>
+    </div>
+    <div>
     <table class="table table-bordered">
         <tr>
             <th>Stream</th>
@@ -71,12 +122,13 @@ $row = $result->fetch_assoc()
             else{
         ?>
         <tr>
-            <td class="text-center"><a href="<?php echo $row['classlink'];?>"><button class="btn btn-outline-success" >Class Link</button></a></th>
+            <td colspan="2" class="text-center"><a href="<?php echo $row['classlink'];?>" target="_blank"><button class="btn btn-outline-success" >Class Link</button></a></th>
         </tr>
         <?php
             }
         ?>
     </table>
+    </div>
 </div>
 
 <script>
@@ -97,6 +149,15 @@ $row = $result->fetch_assoc()
                 // });
                 $.post('scheduleclasslist.php',function(data,status){
                     $('#change-scheduleclass').html(data);
+                })
+            });
+            $('#sc-action').click(function(){
+                // $.get('get.html',function(data,status){
+                //     $('#changehere').html(data);
+                //     alert(status);
+                // });
+                $.post('sc_action.php',function(data,status){
+                    $('#sc-action-change').html(data);
                 })
             });
         });
