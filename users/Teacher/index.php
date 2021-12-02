@@ -23,7 +23,7 @@ session_start();
 </head>
 <body>
 <?php
-  if($_SESSION['login']){
+  if($_SESSION['login'] && $_SESSION['teacher']){
   include 'connection.php';
   $query = "SELECT * FROM streams";
   $result = $db->query($query);
@@ -511,7 +511,7 @@ session_start();
 <?php
 }
 else{
-  header("location:../not_allowed.html");
+  header("location:../../index.html");
 }
 ?>
 </body>

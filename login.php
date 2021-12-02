@@ -7,13 +7,16 @@ if(isset($_POST['submit'])){
     $pass = $_POST['password'];
     $q = "SELECT * FROM `login` WHERE uid = '$uid' and password = '$pass'";
     $query = mysqli_query($conn, $q);
-
+    $_SESSION['admin'] = false;
+    $_SESSION['teacher'] = false;
+    $_SESSION['student'] = false;
     if(mysqli_num_rows($query) > 0){
         $_SESSION['uid'] = $uid;
         $_SESSION['login'] = true;
         while($row = mysqli_fetch_array($query)){
             $role = $row['role'];
         }
+        $_SESSION[$role] = true;
         if($role == "admin"){
             header("location:users/Admin/index.php");
         }
@@ -26,7 +29,7 @@ if(isset($_POST['submit'])){
         
     }
     else{
-        echo "Invalid Credential";
+        header("location:index.php");
     }
 }
 

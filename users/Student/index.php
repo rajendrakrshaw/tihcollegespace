@@ -20,7 +20,7 @@ session_start();
 </head>
 <body>
 <?php
-if($_SESSION['login']){
+if($_SESSION['login'] && $_SESSION['student']){
 ?>
     <div class="home">
         <div class="topdesign" >
@@ -138,7 +138,7 @@ assumenda sed maxime!
 <?php
 }
 else{
-  header("location:../not_allowed.html");
+  header("location:../../index.html");
 }
 ?>
 </body>

@@ -14,7 +14,7 @@ session_start();
 </head>
 <body>
 <?php
-if($_SESSION['login']){
+if($_SESSION['login'] && $_SESSION['admin']){
 ?>
     <div class="home">
         <div class="topdesign" >
@@ -33,6 +33,7 @@ if($_SESSION['login']){
                     <li data-target="#MyProfile"><img src="images/user.png" alt="">My Profile</li>
                     <li><img src="images/edit.png" alt="">Edit Profile</li>
                     <li><img src="images/envelope.png" alt="">Inbox</li>
+                    <li><img src="images/edit.png" alt="">Add User</li>
                     <li><img src="images/settings.png" alt="">settings</li>
                     <li><img src="images/question.png" alt="">Help</li>
                     <li><a href="../../logout.php"><img src="images/log-out.png" alt="">Logout</a></li>
@@ -62,7 +63,7 @@ if($_SESSION['login']){
 <?php
 }
 else{
-    header("location:../not_allowed.html");
+    header("location:../../index.html");
 }
 ?>
 </body>
