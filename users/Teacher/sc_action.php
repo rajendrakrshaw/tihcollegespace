@@ -12,7 +12,7 @@ $viewid=$_POST['viewid'];
 <body>
     <button type="button" class="btn btn-success" data-role="action" data-id="<?php echo $viewid; ?>" id="sc-action">Action</button>
     <button type="button" class="btn btn-success" data-role="edit" data-id="<?php echo $viewid; ?>" id="sc-edit">Edit</button>
-    <button type="button" class="btn btn-success" data-role="delete" data-id="<?php echo $viewid; ?>" id="sc-delete">Delete</button>
+    <a href="scheduleclass_deleteclass.php?viewid=<?php echo $viewid;?>"><button type="button" class="btn btn-success" data-role="delete" data-id="<?php echo $viewid; ?>" id="sc-delete">Delete</button></a>
 
     <script>
         $(document).ready(function(){
@@ -40,12 +40,11 @@ $viewid=$_POST['viewid'];
                 })
             });
             // $('#sc-delete').click(function(){
-                $(document).on('click','button[data-role=delete]',function(){
-                $.post('scheduleclass_delete.php',{
-                viewid : dataid },function(data,status){
-                    // window.reload();
-                })
-            });
+                //     $(document).on('click','button[data-role=delete]',function(){
+                //     $.post('scheduleclass_delete.php',{
+                //     viewid : dataid },function(data,status){
+                //     })
+                // });
         });
     </script>
 </body>

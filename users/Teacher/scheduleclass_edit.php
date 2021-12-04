@@ -1,15 +1,29 @@
 <?php
 include 'connection.php';
 $query="SELECT * FROM streams";
-$result=$db->query($query);
-// $row=$result->fetch_assoc();
+$result=mysqli_query($conn,$query);
 $viewid=$_POST['viewid'];
-// $viewid=1;
 $a = "SELECT * FROM schedule_class WHERE id='$viewid'";
-// $a=" select * from schedule_class where id='$viewid'";
-$b = $db->query($a);
-$res = $b->fetch_assoc();
+$b = mysqli_query($conn,$a);
+$res = mysqli_fetch_assoc($b);
+
+$subjectname=$res['subject'];
+$sem_id_sql="select * from subjects where subject='$subjectname'";
+$sem_id_query=mysqli_query($conn,$sem_id_sql);
+$sem_id_res=mysqli_fetch_assoc($sem_id_query);
+$sem_id=$sem_id_res['semesters_id'];
+$subjectid=$sem_id_res['id'];
+
+$showsubjectsql="select * from subjects where semesters_id='$sem_id'";
+$showsubjectquery=mysqli_query($conn,$showsubjectsql);
+// $showsubject=$sem_id_query->fetch_assoc();
+
+
+
 ?>
+
+
+
 <html>
 <body>    
 <div class="sc-heading">
@@ -21,23 +35,14 @@ $res = $b->fetch_assoc();
       </div>
 </div>
 <div class="SC-form-container">
-    <form method="post">
+    <form method="post" action="scheduleclass_update.php?viewid=<?php echo $viewid;?>">
       <div class="form-row">
         <div class="form-half">
           <div class="form-half-left">
             <label for="">Stream</label>
           </div>
           <div class="form-half-right">
-            <select name="streamSC" id="stream"  onchange="FetchSemester(this.value)"  required>
-              <option selected><?php echo $res['stream']; ?></option>
-            <?php
-              if ($result->num_rows > 0 ) {
-                while ($row = $result->fetch_assoc()) {
-                  echo '<option value='.$row['id'].'>'.$row['stream'].'</option>';
-              }
-              }
-            ?> 
-            </select>
+          <input type="text" value="<?php echo $res['stream']; ?>" readonly>
           </div>
         </div>
         <div class="form-half">
@@ -45,9 +50,10 @@ $res = $b->fetch_assoc();
             <label>Semester</label>
           </div>
           <div class="form-half-right">
-            <select name="semesterSC" id="semester"  onchange="FetchSubject(this.value)"  required>
+            <!-- <select name="semesterSC" id="semester"  onchange="FetchSubject(this.value)"  required>
               <option selected disabled>Select Semester</option>
-            </select>
+            </select> -->
+            <input type="text" value="<?php echo $res['sem']; ?>" readonly>
           </div>
         </div>
         </div>
@@ -58,10 +64,14 @@ $res = $b->fetch_assoc();
           </div>
           <div class="form-half-right">
             <select name="sectionSC" id="section"  required>
-              <option selected disabled>Select Section</option>
+              <option value="<?php echo $res['section'] ?>"selected><?php echo $res['section'] ?></option>
+              <?php if($res['section']!="Alpha"){ ?>
               <option value="Alpha">Alpha</option>
+              <?php } if($res['section']!="Beta"){ ?>
               <option value="Beta">Beta</option>
+              <?php } if($res['section']!="Combined"){ ?>
               <option value="Combined">Combined</option>
+              <?php } ?>
             </select>
             </div>
         </div>
@@ -71,9 +81,7 @@ $res = $b->fetch_assoc();
             <label>Subject</label>
           </div>
           <div class="form-half-right">
-            <select name="subjectSC" id="subject"  required>
-              <option selected disabled>Select Subject</option>
-            </select>
+          <input type="text" value="<?php echo $res['subject']; ?>" readonly>
           </div>
         </div>
         </div>
@@ -119,12 +127,13 @@ $res = $b->fetch_assoc();
           <div class="form-row">
             <div class="form-half">
               <div class="form-half-btn">  
-                <input class="btn btn-success" type="submit" value="Update">
+                <input class="btn btn-success" type="submit" name="submit" value="Update">
               </div>
             </div>
             <div class="form-half">
               <div class="form-half-btn">  
-                <input class="btn btn-success" type="reset" value="Clear Entries">
+                <!-- <input class="btn btn-success" type="reset" value="Clear Entries"> -->
+                <button type="button" class="btn btn-success" data-role="cancel" data-id="<?php echo $viewid; ?>" id="sc-cancel">Cancel</button>
               </div>
           </div>
         </div>
@@ -178,6 +187,16 @@ function FetchSemester(id){
                     $('#change-scheduleclass').html(data);
                 })
             });
+            $(document).on('click','button[data-role=cancel]',function(){
+              // alert($(this).data('id'));
+              var dataid=$(this).data('id');
+              $.post('scheduleclassview.php',{
+                viewid : dataid },
+                function(data,status){
+                    $('#change-scheduleclass').html(data);
+                })
+            });
+
         });
     </script>
   </body>

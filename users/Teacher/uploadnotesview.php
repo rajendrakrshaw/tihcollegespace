@@ -1,7 +1,7 @@
 <?php
 include 'connection.php';
 $viewid=$_POST['viewid'];
-$query = "SELECT * FROM schedule_class WHERE id='$viewid'";
+$query = "SELECT * FROM upload_notes WHERE id='$viewid'";
 $result = mysqli_query($conn,$query);
 $row = mysqli_fetch_assoc($result);
 ?>
@@ -53,34 +53,17 @@ $row = mysqli_fetch_assoc($result);
 <body>
 <div class="sc-heading">
       <div class="sc-heading-part">
-        <button type="button" class="btn btn-success btn-lg btn-block" id="sc-list" onclick="ScheduleList()">List of Classes</button>
+        <button type="button" class="btn btn-success btn-lg btn-block" id="un-list" onclick="ScheduleList()">Uploaded Notes</button>
       </div>
       <div class="sc-heading-part">
-        <button type="button" class="btn btn-success btn-lg btn-block" id="sc-new" onclick="ScheduleNew()">New Class</button>
+        <button type="button" class="btn btn-success btn-lg btn-block" id="un-new" onclick="ScheduleNew()">New Notes</button>
       </div>
 </div>
 <div class="SC-form-container">
     <div class="sc-action d-block mr-0 ml-auto" id="sc-action-change">
-        <?php include 'sc_action_remove.php'; ?>
+    <a href="uploadnotes_delete.php?viewid=<?php echo $viewid;?>"><button type="button" class="btn btn-success" data-role="delete" data-id="<?php echo $viewid; ?>" id="sc-delete">Delete</button></a>
     </div>
-    <div class="faculty-details">
-        <div class="faculty">
-            <div class="faculty-left">
-                Faculty Id
-            </div>
-            <div class="faculty-right">
-                <?php echo $row['faculty_id'];?>
-            </div>
-        </div>
-        <div class="faculty">
-            <div class="faculty-left">
-                Faculty Name
-            </div>
-            <div class="faculty-right">
-                <?php echo $row['faculty_name'];?>
-            </div>
-        </div>
-    </div>
+    
     <div>
     <table class="table table-bordered">
         <tr>
@@ -107,22 +90,66 @@ $row = mysqli_fetch_assoc($result);
             <th>Date</th>
             <td><?php echo $row['date'];?></td>
         </tr>
+        <?php
+            if($row['file']==''||$row['file']==NULL){
+            ?>
+        <?php
+            }
+            else{
+                $array=explode(",",$row['file']);
+        ?>
         <tr>
-            <th>Time</th>
-            <td><?php echo $row['time'];?></td>
+            <th>Study Material</th>
+            <td class="text-center">
+                <?php
+                $i=0;
+                    foreach($array as $file){
+                        $i=$i+1;
+                        if($file=='')
+                        {
+                            break;
+                        }
+                ?>
+                <a href="<?php 
+
+                echo $file;
+
+                ?>" target="_blank">
+                <button class="btn btn-outline-success" >
+                    <?php 
+                        $filename=explode("/",$file);
+                        foreach($filename as $notes){
+                            if($notes=='')
+                            {
+                                break;
+                            }
+                            else
+                                $seenote=$notes;
+                        }
+                        echo $seenote; 
+                    ?>
+                </button>
+            </a>
+            <?php
+                    }
+                    ?>
+            </td>
         </tr>
         <?php
-            if($row['classlink']==''||$row['classlink']==NULL){
+            }
+        ?>
+        <?php
+            if($row['recordinglink']==''||$row['recordinglink']==NULL){
             ?>
         <tr>
-            <th colspan="2" class="text-center">No Class Links Available</th>
+            <th colspan="2" class="text-center">No Recordings Available</th>
         </tr>
         <?php
             }
             else{
         ?>
         <tr>
-            <td colspan="2" class="text-center"><a href="<?php echo $row['classlink'];?>" target="_blank"><button class="btn btn-outline-success" >Class Link</button></a></th>
+            <td colspan="2" class="text-center"><a href="<?php echo $row['recordinglink'];?>" target="_blank"><button class="btn btn-outline-success" >Recording Link</button></a></th>
         </tr>
         <?php
             }
@@ -133,22 +160,22 @@ $row = mysqli_fetch_assoc($result);
 
 <script>
       $(document).ready(function(){
-            $('#sc-new').click(function(){
+            $('#un-new').click(function(){
                 // $.get('get.html',function(data,status){
                 //     $('#changehere').html(data);
                 //     alert(status);
                 // });
-                $.post('scheduleclassform.php',function(data,status){
-                    $('#change-scheduleclass').html(data);
+                $.post('uploadnotesform.php',function(data,status){
+                    $('#change-uploadnotes').html(data);
                 })
             });
-            $('#sc-list').click(function(){
+            $('#un-list').click(function(){
                 // $.get('get.html',function(data,status){
                 //     $('#changehere').html(data);
                 //     alert(status);
                 // });
-                $.post('scheduleclasslist.php',function(data,status){
-                    $('#change-scheduleclass').html(data);
+                $.post('uploadnoteslist.php',function(data,status){
+                    $('#change-uploadnotes').html(data);
                 })
             });
             $('#sc-action').click(function(){

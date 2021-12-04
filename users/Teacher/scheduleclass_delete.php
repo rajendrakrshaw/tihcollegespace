@@ -2,7 +2,7 @@
 include 'connection.php';
 $viewid=$_POST['viewid'];
 $a="delete from schedule_class where id='$viewid'";
-$b=$db->query($a);
+$b=mysqli_query($conn,$a);
 if($b==1){
     ?>
         <script>

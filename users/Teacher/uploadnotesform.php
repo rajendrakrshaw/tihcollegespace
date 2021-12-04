@@ -1,7 +1,7 @@
 <?php
         include 'connection.php';
         $query = "SELECT * FROM streams";
-        $result = $db->query($query);
+        $result = mysqli_query($conn,$query);
       ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -21,7 +21,7 @@
       </div>
 </div>
 <div class="SC-form-container">
-    <form action="uploadnotes.php" method="post" enctype="multipart/form-data">
+    <form action="uploadnotesformdata.php" method="post" enctype="multipart/form-data">
       <div class="form-row">
         <div class="form-half">
           <div class="form-half-left">
@@ -31,8 +31,8 @@
             <select name="streamUN" id="streamUN"  onchange="FetchSemesterUN(this.value)"  required>
               <option selected disabled>Select Stream</option>
             <?php
-              if ($result->num_rows > 0 ) {
-                while ($row = $result->fetch_assoc()) {
+              if (mysqli_num_rows($result) > 0 ) {
+                while ($row = mysqli_fetch_assoc($result)) {
                   echo '<option value='.$row['id'].'>'.$row['stream'].'</option>';
                 }
               }
@@ -59,9 +59,9 @@
           <div class="form-half-right">
             <select name="sectionUN" id="sectionUN"  required>
               <option selected disabled>Select Section</option>
-              <option value="alpha">Alpha</option>
-              <option value="beta">Beta</option>
-              <option value="combined">Combined</option>
+              <option value="Alpha">Alpha</option>
+              <option value="Beta">Beta</option>
+              <option value="Combined">Combined</option>
             </select>
             </div>
         </div>
@@ -92,7 +92,7 @@
               <label>Study Material</label>
             </div>
             <div class="form-half-right">
-            <input type="file" name="fileUN" id="fileUN" >
+            <input type="file" name="fileUN[]" id="fileUN" multiple  >
             </div>
           </div>
         </div>
