@@ -26,10 +26,14 @@ session_start();
 </head>
 <body>
 <?php
+<<<<<<< HEAD
 if($_SESSION['login']){
   $stream="BCA";
   $sem="SEM1";
   $section="Alpha";
+=======
+if($_SESSION['login'] && $_SESSION['student']){
+>>>>>>> 4f06f42502737e3676a2f859439d4f52bcbcee1d
 ?>
     <div class="home">
         <div class="topdesign" >
