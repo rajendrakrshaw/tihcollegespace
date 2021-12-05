@@ -3,15 +3,13 @@ session_start();
 $conn = mysqli_connect("localhost", "root", "", "tihcollespace");
 
 if(isset($_POST['submit'])){
-    $email = $_POST['email'];
-    $pass = md5($_POST['password']);
-    $q = "SELECT * FROM `login` WHERE email = '$email' and password = '$pass'";
+    $uid = $_POST['uid'];
+    $pass = $_POST['password'];
+    $q = "SELECT * FROM `login` WHERE uid = '$uid' and password = '$pass'";
     $query = mysqli_query($conn, $q);
     $_SESSION['admin'] = false;
     $_SESSION['teacher'] = false;
     $_SESSION['student'] = false;
-    
-    
     if(mysqli_num_rows($query) > 0){
         $_SESSION['uid'] = $uid;
         $_SESSION['login'] = true;
@@ -31,7 +29,7 @@ if(isset($_POST['submit'])){
         
     }
     else{
-        header("location:index.html");
+        header("location:index.php");
     }
 }
 
