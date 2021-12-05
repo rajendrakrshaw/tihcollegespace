@@ -158,7 +158,11 @@ body{
     font-size:40px;
 }
 /*MODAL */
+<<<<<<< HEAD
+#MyProfile,#EditProfile,#Inbox,#qp,#SC,#UN,#Updates,#Settings,#Help {
+=======
 #MyProfile,#EditProfile,#Inbox,#SC,#UN,#Updates,#Settings,#Help,#Classes,#Notes,#Doubts,#YearPapers {
+>>>>>>> 50252c452af9539e11bce90843d1a7495c7993fb
     background: rgba(233, 230, 229, 0.863);
 }
 

@@ -52,10 +52,10 @@ $result = mysqli_query($conn,$query);
                   </select>
                 </th>
                 <th class="select">
-                  <select name="" id="FilterSemester" onchange="FilterSemester(this.value)">
-                    <option value="All Sem" selected>Semester</option>
+                  <select name="" id="FilterSemester" onchange="FilterSemesterSC(this.value)">
+                    <option value="all" selected>Semester</option>
                     <?php
-                      $sql="select * from update_sem where sem!='All Sem'";
+                      $sql="select * from update_sem where sem!='all'";
                       $q1=mysqli_query($conn,$sql);
                       if (mysqli_num_rows($q1) > 0 ) {
                         while ($row = mysqli_fetch_assoc($q1)) {
@@ -129,19 +129,22 @@ $result = mysqli_query($conn,$query);
 
             })
           }
-          function FilterSemester(getsem){
+          function FilterSemesterSC(semget){
             streamget=$("#FilterStream").val();
+            // semget=$("#FilterSemester").val();
+
             sectionget=$("#FilterSection").val();
             dateget=$("#FilterDate").val();
             $.ajax({
               type:'post',
               url: 'scheduleclassfilter.php',
-              data : { stream : streamget, date : dateget, sem : semget, section : sectionget , fun : "sem"},
+              data : { stream : streamget, date : dateget, sem : semget, section : sectionget , fun : "section"},
               success : function(data){
                 $('#change-table').html(data);
               }
 
             })
+
           }
           function FilterSection(sectionget){
             streamget=$("#FilterStream").val();

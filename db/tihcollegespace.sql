@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 04, 2021 at 06:23 PM
+-- Generation Time: Dec 05, 2021 at 03:39 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.10
 
@@ -20,6 +20,19 @@ SET time_zone = "+00:00";
 --
 -- Database: `tihcollegespace`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `login`
+--
+
+CREATE TABLE `login` (
+  `id` int(11) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `password` varchar(50) NOT NULL,
+  `role` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -158,6 +171,39 @@ INSERT INTO `subjects` (`id`, `subject`, `semesters_id`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `teacher`
+--
+
+CREATE TABLE `teacher` (
+  `id` int(11) NOT NULL,
+  `firstname` varchar(20) NOT NULL,
+  `midname` varchar(20) NOT NULL,
+  `lastname` varchar(20) NOT NULL,
+  `dob` date NOT NULL,
+  `gender` varchar(10) NOT NULL,
+  `bca` int(10) NOT NULL,
+  `bba` int(11) NOT NULL,
+  `mca` int(11) NOT NULL,
+  `phone` varchar(12) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `password` varchar(50) NOT NULL,
+  `photo` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `teacher`
+--
+
+INSERT INTO `teacher` (`id`, `firstname`, `midname`, `lastname`, `dob`, `gender`, `bca`, `bba`, `mca`, `phone`, `email`, `password`, `photo`) VALUES
+(2, 'Rahul', '', 'Shaw', '2001-06-25', 'male', 1, 0, 0, '2147483647', 'mailforhacking2345@gmail.com', '5e74fe0d1b00155a43e0592d9bf57d7e', 'images/20210307_105301.jpg'),
+(3, '', '', '', '0000-00-00', 'male', 0, 0, 0, '0', '', 'bd8790397bcb1318413dc20c6070af27', 'images/20210307_105301.jpg'),
+(4, '', '', '', '0000-00-00', 'male', 0, 0, 0, '0', '', '32b0845bd9e9dcb144fb3dbc55b88005', 'images/20210307_105301.jpg'),
+(5, '', '', '', '0000-00-00', 'male', 0, 0, 0, '0', '', '827ccb0eea8a706c4c34a16891f84e7b', 'images/20210307_105301.jpg'),
+(6, 'Rahul', '', 'Shaw', '2021-12-13', 'male', 0, 0, 0, '2147483647', 'mailforrahul01@gmail.com', 'bd8790397bcb1318413dc20c6070af27', 'images/20210307_105301.jpg');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `updates`
 --
 
@@ -271,6 +317,27 @@ INSERT INTO `upload_notes` (`id`, `faculty_id`, `faculty_name`, `stream`, `sem`,
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `verification_data`
+--
+
+CREATE TABLE `verification_data` (
+  `id` int(11) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `role` varchar(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `verification_data`
+--
+
+INSERT INTO `verification_data` (`id`, `email`, `role`) VALUES
+(1, 'mailforrahul01@gmail.com', 'teacher'),
+(2, 'mailforhacking2345@gmail.com', 'student'),
+(3, 'ronitsingh7003@gmail.com', 'teacher');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `years`
 --
 
@@ -302,6 +369,12 @@ INSERT INTO `years` (`id`, `year`, `stream_id`) VALUES
 --
 
 --
+-- Indexes for table `login`
+--
+ALTER TABLE `login`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `schedule_class`
 --
 ALTER TABLE `schedule_class`
@@ -323,6 +396,12 @@ ALTER TABLE `streams`
 -- Indexes for table `subjects`
 --
 ALTER TABLE `subjects`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `teacher`
+--
+ALTER TABLE `teacher`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -350,6 +429,12 @@ ALTER TABLE `upload_notes`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `verification_data`
+--
+ALTER TABLE `verification_data`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `years`
 --
 ALTER TABLE `years`
@@ -358,6 +443,12 @@ ALTER TABLE `years`
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `login`
+--
+ALTER TABLE `login`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `schedule_class`
@@ -384,6 +475,12 @@ ALTER TABLE `subjects`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
+-- AUTO_INCREMENT for table `teacher`
+--
+ALTER TABLE `teacher`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
 -- AUTO_INCREMENT for table `updates`
 --
 ALTER TABLE `updates`
@@ -406,6 +503,12 @@ ALTER TABLE `update_streams`
 --
 ALTER TABLE `upload_notes`
   MODIFY `id` int(250) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+
+--
+-- AUTO_INCREMENT for table `verification_data`
+--
+ALTER TABLE `verification_data`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `years`
