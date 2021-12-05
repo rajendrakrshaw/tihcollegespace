@@ -1,7 +1,7 @@
 <?php
 include 'connection.php';
 $viewid=$_POST['viewid'];
-$query = "SELECT * FROM schedule_class WHERE id='$viewid'";
+$query = "SELECT * FROM updates WHERE id='$viewid'";
 $result = mysqli_query($conn,$query);
 $row = mysqli_fetch_assoc($result);
 ?>
@@ -53,33 +53,16 @@ $row = mysqli_fetch_assoc($result);
 <body>
 <div class="sc-heading">
       <div class="sc-heading-part">
-        <button type="button" class="btn btn-success btn-lg btn-block" id="sc-list" onclick="ScheduleList()">List of Classes</button>
+        <button type="button" class="btn btn-success btn-lg btn-block" id="updates-list" >Updates</button>
       </div>
       <div class="sc-heading-part">
-        <button type="button" class="btn btn-success btn-lg btn-block" id="sc-new" onclick="ScheduleNew()">New Class</button>
+        <button type="button" class="btn btn-success btn-lg btn-block" id="updates-new" >New Update</button>
       </div>
 </div>
 <div class="SC-form-container">
-    <div class="sc-action d-block mr-0 ml-auto" id="sc-action-change">
-        <?php include 'sc_action_remove.php'; ?>
-    </div>
-    <div class="faculty-details">
-        <div class="faculty">
-            <div class="faculty-left">
-                Faculty Id
-            </div>
-            <div class="faculty-right">
-                <?php echo $row['faculty_id'];?>
-            </div>
-        </div>
-        <div class="faculty">
-            <div class="faculty-left">
-                Faculty Name
-            </div>
-            <div class="faculty-right">
-                <?php echo $row['faculty_name'];?>
-            </div>
-        </div>
+    <div class="sc-action d-block mr-0 ml-auto" id="update-delete">
+    <a href="updates_delete.php?viewid=<?php echo $viewid;?>"><button type="button" class="btn btn-success" data-role="delete" data-id="<?php echo $viewid; ?>" id="update-delete">Delete</button></a>
+
     </div>
     <div>
     <table class="table table-bordered">
@@ -88,20 +71,12 @@ $row = mysqli_fetch_assoc($result);
             <td><?php echo $row['stream'];?></td>
         </tr>
         <tr>
-            <th>Semester</th>
-            <td><?php echo $row['sem'];?></td>
+            <th>Year</th>
+            <td><?php echo $row['year'];?></td>
         </tr>
         <tr>
-            <th>Section</th>
-            <td><?php echo $row['section'];?></td>
-        </tr>
-        <tr>
-            <th>Subject</th>
-            <td><?php echo $row['subject'];?></td>
-        </tr>
-        <tr>
-            <th>Topic</th>
-            <td><?php echo $row['topic'];?></td>
+            <th>Title</th>
+            <td><?php echo $row['title'];?></td>
         </tr>
         <tr>
             <th>Date</th>
@@ -112,17 +87,35 @@ $row = mysqli_fetch_assoc($result);
             <td><?php echo $row['time'];?></td>
         </tr>
         <?php
-            if($row['classlink']==''||$row['classlink']==NULL){
+            if($row['message']==''||$row['message']==NULL){
             ?>
         <tr>
-            <th colspan="2" class="text-center">No Class Links Available</th>
+            <th colspan="2" class="text-center"></th>
         </tr>
         <?php
             }
             else{
         ?>
         <tr>
-            <td colspan="2" class="text-center"><a href="<?php echo $row['classlink'];?>" target="_blank"><button class="btn btn-outline-success" >Class Link</button></a></th>
+            <th>Notice</th>
+            <td><?php echo $row['message'];?></td>        
+        </tr>
+        <?php
+            }
+        ?>
+        <?php
+            if($row['file']==''||$row['file']==NULL){
+            ?>
+        <tr>
+            <th colspan="2" class="text-center"></th>
+        </tr>
+        <?php
+            }
+            else{
+        ?>
+        <tr>
+            <th>Document</th>
+            <td class="text-center"><a href="<?php echo $row['file'];?>" target="_blank"><button class="btn btn-outline-success" >Open</button></a></th>
         </tr>
         <?php
             }
@@ -133,33 +126,25 @@ $row = mysqli_fetch_assoc($result);
 
 <script>
       $(document).ready(function(){
-            $('#sc-new').click(function(){
+            $('#updates-new').click(function(){
                 // $.get('get.html',function(data,status){
                 //     $('#changehere').html(data);
                 //     alert(status);
                 // });
-                $.post('scheduleclassform.php',function(data,status){
-                    $('#change-scheduleclass').html(data);
+                $.post('updatesform.php',function(data,status){
+                    $('#change-updates').html(data);
                 })
             });
-            $('#sc-list').click(function(){
+            $('#updates-list').click(function(){
                 // $.get('get.html',function(data,status){
                 //     $('#changehere').html(data);
                 //     alert(status);
                 // });
-                $.post('scheduleclasslist.php',function(data,status){
-                    $('#change-scheduleclass').html(data);
+                $.post('updateslist.php',function(data,status){
+                    $('#change-updates').html(data);
                 })
             });
-            $('#sc-action').click(function(){
-                // $.get('get.html',function(data,status){
-                //     $('#changehere').html(data);
-                //     alert(status);
-                // });
-                $.post('sc_action.php',function(data,status){
-                    $('#sc-action-change').html(data);
-                })
-            });
+            
         });
     </script>
 </body>

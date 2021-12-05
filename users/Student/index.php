@@ -15,12 +15,25 @@ session_start();
        <!-- jQuery -->
        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <link rel="stylesheet" href="../../css/Overlay.css">
-    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    
+    <title>Student Panel</title>
+    <link rel="shortcut icon" href="../../images/logo.png" />
+
     
 </head>
 <body>
 <?php
+<<<<<<< HEAD
+if($_SESSION['login']){
+  $stream="BCA";
+  $sem="SEM1";
+  $section="Alpha";
+=======
 if($_SESSION['login'] && $_SESSION['student']){
+>>>>>>> 4f06f42502737e3676a2f859439d4f52bcbcee1d
 ?>
     <div class="home">
         <div class="topdesign" >
@@ -37,9 +50,15 @@ if($_SESSION['login'] && $_SESSION['student']){
                 <ul>
                     <li data-target="#MyProfile" ><img src="images/user.png" alt=""><a  data-target="#MyProfile" href="#MyProfile">My Profile</a></li>
                     <li><img src="images/edit.png" alt=""><a  data-target="#EditProfile" href="#EditProfile">Edit Profile</a></li>
-                    <li><img src="images/envelope.png" alt=""><a  data-target="#Inbox" href="#Inbox">Inbox</a></li>
-                    <li><img src="images/settings.png" alt=""><a  data-target="#Settings" href="#Settings">Settings</a></li>
-                    <li><img src="images/question.png" alt=""><a  data-target="#Help" href="#Help">Help</a></li>
+                    <li><img src="images/schedule.png" alt=""><a  data-target="#Classes" href="#Classes">Classes</a></li>
+                    <li><img src="images/envelope.png" alt=""><a  data-target="#Notes" href="#Notes">Notes</a></li>
+                    <li><img src="images/envelope.png" alt=""><a  data-target="#YearPapers" href="#YearPapers">Year Papers</a></li>
+
+                    <li><img src="images/envelope.png" alt=""><a  data-target="#Updates" href="#Updates">Updates</a></li>
+                    <li><img src="images/question.png" alt=""><a  data-target="#Doubts" href="#Doubts">Doubts</a></li>
+
+                    <!-- <li><img src="images/settings.png" alt=""><a  data-target="#Settings" href="#Settings">Settings</a></li> -->
+                    <!-- <li><img src="images/question.png" alt=""><a  data-target="#Help" href="#Help">Help</a></li> -->
                     <li><a href="../../logout.php"><img src="images/log-out.png" alt="">Logout</a></li>
                 </ul>
             </div>
@@ -48,71 +67,52 @@ if($_SESSION['login'] && $_SESSION['student']){
 
 <!--My Profile Modal-->
 <div class="modal-container modal-lg" style="margin-top:50px;"  id="MyProfile">
-    <div class="modal-header">
-      <div class="title"><Strong>My Profile</Strong></div>
-      <button class="btn close-modal" class="close cl">&times;</button>
+<div class="modal-header">
+      <div class="title"><h2 data-role="MyProfile"><Strong>My Profile</Strong></h2></div>
+      <button class="close-modal modal-close-btn">&times;</button>
     </div>
-    <div>
-      Lorem ipsum dolor, sit amet consectetur adipisicing elit. Facere ea
-      officia consectetur. Laborum, dolor? Assumenda quo corrupti eveniet
-      velit fugit fugiat odit, dolorum labore obcaecati quia. Commodi
-      assumenda sed maxime!
-    </div>
+    
 </div>
 <!--Edit Profile Modal-->
 <div class="modal-container modal-lg" style="margin-top:50px;" id="EditProfile">
 <div class="modal-header">
-<div class="title"><Strong>Edit Profile</Strong></div>
-<button class="btn close-modal" class="close cl">&times;</button>
-</div>
-<div>
-Lorem ipsum dolor, sit amet consectetur adipisicing elit. Facere ea
-officia consectetur. Laborum, dolor? Assumenda quo corrupti eveniet
-velit fugit fugiat odit, dolorum labore obcaecati quia. Commodi
-assumenda sed maxime!
-</div> 
+      <div class="title"><h2 data-role="EditProfile"><Strong>Edit Profile</Strong></h2></div>
+      <button class="close-modal modal-close-btn">&times;</button>
+    </div>
+  
 </div>
 
-<!--Inbox Modal-->
-<div class="modal-container modal-lg" style="margin-top:50px;" id="Inbox">
-    <div class="modal-header">
-      <div class="title"><strong>Inbox</strong></div>
-      <button class="btn close-modal">&times;</button>
-    </div>
-    <div>
-      Lorem ipsum dolor, sit amet consectetur adipisicing elit. Facere ea
-      officia consectetur. Laborum, dolor? Assumenda quo corrupti eveniet
-      velit fugit fugiat odit, dolorum labore obcaecati quia. Commodi
-      assumenda sed maxime!
-    </div>
+<!-- Classes Modal  -->
+<div class="modal-container modal-lg" style="margin-top:50px;"  id="Classes">
+    <?php include 'classes_list.php';?>
+  
 </div>
-<!--Settings Modal-->
-<div class="modal-container modal-lg" style="margin-top:50px;" id="Settings">
-    <div class="modal-header">
-      <div class="title"><strong>Settings</strong></div>
-      <button class="btn close-modal">&times;</button>
-    </div>
-    <div>
-      Lorem ipsum dolor, sit amet consectetur adipisicing elit. Facere ea
-      officia consectetur. Laborum, dolor? Assumenda quo corrupti eveniet
-      velit fugit fugiat odit, dolorum labore obcaecati quia. Commodi
-      assumenda sed maxime!
+
+<!--Notes Modal-->
+<div class="modal-container modal-lg" style="margin-top:50px;" id="Notes">
+    <?php include 'notes_list.php';?>
+</div>
+<!--Updates Modal-->
+<div class="modal-container modal-lg" style="margin-top:50px;" id="Updates">
+    <?php include 'updates.php';?>
+</div>
+
+<!-- YearPapers Modal -->
+<div class="modal-container modal-lg" style="margin-top:50px;" id="YearPapers">
+<div class="modal-header">
+      <div class="title"><h2 data-role="YearPapers"><Strong>Previous Year Papers</Strong></h2></div>
+      <button class="close-modal modal-close-btn">&times;</button>
     </div>
 </div>
 
 
-<!--Help Modal-->
-<div class="modal-container modal-lg" style="margin-top:50px;" id="Help">
+<!--Doubts Modal-->
+<div class="modal-container modal-lg" style="margin-top:50px;" id="Doubts">
     <div class="modal-header">
-      <div class="title"><strong>Help</strong></div>
-      <button class="btn close-modal">&times;</button>
+      <div class="title"><h2 data-role="Doubts"><Strong>Doubts</Strong></h2></div>
+      <button class="close-modal modal-close-btn">&times;</button>
     </div>
-    <div>
-      Lorem ipsum dolor, sit amet consectetur adipisicing elit. Facere ea
-      officia consectetur. Laborum, dolor? Assumenda quo corrupti eveniet
-      velit fugit fugiat odit, dolorum labore obcaecati quia. Commodi
-      assumenda sed maxime!
-    </div>
+    
 </div>
 
 

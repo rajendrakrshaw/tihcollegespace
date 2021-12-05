@@ -32,7 +32,6 @@ $viewid=$_POST['viewid'];
                     $('#sc-action-change').html(data);
                 })
             });
-
         });
     </script>
 </body>

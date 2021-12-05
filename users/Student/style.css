@@ -151,13 +151,6 @@ select{
 }
 
 
-      .select select{
-        background:transparent;
-        width:110px;
-        border:none;
-        font-weight: bold;
-      }
-
 
 /* Responsive schedule class */
 @media only screen and (max-width: 550px){

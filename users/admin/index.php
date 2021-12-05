@@ -11,6 +11,8 @@ session_start();
     <link rel="stylesheet" href="style_admin.css">
     <link rel="stylesheet" href="../../css/Overlay.css">
     <title>Admin</title>
+    <link rel="shortcut icon" href="../../images/logo.png" />
+
 </head>
 <body>
 <?php
