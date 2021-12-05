@@ -24,7 +24,7 @@ session_start();
 </head>
 <body class="bg-logo">
     <?php
-    if($_SESSION['login']){
+   if($_SESSION['login'] && $_SESSION['teacher']){
     ?>
     <div class="back">
       <h2><a href="index.php">Go to Database</a></h2>

@@ -1,9 +1,16 @@
 <?php
 include 'connection.php';
+
+$faculty_id=1;
 $stream=$_POST['stream'];
-// $stream="SEM3";
+$sem=$_POST['sem'];
+$section=$_POST['section'];
 $dateprint=$_POST['date'];
+$fun=$_POST['fun'];
 $week=date("Y-m-d");
+
+
+
 if($stream!="all"){
   if($dateprint=="all"){
       $query = "SELECT * FROM upload_notes where stream='$stream' order by date";
@@ -94,14 +101,14 @@ echo $query;
                 <th class="select">
                 <select name="" id="FilterDateUN" onchange="FilterDateUN(this.value)">
                     <option value="all" <?php if($dateprint=="all"){echo 'selected';} ?>>Date</option>
-                    <option value="week" <?php if($dateprint=="week"){echo 'selected';} ?>>This Week</option>
-                    <option value="month" <?php if($dateprint=="month"){echo 'selected';} ?>>This Month</option>
+                    <option value="week" <?php if($dateprint=="week"){echo 'selected';} ?>>Last Week</option>
+                    <option value="month" <?php if($dateprint=="month"){echo 'selected';} ?>>Last Month</option>
                   </select>
                 </th>
                 <th>Topic</th>
             </tr>
             <?php
-              if (mysqli_num_row($results > 0 ) {
+              if (mysqli_num_rows($result) > 0 ) {
                 $sl=0;
                 while ($row = mysqli_fetch_assoc($result)) {
                     $sl++;
@@ -118,10 +125,10 @@ echo $query;
                 <?php
                 }
               }
+              else
             ?> 
         </table>
         <?php
-        
           if (mysqli_num_rows($result) == 0 ){
             ?>
               <p class="text-center">No Records Found.</p>
