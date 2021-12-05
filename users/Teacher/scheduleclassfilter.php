@@ -7,59 +7,234 @@ $section=$_POST['section'];
 $dateprint=$_POST['date'];
 $fun=$_POST['fun'];
 $week=date("Y-m-d");
+$q="select * from schedule_class where stream='$stream' order by date";
 
-
-
-
-if($stream!="all"){
-  if($dateprint=="all"){
-      $q = "SELECT * FROM schedule_class where faculty_id='$faculty_id' and stream='$stream' order by date";
-  }
-  else
-  if($dateprint=="week"){
-      $today=date("Y-m-d");
-      $date=date_create(date("Y-m-d"));
-      date_add($date,date_interval_create_from_date_string("7 days"));
-      $week=date_format($date,"Y-m-d");
-      $q = "SELECT * FROM schedule_class where faculty_id='$faculty_id' and stream='$stream'  and date<='$week'";
-      
-  }
-  else
-  if($dateprint=="month"){
-      $today=date("Y-m-d");
-
-      $date=date_create(date("Y-m-d"));
-      date_add($date,date_interval_create_from_date_string("30 days"));
-      $week=date_format($date,"Y-m-d");
-      $q = "SELECT * FROM schedule_class where faculty_id='$faculty_id' and stream='$stream' and date<='$week'";
-  }
-}
-else
 if($stream=="all"){
-  if($dateprint=="all"){
-    $q = "SELECT * FROM schedule_class WHERE faculty_id='$faculty_id' order by date";
+  if($sem=="all"){
+    if($section=="all"){
+      if($dateprint=="all"){
+        $q="select * from schedule_class where faculty_id='$faculty_id' order by date";
+      }
+      else
+      if($dateprint=="week"){
+        $date=date_create(date("Y-m-d"));
+        date_add($date,date_interval_create_from_date_string("7 days"));
+        $dateupto=date_format($date,"Y-m-d");
+        $q = "SELECT * FROM schedule_class where faculty_id='$faculty_id' and date<='$dateupto'";
+      }
+      else
+      if($dateprint=="month"){
+        $date=date_create(date("Y-m-d"));
+        date_add($date,date_interval_create_from_date_string("30 days"));
+        $dateupto=date_format($date,"Y-m-d");
+        $q = "SELECT * FROM schedule_class where faculty_id='$faculty_id' and date<='$dateupto'";
+      }
+    }
+    else{
+      if($dateprint=="all"){
+        $q="select * from schedule_class where faculty_id='$faculty_id' and section='$section'  order by date";
+      }
+      else
+      if($dateprint=="week"){
+        $date=date_create(date("Y-m-d"));
+        date_add($date,date_interval_create_from_date_string("7 days"));
+        $dateupto=date_format($date,"Y-m-d");
+        $q = "SELECT * FROM schedule_class where faculty_id='$faculty_id' and section='$section' and date<='$dateupto'";
+      }
+      else
+      if($dateprint=="month"){
+        $date=date_create(date("Y-m-d"));
+        date_add($date,date_interval_create_from_date_string("30 days"));
+        $dateupto=date_format($date,"Y-m-d");
+        $q = "SELECT * FROM schedule_class where faculty_id='$faculty_id' and section='$section' and date<='$dateupto'";
+      }
+    }
   }
-  else
-  if($dateprint=="week"){
-      $today=date("Y-m-d");
-      $date=date_create(date("Y-m-d"));
-      date_add($date,date_interval_create_from_date_string("7 days"));
-      $week=date_format($date,"Y-m-d");
-      $q = "SELECT * FROM schedule_class where faculty_id='$faculty_id' and date<='$week'";
-      
-  }
-  else
-  if($dateprint=="month"){
-      $today=date("Y-m-d");
-
-      $date=date_create(date("Y-m-d"));
-      date_add($date,date_interval_create_from_date_string("30 days"));
-      $week=date_format($date,"Y-m-d");
-      $q = "SELECT * FROM schedule_class where date<='$week'";
+  else{
+    if($section=="all"){
+      if($dateprint=="all"){
+        $q="select * from schedule_class where faculty_id='$faculty_id' and sem='$sem' order by date";
+      }
+      else
+      if($dateprint=="week"){
+        $date=date_create(date("Y-m-d"));
+        date_add($date,date_interval_create_from_date_string("7 days"));
+        $dateupto=date_format($date,"Y-m-d");
+        $q = "SELECT * FROM schedule_class where faculty_id='$faculty_id' and sem='$sem' and date<='$dateupto'";
+      }
+      else
+      if($dateprint=="month"){
+        $date=date_create(date("Y-m-d"));
+        date_add($date,date_interval_create_from_date_string("30 days"));
+        $dateupto=date_format($date,"Y-m-d");
+        $q = "SELECT * FROM schedule_class where faculty_id='$faculty_id' and sem='$sem' and date<='$dateupto'";
+      }
+    }
+    else{
+      if($dateprint=="all"){
+        $q="select * from schedule_class where faculty_id='$faculty_id' and sem='$sem' and section='$section'  order by date";
+      }
+      else
+      if($dateprint=="week"){
+        $date=date_create(date("Y-m-d"));
+        date_add($date,date_interval_create_from_date_string("7 days"));
+        $dateupto=date_format($date,"Y-m-d");
+        $q = "SELECT * FROM schedule_class where faculty_id='$faculty_id' and sem='$sem' and section='$section' and date<='$dateupto'";
+      }
+      else
+      if($dateprint=="month"){
+        $date=date_create(date("Y-m-d"));
+        date_add($date,date_interval_create_from_date_string("30 days"));
+        $dateupto=date_format($date,"Y-m-d");
+        $q = "SELECT * FROM schedule_class where faculty_id='$faculty_id' and sem='$sem' and section='$section' and date<='$dateupto'";
+      }
+    }
   }
 }
+else{
+  if($sem=="all"){
+    if($section=="all"){
+      if($dateprint=="all"){
+        $q="select * from schedule_class where faculty_id='$faculty_id' and stream='$stream' order by date";
+      }
+      else
+      if($dateprint=="week"){
+        $date=date_create(date("Y-m-d"));
+        date_add($date,date_interval_create_from_date_string("7 days"));
+        $dateupto=date_format($date,"Y-m-d");
+        $q = "SELECT * FROM schedule_class where faculty_id='$faculty_id' and stream='$stream' and date<='$dateupto'";
+      }
+      else
+      if($dateprint=="month"){
+        $date=date_create(date("Y-m-d"));
+        date_add($date,date_interval_create_from_date_string("30 days"));
+        $dateupto=date_format($date,"Y-m-d");
+        $q = "SELECT * FROM schedule_class where faculty_id='$faculty_id' and stream='$stream' and date<='$dateupto'";
+      }
+    }
+    else{
+      if($dateprint=="all"){
+        $q="select * from schedule_class where faculty_id='$faculty_id' and stream='$stream' and section='$section'  order by date";
+      }
+      else
+      if($dateprint=="week"){
+        $date=date_create(date("Y-m-d"));
+        date_add($date,date_interval_create_from_date_string("7 days"));
+        $dateupto=date_format($date,"Y-m-d");
+        $q = "SELECT * FROM schedule_class where faculty_id='$faculty_id' and stream='$stream' and section='$section' and date<='$dateupto'";
+      }
+      else
+      if($dateprint=="month"){
+        $date=date_create(date("Y-m-d"));
+        date_add($date,date_interval_create_from_date_string("30 days"));
+        $dateupto=date_format($date,"Y-m-d");
+        $q = "SELECT * FROM schedule_class where faculty_id='$faculty_id' and stream='$stream' and section='$section' and date<='$dateupto'";
+      }
+    }
+  }
+  else{
+    if($section=="all"){
+      if($dateprint=="all"){
+        $q="select * from schedule_class where faculty_id='$faculty_id' and stream='$stream' and sem='$sem' order by date";
+      }
+      else
+      if($dateprint=="week"){
+        $date=date_create(date("Y-m-d"));
+        date_add($date,date_interval_create_from_date_string("7 days"));
+        $dateupto=date_format($date,"Y-m-d");
+        $q = "SELECT * FROM schedule_class where faculty_id='$faculty_id' and stream='$stream' and sem='$sem' and date<='$dateupto'";
+      }
+      else
+      if($dateprint=="month"){
+        $date=date_create(date("Y-m-d"));
+        date_add($date,date_interval_create_from_date_string("30 days"));
+        $dateupto=date_format($date,"Y-m-d");
+        $q = "SELECT * FROM schedule_class where faculty_id='$faculty_id' and stream='$stream' and sem='$sem' and date<='$dateupto'";
+      }
+    }
+    else{
+      if($dateprint=="all"){
+        $q="select * from schedule_class where faculty_id='$faculty_id' and stream='$stream' and sem='$sem' and section='$section'  order by date";
+      }
+      else
+      if($dateprint=="week"){
+        $date=date_create(date("Y-m-d"));
+        date_add($date,date_interval_create_from_date_string("7 days"));
+        $dateupto=date_format($date,"Y-m-d");
+        $q = "SELECT * FROM schedule_class where faculty_id='$faculty_id' and stream='$stream' and sem='$sem' and section='$section' and date<='$dateupto'";
+      }
+      else
+      if($dateprint=="month"){
+        $date=date_create(date("Y-m-d"));
+        date_add($date,date_interval_create_from_date_string("30 days"));
+        $dateupto=date_format($date,"Y-m-d");
+        $q = "SELECT * FROM schedule_class where faculty_id='$faculty_id' and stream='$stream' and sem='$sem' and section='$section' and date<='$dateupto'";
+      }
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+// if($stream!="all"){
+//   if($dateprint=="all"){
+//       $q = "SELECT * FROM schedule_class where faculty_id='$faculty_id' and stream='$stream' order by date";
+//   }
+//   else
+//   if($dateprint=="week"){
+//       $today=date("Y-m-d");
+//       $date=date_create(date("Y-m-d"));
+//       date_add($date,date_interval_create_from_date_string("7 days"));
+//       $week=date_format($date,"Y-m-d");
+//       $q = "SELECT * FROM schedule_class where faculty_id='$faculty_id' and stream='$stream'  and date<='$week'";
+      
+//   }
+//   else
+//   if($dateprint=="month"){
+//       $today=date("Y-m-d");
+
+//       $date=date_create(date("Y-m-d"));
+//       date_add($date,date_interval_create_from_date_string("30 days"));
+//       $week=date_format($date,"Y-m-d");
+//       $q = "SELECT * FROM schedule_class where faculty_id='$faculty_id' and stream='$stream' and date<='$week'";
+//   }
+// }
+// else
+// if($stream=="all"){
+//   if($dateprint=="all"){
+//     $q = "SELECT * FROM schedule_class WHERE faculty_id='$faculty_id' order by date";
+//   }
+//   else
+//   if($dateprint=="week"){
+//       $today=date("Y-m-d");
+//       $date=date_create(date("Y-m-d"));
+//       date_add($date,date_interval_create_from_date_string("7 days"));
+//       $week=date_format($date,"Y-m-d");
+//       $q = "SELECT * FROM schedule_class where faculty_id='$faculty_id' and date<='$week'";
+      
+//   }
+//   else
+//   if($dateprint=="month"){
+//       $today=date("Y-m-d");
+
+//       $date=date_create(date("Y-m-d"));
+//       date_add($date,date_interval_create_from_date_string("30 days"));
+//       $week=date_format($date,"Y-m-d");
+//       $q = "SELECT * FROM schedule_class where date<='$week'";
+//   }
+// }
 $res = mysqli_query($conn,$q);
-echo $q;
+echo $q.'<br>'.$stream.' '.$sem.' '.$section.' '.$dateprint;
 
 
 ?>
@@ -86,8 +261,8 @@ echo $q;
                   </select>
                 </th>
                 <th class="select">
-                  <select name="" id="FilterSemester" onchange="FilterSemester(this.value)">
-                    <option value="All Sem" <?php if($sem=="All Sem"){echo 'selected';} ?>><?php if($sem!="All Sem") echo "All Semester"; else echo "Semester"; ?></option>
+                  <select name="" id="FilterSemester" onchange="FilterSemesterSC(this.value)">
+                    <option value="all" <?php if($sem=="all"){echo 'selected';} ?>><?php if($sem!="all") echo "All Semester"; else echo "Semester"; ?></option>
                     <option value="SEM1" <?php if($sem=="SEM1"){echo 'selected';} ?>>SEM1</option>
                     <option value="SEM2" <?php if($sem=="SEM2"){echo 'selected';} ?>>SEM2</option>
                     <option value="SEM3" <?php if($sem=="SEM3"){echo 'selected';} ?>>SEM3</option>

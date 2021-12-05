@@ -24,7 +24,7 @@ session_start();
 </head>
 <body class="bg-logo">
     <?php
-   if($_SESSION['login'] && $_SESSION['teacher']){
+  //  if($_SESSION['login'] && $_SESSION['teacher']){
     ?>
     <div class="back">
       <h2><a href="index.php">Go to Database</a></h2>
@@ -93,10 +93,10 @@ session_start();
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
     <?php
-    }
-    else{
-    header("location:../../index.html");
-    }
+    // }
+    // else{
+    // header("location:../../index.html");
+    // }
     ?>
 </body>
 </html>
