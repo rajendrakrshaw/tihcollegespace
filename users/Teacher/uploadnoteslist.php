@@ -42,13 +42,34 @@ $result = mysqli_query($conn,$query);
               ?>
             </select>
           </th>
-          <th>Semester</th>
-          <th>Section</th>
+          <th class="select">
+            <select name="" id="FilterSemesterUN" onchange="FilterSemesterUN(this.value)">
+              <option value="All Sem" selected>Semester</option>
+              <?php
+                $sql="select * from update_sem where sem!='All Sem'";
+                $q1=mysqli_query($conn,$sql);
+                if (mysqli_num_rows($q1) > 0 ) {
+                  while ($row = mysqli_fetch_assoc($q1)) {
+                    echo '<option value='.$row['sem'].'>'.$row['sem'].'</option>';
+                  }
+                }
+
+              ?>
+            </select>
+          </th>
+          <th class="select">
+            <select name="" id="FilterSectionUN" onchange="FilterSectionUN(this.value)">
+              <option value="all" selected>Section</option>
+              <option value="Alpha">Alpha</option>
+              <option value="Beta">Beta</option>
+              <option value="Combined">Combined</option>
+            </select>
+          </th>
           <th class="select">
             <select name="" id="FilterDateUN" onchange="FilterDateUN(this.value)">
               <option value="all" selected>Date</option>
-              <option value="week">This Week</option>
-              <option value="month">This Month</option>
+              <option value="week">Last Week</option>
+              <option value="month">Last Month</option>
             </select>
           </th>
           <th>Topic</th>
@@ -83,34 +104,93 @@ $result = mysqli_query($conn,$query);
   </div>
 </div>
 <script>
-  function FilterStreamUN(getstream){
-        // getstream=document.getElementById("FilterStream");
-        // console.log(getstream);
-        dateget=$("#FilterDateUN").val();
-        $.ajax({
-          type:'post',
-          url: 'uploadnotesfilter.php',
-          data : { stream : getstream, date : dateget},
-          success : function(data){
-            $('#change-table-UN').html(data);
-          }
+  // function FilterStreamUN(getstream){
+  //       // getstream=document.getElementById("FilterStream");
+  //       // console.log(getstream);
+  //       dateget=$("#FilterDateUN").val();
+  //       $.ajax({
+  //         type:'post',
+  //         url: 'uploadnotesfilter.php',
+  //         data : { stream : getstream, date : dateget},
+  //         success : function(data){
+  //           $('#change-table-UN').html(data);
+  //         }
 
-        })
-      }
-      function FilterDateUN(dateget){
-        // getstream=document.getElementById("FilterStream");
-        // console.log(getstream);
-        getstream=$("#FilterStreamUN").val();
-        $.ajax({
-          type:'post',
-          url: 'uploadnotesfilter.php',
-          data : { stream : getstream, date : dateget},
-          success : function(data){
-            $('#change-table-UN').html(data);
-          }
+  //       })
+  //     }
+  //     function FilterDateUN(dateget){
+  //       // getstream=document.getElementById("FilterStream");
+  //       // console.log(getstream);
+  //       getstream=$("#FilterStreamUN").val();
+  //       $.ajax({
+  //         type:'post',
+  //         url: 'uploadnotesfilter.php',
+  //         data : { stream : getstream, date : dateget},
+  //         success : function(data){
+  //           $('#change-table-UN').html(data);
+  //         }
 
-        })
-      }
+  //       })
+  //     }
+
+      function FilterStreamUN(streamget){
+            semget=$("#FilterSemesterUN").val();
+            sectionget=$("#FilterSectionUN").val();
+            dateget=$("#FilterDateUN").val();
+            $.ajax({
+              type:'post',
+              url: 'scheduleclassfilter.php',
+              data : { stream : streamget, date : dateget, sem : semget, section : sectionget , fun : "stream"},
+              success : function(data){
+                $('#change-table-UN').html(data);
+              }
+
+            })
+          }
+          function FilterSemesterUN(semget){
+            streamget=$("#FilterStreamUN").val();
+            sectionget=$("#FilterSectionUN").val();
+            dateget=$("#FilterDateUN").val();
+            $.ajax({
+              type:'post',
+              url: 'scheduleclassfilter.php',
+              data : { stream : streamget, date : dateget, sem : semget, section : sectionget , fun : "sem"},
+              success : function(data){
+                $('#change-table-UN').html(data);
+              }
+
+            })
+          }
+          function FilterSectionUN(sectionget){
+            streamget=$("#FilterStreamUN").val();
+            semget=$("#FilterSemesterUN").val();
+
+            // sectionget=$("#FilterSection").val();
+            dateget=$("#FilterDateUN").val();
+            $.ajax({
+              type:'post',
+              url: 'scheduleclassfilter.php',
+              data : { stream : streamget, date : dateget, sem : semget, section : sectionget , fun : "section"},
+              success : function(data){
+                $('#change-table-UN').html(data);
+              }
+
+            })
+          }
+          function FilterDateUN(dateget){
+            streamget=$("#FilterStreamUN").val();
+            semget=$("#FilterSemesterUN").val();
+            sectionget=$("#FilterSectionUN").val();
+            $.ajax({
+              type:'post',
+              url: 'scheduleclassfilter.php',
+              data : { stream : streamget, date : dateget, sem : semget, section : sectionget, fun : "date"},
+              success : function(data){
+                $('#change-table-UN').html(data);
+              }
+
+            })
+          }UN
   $(document).ready(function(){
     $('#un-new').click(function(){
             // $.get('get.html',function(data,status){
