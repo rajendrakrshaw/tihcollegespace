@@ -1,6 +1,6 @@
 <?php
 session_start();
-$conn = mysqli_connect("localhost", "root", "", "tihcollespace");
+$conn = mysqli_connect("localhost", "root", "", "tihcollegespace");
 
 if(isset($_POST['submit'])){
     $email = $_POST['email'];
