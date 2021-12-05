@@ -1,7 +1,7 @@
 <?php
 include 'connection.php';
 $query = "SELECT * FROM streams";
-$result = $db->query($query);
+$result = mysqli_query($conn,$query);
 ?>
 <html>
 <body>    
@@ -14,7 +14,7 @@ $result = $db->query($query);
       </div>
 </div>
 <div class="SC-form-container">
-    <form action="scheduleclass.php" method="post">
+    <form name="scheduleclass-form" action="scheduleclassformdata.php"  method="post">
       <div class="form-row">
         <div class="form-half">
           <div class="form-half-left">
@@ -24,8 +24,8 @@ $result = $db->query($query);
             <select name="streamSC" id="stream"  onchange="FetchSemester(this.value)"  required>
               <option selected disabled>Select Stream</option>
             <?php
-              if ($result->num_rows > 0 ) {
-                while ($row = $result->fetch_assoc()) {
+              if (mysqli_num_rows($result) > 0 ) {
+                while ($row = mysqli_fetch_assoc($result)) {
                   echo '<option value='.$row['id'].'>'.$row['stream'].'</option>';
                 }
               }
@@ -151,7 +151,6 @@ $result = $db->query($query);
 
     })
   }
-  
       $(document).ready(function(){
             $('#sc-new').click(function(){
                 // $.get('get.html',function(data,status){

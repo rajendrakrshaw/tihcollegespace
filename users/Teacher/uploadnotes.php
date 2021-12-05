@@ -1,66 +1,139 @@
 <?php
-$host = 'localhost';
-$username = 'root';
-$pass = '';
-$db = 'scheduleclass';
-
-$conn = mysqli_connect($host,$username,$pass,$db);
-
-// $faculty_id=$_SESSION['login']['id'];
-// $faculty_name=$_SESSION['login']['name'];
-$faculty_id=1;
-$faculty_name="Subrata Saha";
-$stream=$_POST['streamUN'];
-if($stream==1)
-    $stream="BCA";
-else if($stream==2)
-    $stream="BBA";
-else if($stream==3)
-    $stream="MCA";
-else if($stream==4)
-    $stream="MSC";
-$sem=$_POST['semesterUN'];
-     if($sem==1||$sem==7||$sem==13||$sem==17)
-    $sem="SEM1";
-else if($sem==2||$sem==8||$sem==14||$sem==18)
-    $sem="SEM2";
-else if($sem==3||$sem==9||$sem==15||$sem==19)
-    $sem="SEM3";
-else if($sem==4||$sem==10||$sem==16||$sem==20)
-    $sem="SEM4";
-else if($sem==5||$sem==11)
-    $sem="SEM5";
-else if($sem==6||$sem==12)
-    $sem="SEM6";
-
-$section=$_POST['sectionUN'];
-$subject=$_POST['subjectUN'];
-$date=$_POST['dateUN'];
-$topic=$_POST['topicUN'];
-// $time=$_GET['timeUN'];
-// $file=
-$filename=$_FILES['fileUN']['name'];
-$url = "Notes/";
-$furl = $url.$filename;
-$classlink=$_POST['classlinkUN'];
-
-$q = "INSERT INTO  `upload_notes` (`faculty_id`, `faculty_name`, `stream`, `sem`, `section`, `subject`, `topic`, `date`, `file`, `recordinglink`) VALUES ('$faculty_id', '$faculty_name', '$stream', '$sem', '$section', '$subject', '$topic', '$date', '$furl', '$classlink')";
-
-$query = mysqli_query($conn,$q);
-
-if($query==1){
-    move_uploaded_file($_FILES['fileUN']['tmp_name'],$furl); ?>
-        <script>
-            alert('Successfully Uploaded');
-        </script>
-    <?php
-}
-else{
-    ?>
-        <script>
-            alert('Error Occured');
-        </script>
-    <?php
-}
-header('location:index.php');
+session_start();
 ?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style_teacher2.css">
+    <link rel="stylesheet" href="../../css/Overlay.css">
+    <link rel="stylesheet" href="../../css/schedule.css">
+    <link rel="stylesheet" type="" href="style.css">
+    <title>Teacher Panel</title>
+    <link rel="shortcut icon" href="../../images/logo.png" />
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=El+Messiri&family=Great+Vibes&family=Raleway:wght@300&display=swap" rel="stylesheet">
+    
+</head>
+<body>
+<?php
+  if($_SESSION['login'] && $_SESSION['teacher']){
+?>
+    <div class="back">
+      <h2><a href="index.php">Go to Database</a></h2>
+    </div>
+    
+    <div id="change-uploadnotes">
+      <?php include 'uploadnoteslist.php'; ?>
+    </div>
+
+    <script src="admin.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      function FetchSemester(id){
+        $('#semester').html('');
+        $('#subject').html('<option>Select Subject</option>');
+        $.ajax({
+          type:'post',
+          url: 'ajaxdata.php',
+          data : { stream_id : id},
+          success : function(data){
+            $('#semester').html(data);
+          }
+        })
+      }
+
+      function FetchSubject(id){ 
+        $('#subject').html('');
+        $.ajax({
+          type:'post',
+          url: 'ajaxdata.php',
+          data : { semester_id : id},
+          success : function(data){
+            $('#subject').html(data);
+          }
+
+        })
+      }
+
+      function FetchSemesterUN(id){
+        $('#semesterUN').html('');
+        $('#subjectUN').html('<option>Select Subject</option>');
+        $.ajax({
+          type:'post',
+          url: 'ajaxdata.php',
+          data : { stream_id : id},
+          success : function(data){
+            $('#semesterUN').html(data);
+          }
+
+        })
+      }
+
+      function FetchSubjectUN(id){ 
+        $('#subjectUN').html('');
+        $.ajax({
+          type:'post',
+          url: 'ajaxdata.php',
+          data : { semester_id : id},
+          success : function(data){
+            $('#subjectUN').html(data);
+          }
+
+        })
+      }
+      updateList = function() {
+        var input = document.getElementById('file');
+        var output = document.getElementById('fileList');
+        var children = "";
+        for (var i = 0; i < input.files.length; ++i) {
+            children += '<li>' + input.files.item(i).name + '</li>';
+        }
+        output.innerHTML = '<ul>'+children+'</ul>';
+      }
+
+      $(document).ready(function(){
+        $(document).on('click','a[data-role=ScheduleClass]',function(){
+          $.post('test.php',
+            function(data,status){
+                $('#dashboard').html(data);
+            })
+          });
+          $('#sc-new').click(function(){
+            $.post('scheduleclassform.php',function(data,status){
+                $('#change-scheduleclass').html(data);
+            })
+          });
+          $('#sc-list').click(function(){
+            $.post('scheduleclasslist.php',function(data,status){
+                $('#change-scheduleclass').html(data);
+            })
+          });
+        $('#un-new').click(function(){
+          $.post('uploadnotesform.php',function(data,status){
+              $('#change-uploadnotes').html(data);
+          })
+        });
+        $('#un-list').click(function(){
+          $.post('uploadnoteslist.php',function(data,status){
+              $('#change-uploadnotes').html(data);
+          })
+        });
+      });
+  
+    </script>
+<?php
+  }
+else{
+  header("location:../../index.html");
+}
+?>
+</body>
+</html>

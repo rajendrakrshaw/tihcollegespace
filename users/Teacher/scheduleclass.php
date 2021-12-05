@@ -1,75 +1,102 @@
 <?php
-$host = 'localhost';
-$username = 'root';
-$pass = '';
-$db = 'scheduleclass';
-
-$conn = mysqli_connect($host,$username,$pass,$db);
-
-// $faculty_id=$_SESSION['login']['id'];
-// $faculty_name=$_SESSION['login']['name'];
-$faculty_id=1;
-$faculty_name="Subrata Saha";
-$stream=$_POST['streamSC'];
-if($stream==1)
-    $stream="BCA";
-else if($stream==2)
-    $stream="BBA";
-else if($stream==3)
-    $stream="MCA";
-else if($stream==4)
-    $stream="MSC";
-$sem=$_POST['semesterSC'];
-     if($sem==1||$sem==7||$sem==13||$sem==17)
-    $sem="SEM1";
-else if($sem==2||$sem==8||$sem==14||$sem==18)
-    $sem="SEM2";
-else if($sem==3||$sem==9||$sem==15||$sem==19)
-    $sem="SEM3";
-else if($sem==4||$sem==10||$sem==16||$sem==20)
-    $sem="SEM4";
-else if($sem==5||$sem==11)
-    $sem="SEM5";
-else if($sem==6||$sem==12)
-    $sem="SEM6";
-
-$section=$_POST['sectionSC'];
-$subject=$_POST['subjectSC'];
-
-// code to extract subject by id
-$q_subject="select * from subjects";
-$query_subject=mysqli_query($conn,$q_subject);
-while($result_subject=mysqli_fetch_array($query_subject)){
-    if($result_subject['id']==$subject){
-        $subject=$result_subject['subject'];
-        break;
-    }
-}
-
-
-
-$date=$_POST['dateSC'];
-$time=$_POST['timeSC'];
-$topic=$_POST['topicSC'];
-$classlink=$_POST['classlinkSC'];
-
-$q = "INSERT INTO `schedule_class`(`faculty_id`, `faculty_name`, `stream`, `sem`, `section`, `subject`, `topic`, `date`, `time`, `classlink`) VALUES ('$faculty_id', '$faculty_name', '$stream', '$sem', '$section', '$subject', '$topic', '$date', '$time', '$classlink')";
-
-$query = mysqli_query($conn,$q);
-
-if($query==1){
-    ?>
-        <script>
-            alert('Successfully Scheduled');
-        </script>
-    <?php
-}
-else{
-    ?>
-        <script>
-            alert('Error Occured');
-        </script>
-    <?php
-}
-header('location:index.php');
+session_start();
 ?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style_teacher2.css">
+    <link rel="stylesheet" href="../../css/Overlay.css">
+    <link rel="stylesheet" href="../../css/schedule.css">
+    <link rel="stylesheet" type="" href="style.css">
+    <title>Teacher Panel</title>
+    <link rel="shortcut icon" href="../../images/logo.png" />
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=El+Messiri&family=Great+Vibes&family=Raleway:wght@300&display=swap" rel="stylesheet">
+    
+</head>
+<body class="bg-logo">
+    <?php
+   if($_SESSION['login'] && $_SESSION['teacher']){
+    ?>
+    <div class="back">
+      <h2><a href="index.php">Go to Database</a></h2>
+    </div>
+
+    <div id="change-scheduleclass">
+      <?php include 'scheduleclasslist.php'; ?>
+    </div>
+
+
+    <script>
+      function FetchSemester(id){
+    $('#semester').html('');
+    $('#subject').html('<option>Select Subject</option>');
+    $.ajax({
+      type:'post',
+      url: 'ajaxdata.php',
+      data : { stream_id : id},
+      success : function(data){
+         $('#semester').html(data);
+      }
+
+    })
+  }
+
+  function FetchSubject(id){ 
+    $('#subject').html('');
+    $.ajax({
+      type:'post',
+      url: 'ajaxdata.php',
+      data : { semester_id : id},
+      success : function(data){
+         $('#subject').html(data);
+      }
+
+    })
+  }
+      $(document).ready(function(){
+            $('#sc-new').click(function(){
+                // $.get('get.html',function(data,status){
+                //     $('#changehere').html(data);
+                //     alert(status);
+                // });
+                $.post('scheduleclassform.php',function(data,status){
+                    $('#change-scheduleclass').html(data);
+                })
+            });
+            $('#sc-list').click(function(){
+                // $.get('get.html',function(data,status){
+                //     $('#changehere').html(data);
+                //     alert(status);
+                // });
+                $.post('scheduleclasslist.php',function(data,status){
+                    $('#change-scheduleclass').html(data);
+                })
+            });
+        });
+    </script>
+
+
+
+
+
+
+    <script src="admin.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+    <?php
+    }
+    else{
+    header("location:../../index.html");
+    }
+    ?>
+</body>
+</html>

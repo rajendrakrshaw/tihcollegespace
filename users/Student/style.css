@@ -1,0 +1,197 @@
+.modal-close-btn{
+    font-size: 40px;
+    background: none;
+    border: none;
+}
+.modal-close-btn:hover{
+    transform: scale(1.1);
+    color: rgba(0, 0, 0, 0.705);
+}
+.sc-heading{
+    /* border: 2px solid red; */
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.sc-heading-part{
+    /* border: 2px solid black; */
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-left: 2px solid transparent;
+    border: 2px solid transparent;
+}
+.sc-heading-part button{
+    width: 100%;
+    border-radius: 0%;
+}
+.SC-form-Container{
+    /* border: 2px solid red; */
+    /* width: 50%; */
+    /* overflow: scroll; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.SC-Container form{
+    /* width: 400px; */
+    /* border: 2px solid black; */
+    /* overflow: scroll; */
+}
+.form{
+    margin: auto;
+}
+.form-row{
+    width: 500px;
+    margin: auto;
+    /* border: 2px solid black; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px auto;
+}
+.form-half{
+    width: 400px;
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    flex-direction: column;
+    /* border: 2px solid rebeccapurple; */
+}
+.form-half-left{
+    width: 200px;
+    /* border: 2px solid red; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* margin: 0 10px; */
+    margin: auto;
+    font-size: 20px;
+}
+.form-half-left label,.form-full-left label,.form-half-right,.form-full-right{
+    font-family: 'El Messiri', sans-serif;
+}
+.form-half-right{
+    width: 200px;
+    /* border: 2px solid rgb(76, 0, 255); */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* margin: 0 10px; */
+    margin: auto;
+    font-size: 20px;
+}
+.form-full{
+    /* border: 2px solid red; */
+    width: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+select{
+    width: 200px;
+    cursor: pointer;
+    border: none;
+}
+.form-full-left{
+    /* border: 2px solid rgb(76, 0, 255); */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 10px;
+    font-size: 20px;  
+    width: 200px;  
+}
+.form-full-right{
+    /* border: 2px solid rgb(76, 0, 255); */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 10px;
+    font-size: 20px;
+    width: 400px;
+}
+.form-half-right input{
+    width: 200px;
+    border: none;
+}
+.form-half-right input[type="date"],.form-half-right input[type="time"]{
+    cursor: pointer;
+}
+.form-full-right input, .form-full-right textarea{
+    width: 400px;
+}
+.form-full-right textarea{
+    padding: 5px;
+}
+.form-full-right-file{
+    /* border: 2px solid red; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.form-full-right-file input{
+    /* border: 2px solid black; */
+    width: 250px;
+    margin-bottom: 5px;
+}
+.form-half-btn{
+    width: 150px;
+    margin:auto;
+    /* border: 2px solid red; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.form-half-btn input,.form-half-btn button{
+    width: 150px;
+}
+
+
+
+/* Responsive schedule class */
+@media only screen and (max-width: 550px){
+    .form-row{
+        flex-direction: column;
+        width: 90%;
+    }
+    .form-half{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        margin: 5px;
+        width: 90%;
+    }
+    .form-half-left,.form-half-right{
+        width: 100%;
+    }
+    .form-full{
+        width: 100%;
+    }
+    .form-full-left{
+        width: 100%;
+    }
+    .form-full-right{
+        width: 100%;
+    }
+    .form-full-right input{
+        width: 100%;
+    }
+    .form-half-btn{
+        margin: 5px;
+        
+    }
+}
+
+@media only screen and (max-width: 400px){
+    .sc-heading{
+        flex-direction: column;
+    }
+    .sc-heading-part{
+        width: 90%;
+    }
+}

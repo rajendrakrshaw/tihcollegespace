@@ -1,7 +1,7 @@
 <?php
 include 'connection.php';
 $query = "SELECT * FROM upload_notes";
-$result = $db->query($query);
+$result = mysqli_query($conn,$query);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -16,77 +16,210 @@ $result = $db->query($query);
 <body>
 <div class="sc-heading">
       <div class="sc-heading-part">
-        <button type="button" class="btn btn-success btn-lg btn-block" id="un-list" onclick="ScheduleList()" disabled>List of Classes</button>
+        <button type="button" class="btn btn-success btn-lg btn-block" id="un-list" onclick="ScheduleList()" disabled>Uploaded Notes</button>
       </div>
       <div class="sc-heading-part">
-        <button type="button" class="btn btn-success btn-lg btn-block" id="un-new" onclick="ScheduleNew()">New Class</button>
+        <button type="button" class="btn btn-success btn-lg btn-block" id="un-new" onclick="ScheduleNew()">New Notes</button>
       </div>
 </div>
-    <div class="SC-form-container">
-        <!-- BCA SEM1 Alpha Date Time View -->
-        <table class="table table-hover">
-            <tr>
-                <th>Serial No</th>
-                <th>Stream</th>
-                <th>Semester</th>
-                <th>Section</th>
-                <th>Date</th>
-                <th>Topic</th>
-                <th>View</th>
-                <th>Delete</th>
+<div class="SC-form-container">
+  <div id="change-table-UN">
+    <table class="table table-hover">
+        <tr>
+          <th>Serial No</th>
+          <th class="select">
+            <select name="" id="FilterStreamUN" onchange="FilterStreamUN(this.value)">
+              <option value="all" selected>All Stream</option>
+              <?php
+                $sql="select * from streams";
+                $q1=mysqli_query($conn,$sql);
+                if (mysqli_num_rows($q1) > 0 ) {
+                  while ($row = mysqli_fetch_assoc($q1)) {
+                    echo '<option value='.$row['stream'].'>'.$row['stream'].'</option>';
+                  }
+                }
+
+              ?>
+            </select>
+          </th>
+          <th class="select">
+            <select name="" id="FilterSemesterUN" onchange="FilterSemesterUN(this.value)">
+              <option value="All Sem" selected>Semester</option>
+              <?php
+                $sql="select * from update_sem where sem!='All Sem'";
+                $q1=mysqli_query($conn,$sql);
+                if (mysqli_num_rows($q1) > 0 ) {
+                  while ($row = mysqli_fetch_assoc($q1)) {
+                    echo '<option value='.$row['sem'].'>'.$row['sem'].'</option>';
+                  }
+                }
+
+              ?>
+            </select>
+          </th>
+          <th class="select">
+            <select name="" id="FilterSectionUN" onchange="FilterSectionUN(this.value)">
+              <option value="all" selected>Section</option>
+              <option value="Alpha">Alpha</option>
+              <option value="Beta">Beta</option>
+              <option value="Combined">Combined</option>
+            </select>
+          </th>
+          <th class="select">
+            <select name="" id="FilterDateUN" onchange="FilterDateUN(this.value)">
+              <option value="all" selected>Date</option>
+              <option value="week">Last Week</option>
+              <option value="month">Last Month</option>
+            </select>
+          </th>
+          <th>Topic</th>
+        </tr>
+        <?php
+          if (mysqli_num_rows($result) > 0 ) {
+            $sl=0;
+            while ($row = mysqli_fetch_assoc($result)) {
+                $sl++;
+              ?>
+              <tr data-role="view" data-id="<?php echo $row['id'];?>" style="cursor:pointer;">                    
+
+                <th><?php echo $sl; ?></th>
+                <td><?php echo $row['stream']; ?></td>
+                <td><?php echo $row['sem']; ?></td>
+                <td><?php echo $row['section']; ?></td>
+                <td><?php echo $row['date']; ?></td>
+                <td><?php echo $row['topic']; ?></td>
             </tr>
             <?php
-              if ($result->num_rows > 0 ) {
-                $sl=0;
-                while ($row = $result->fetch_assoc()) {
-                    $sl++;
-                  ?>
-                  <tr>
-                    <th><?php echo $sl; ?></th>
-                    <td><?php echo $row['stream']; ?></td>
-                    <td><?php echo $row['sem']; ?></td>
-                    <td><?php echo $row['section']; ?></td>
-                    <td><?php echo $row['date']; ?></td>
-                    <td><?php echo $row['topic']; ?></td>
-                    <td><a href="ViewScheduleClass.php?id=<?php echo $row['id']; ?>"><button class="btn btn-outline-success"> View </button> </a></td>
-                    <td><a><button class="btn btn-outline-success" disabled> Delete </button> </a></td>
-
-                </tr>
-                <?php
-                }
-              }
-            ?> 
-        </table>
-        <?php
-        
-          if ($result->num_rows == 0 ){
-            ?>
-              <p class="text-center">No Records Found.</p>
-            <?php
+            }
           }
+        ?> 
+    </table>
+    <?php
+      if (mysqli_num_rows($result) == 0 ){
         ?>
-    </div>
-    <script>
-      $(document).ready(function(){
-        $('#un-new').click(function(){
-                // $.get('get.html',function(data,status){
-                //     $('#changehere').html(data);
-                //     alert(status);
-                // });
-                $.post('uploadnotesform.php',function(data,status){
-                    $('#change-uploadnotes').html(data);
-                })
-            });
-            $('#un-list').click(function(){
-                // $.get('get.html',function(data,status){
-                //     $('#changehere').html(data);
-                //     alert(status);
-                // });
-                $.post('uploadnoteslist.php',function(data,status){
-                    $('#change-uploadnotes').html(data);
-                })
-            });
+          <p class="text-center">No Records Found.</p>
+        <?php
+      }
+    ?>
+  </div>
+</div>
+<script>
+  // function FilterStreamUN(getstream){
+  //       // getstream=document.getElementById("FilterStream");
+  //       // console.log(getstream);
+  //       dateget=$("#FilterDateUN").val();
+  //       $.ajax({
+  //         type:'post',
+  //         url: 'uploadnotesfilter.php',
+  //         data : { stream : getstream, date : dateget},
+  //         success : function(data){
+  //           $('#change-table-UN').html(data);
+  //         }
+
+  //       })
+  //     }
+  //     function FilterDateUN(dateget){
+  //       // getstream=document.getElementById("FilterStream");
+  //       // console.log(getstream);
+  //       getstream=$("#FilterStreamUN").val();
+  //       $.ajax({
+  //         type:'post',
+  //         url: 'uploadnotesfilter.php',
+  //         data : { stream : getstream, date : dateget},
+  //         success : function(data){
+  //           $('#change-table-UN').html(data);
+  //         }
+
+  //       })
+  //     }
+
+      function FilterStreamUN(streamget){
+            semget=$("#FilterSemesterUN").val();
+            sectionget=$("#FilterSectionUN").val();
+            dateget=$("#FilterDateUN").val();
+            $.ajax({
+              type:'post',
+              url: 'scheduleclassfilter.php',
+              data : { stream : streamget, date : dateget, sem : semget, section : sectionget , fun : "stream"},
+              success : function(data){
+                $('#change-table-UN').html(data);
+              }
+
+            })
+          }
+          function FilterSemesterUN(semget){
+            streamget=$("#FilterStreamUN").val();
+            sectionget=$("#FilterSectionUN").val();
+            dateget=$("#FilterDateUN").val();
+            $.ajax({
+              type:'post',
+              url: 'scheduleclassfilter.php',
+              data : { stream : streamget, date : dateget, sem : semget, section : sectionget , fun : "sem"},
+              success : function(data){
+                $('#change-table-UN').html(data);
+              }
+
+            })
+          }
+          function FilterSectionUN(sectionget){
+            streamget=$("#FilterStreamUN").val();
+            semget=$("#FilterSemesterUN").val();
+
+            // sectionget=$("#FilterSection").val();
+            dateget=$("#FilterDateUN").val();
+            $.ajax({
+              type:'post',
+              url: 'scheduleclassfilter.php',
+              data : { stream : streamget, date : dateget, sem : semget, section : sectionget , fun : "section"},
+              success : function(data){
+                $('#change-table-UN').html(data);
+              }
+
+            })
+          }
+          function FilterDateUN(dateget){
+            streamget=$("#FilterStreamUN").val();
+            semget=$("#FilterSemesterUN").val();
+            sectionget=$("#FilterSectionUN").val();
+            $.ajax({
+              type:'post',
+              url: 'scheduleclassfilter.php',
+              data : { stream : streamget, date : dateget, sem : semget, section : sectionget, fun : "date"},
+              success : function(data){
+                $('#change-table-UN').html(data);
+              }
+
+            })
+          }UN
+  $(document).ready(function(){
+    $('#un-new').click(function(){
+            // $.get('get.html',function(data,status){
+            //     $('#changehere').html(data);
+            //     alert(status);
+            // });
+            $.post('uploadnotesform.php',function(data,status){
+                $('#change-uploadnotes').html(data);
+            })
         });
-    </script>
+        $('#un-list').click(function(){
+            // $.get('get.html',function(data,status){
+            //     $('#changehere').html(data);
+            //     alert(status);
+            // });
+            $.post('uploadnoteslist.php',function(data,status){
+                $('#change-uploadnotes').html(data);
+            })
+        });
+        $(document).on('click','tr[data-role=view]',function(){
+          // alert($(this).data('id'));
+          var dataid=$(this).data('id');
+          $.post('uploadnotesview.php',{
+            viewid : dataid },
+            function(data,status){
+                $('#change-uploadnotes').html(data);
+            })
+        });
+    });
+</script>
 </body>
 </html>

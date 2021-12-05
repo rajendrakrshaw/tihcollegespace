@@ -121,10 +121,23 @@ select{
 .form-half-right input[type="date"],.form-half-right input[type="time"]{
     cursor: pointer;
 }
-.form-full-right input{
+.form-full-right input, .form-full-right textarea{
     width: 400px;
 }
-
+.form-full-right textarea{
+    padding: 5px;
+}
+.form-full-right-file{
+    /* border: 2px solid red; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.form-full-right-file input{
+    /* border: 2px solid black; */
+    width: 250px;
+    margin-bottom: 5px;
+}
 .form-half-btn{
     width: 150px;
     margin:auto;
@@ -133,10 +146,17 @@ select{
     justify-content: center;
     align-items: center;
 }
-.form-half-btn input{
+.form-half-btn input,.form-half-btn button{
     width: 150px;
 }
 
+
+      .select select{
+        background:transparent;
+        width:110px;
+        border:none;
+        font-weight: bold;
+      }
 
 
 /* Responsive schedule class */

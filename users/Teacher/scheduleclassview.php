@@ -2,8 +2,8 @@
 include 'connection.php';
 $viewid=$_POST['viewid'];
 $query = "SELECT * FROM schedule_class WHERE id='$viewid'";
-$result = $db->query($query);
-$row = $result->fetch_assoc();
+$result = mysqli_query($conn,$query);
+$row = mysqli_fetch_assoc($result);
 ?>
 <!DOCTYPE html>
 <html lang="en">
