@@ -34,12 +34,22 @@ session_start();
         <div class="topdesign" >
         <h4 class="teh"><strong>Dashboard</strong></h4>
         </div>
+        <div class="sc-header">
+      <div class="sc-header-logo">
+        <a href="index.php"><img src="../../images/logo.png" alt="TihCollegeSpace"></a>
+      </div>
+      <div class="sc-header-name">
+        <a href="index.php"><h2>TIH College Space</h2></a>
+      </div>
+      
+    </div>
         <div class="action">
             <div class="profile" onclick="toggle();">
-                <img src="images/RajendraKumarShaw.jpg" alt="">
+                <!-- <img src="images/RajendraKumarShaw.jpg" alt=""> -->
+                <img src="<?php echo $_SESSION['user']['photo']; ?>" alt="">
             </div>
             <div class="menu">
-                <h3>Name <br>
+                <h3><?php echo $_SESSION['user']['firstname'].' '.$_SESSION['user']['midname'].' '.$_SESSION['user']['lastname']; ?> <br>
                 <span>Teacher</span>
                 </h3>
                 <ul>
@@ -54,6 +64,7 @@ session_start();
             </div>
         </div>
     </div>
+    
 
     <!-- Dashboard -->
 

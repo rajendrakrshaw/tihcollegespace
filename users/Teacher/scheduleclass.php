@@ -24,10 +24,19 @@ session_start();
 </head>
 <body class="bg-logo">
     <?php
-  //  if($_SESSION['login'] && $_SESSION['teacher']){
+   if($_SESSION['login'] && $_SESSION['teacher']){
     ?>
-    <div class="back">
+    <!-- <div class="back">
       <h2><a href="index.php">Go to Database</a></h2>
+    </div> -->
+    
+    <div class="sc-header">
+      <div class="sc-header-logo">
+        <a href="index.php"><img src="../../images/logo.png" alt="TihCollegeSpace"></a>
+      </div>
+      <div class="sc-header-name">
+        <a href="index.php"><h2>TIH College Space</h2></a>
+      </div>
     </div>
 
     <div id="change-scheduleclass">
@@ -36,6 +45,18 @@ session_start();
 
 
     <script>
+      window.onscroll = function() {myFunction()};
+
+var navbar = document.getElementById("navbar");
+var sticky = navbar.offsetTop;
+
+function myFunction() {
+  if (window.pageYOffset >= sticky) {
+    navbar.classList.add("sticky")
+  } else {
+    navbar.classList.remove("sticky");
+  }
+}
       function FetchSemester(id){
     $('#semester').html('');
     $('#subject').html('<option>Select Subject</option>');
@@ -62,6 +83,7 @@ session_start();
 
     })
   }
+  
       $(document).ready(function(){
             $('#sc-new').click(function(){
                 // $.get('get.html',function(data,status){
@@ -93,10 +115,10 @@ session_start();
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
     <?php
-    // }
-    // else{
-    // header("location:../../index.html");
-    // }
+    }
+    else{
+    header("location:../../index.html");
+    }
     ?>
 </body>
 </html>

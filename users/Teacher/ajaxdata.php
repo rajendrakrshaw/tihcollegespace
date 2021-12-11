@@ -1,6 +1,7 @@
 <?php 
 include 'connection.php';
 
+
 if (isset($_POST['stream_id'])) {
 	$query = "SELECT * FROM semesters where streams_id=".$_POST['stream_id'];
 	$result = mysqli_query($conn,$query);

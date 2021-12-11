@@ -16,7 +16,7 @@ $result = mysqli_query($conn,$query);
 <body>
 <div class="modal-header">
       <div class="title"><h2><strong>Notes</strong></h2></div>
-      <button class="modal-close-btn" onclick="reloadpage()">&times;</button>
+      <button class="btn close-btn modal-close-btn" onclick="reloadpage()">&times;</button>
     </div>
     <div class="SC-form-container">
         <!-- BCA SEM1 Alpha Date Time View -->

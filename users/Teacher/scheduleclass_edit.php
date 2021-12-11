@@ -1,4 +1,5 @@
 <?php
+if($_SESSION['login'] && $_SESSION['teacher']){
 include 'connection.php';
 $query="SELECT * FROM streams";
 $result=mysqli_query($conn,$query);
@@ -7,15 +8,15 @@ $a = "SELECT * FROM schedule_class WHERE id='$viewid'";
 $b = mysqli_query($conn,$a);
 $res = mysqli_fetch_assoc($b);
 
-$subjectname=$res['subject'];
-$sem_id_sql="select * from subjects where subject='$subjectname'";
-$sem_id_query=mysqli_query($conn,$sem_id_sql);
-$sem_id_res=mysqli_fetch_assoc($sem_id_query);
-$sem_id=$sem_id_res['semesters_id'];
-$subjectid=$sem_id_res['id'];
+// $subjectname=$res['subject'];
+// $sem_id_sql="select * from subjects where subject='$subjectname'";
+// $sem_id_query=mysqli_query($conn,$sem_id_sql);
+// $sem_id_res=mysqli_fetch_assoc($sem_id_query);
+// $sem_id=$sem_id_res['semesters_id'];
+// $subjectid=$sem_id_res['id'];
 
-$showsubjectsql="select * from subjects where semesters_id='$sem_id'";
-$showsubjectquery=mysqli_query($conn,$showsubjectsql);
+// $showsubjectsql="select * from subjects where semesters_id='$sem_id'";
+// $showsubjectquery=mysqli_query($conn,$showsubjectsql);
 // $showsubject=$sem_id_query->fetch_assoc();
 
 
@@ -199,5 +200,11 @@ function FetchSemester(id){
 
         });
     </script>
+    <?php
+    }
+    else{
+    header("location:../../index.html");
+    }
+    ?>
   </body>
 </html>

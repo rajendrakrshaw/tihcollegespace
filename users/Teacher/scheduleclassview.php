@@ -1,4 +1,9 @@
 <?php
+// session_start();
+   if($_SESSION['teacher']){
+    ?>
+
+<?php
 include 'connection.php';
 $viewid=$_POST['viewid'];
 $query = "SELECT * FROM schedule_class WHERE id='$viewid'";
@@ -162,5 +167,11 @@ $row = mysqli_fetch_assoc($result);
             });
         });
     </script>
+    <?php
+    }
+    else{
+    header("location:../../index.html");
+    }
+    ?>
 </body>
 </html>

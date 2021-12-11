@@ -26,11 +26,19 @@ session_start();
 <?php
   if($_SESSION['login'] && $_SESSION['teacher']){
 ?>
-    <div class="back">
+    <!-- <div class="back">
       <h2><a href="index.php">Go to Database</a></h2>
+    </div> -->
+    <div class="sc-header">
+      <div class="sc-header-logo">
+        <a href="index.php"><img src="../../images/logo.png" alt="TihCollegeSpace"></a>
+      </div>
+      <div class="sc-header-name">
+        <a href="index.php"><h2>TIH College Space</h2></a>
+      </div>
     </div>
     <div id="change-updates">
-      <?php include 'updateslist.php' ?>
+      <?php include 'notification.php' ?>
     </div>
     <script src="admin.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>

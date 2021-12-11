@@ -24,77 +24,79 @@ $result = mysqli_query($conn,$query);
 </div>
 <div class="SC-form-container">
   <div id="change-table-UN">
-    <table class="table table-hover">
-        <tr>
-          <th>Serial No</th>
-          <th class="select">
-            <select name="" id="FilterStreamUN" onchange="FilterStreamUN(this.value)">
-              <option value="all" selected>All Stream</option>
-              <?php
-                $sql="select * from streams";
-                $q1=mysqli_query($conn,$sql);
-                if (mysqli_num_rows($q1) > 0 ) {
-                  while ($row = mysqli_fetch_assoc($q1)) {
-                    echo '<option value='.$row['stream'].'>'.$row['stream'].'</option>';
-                  }
-                }
+  <table class="table table-hover">
+            <tr class="fixed-row">
+                <th>Serial No</th>
+                <th class="select">
+                  <select name="" id="FilterStreamUN" onchange="FilterStreamUN(this.value)">
+                    <option value="all" selected>Stream</option>
+                    <?php
+                      $sql="select * from streams";
+                      $q1=mysqli_query($conn,$sql);
+                      if (mysqli_num_rows($q1) > 0 ) {
+                        while ($row = mysqli_fetch_assoc($q1)) {
+                          echo '<option value='.$row['stream'].'>'.$row['stream'].'</option>';
+                        }
+                      }
 
-              ?>
-            </select>
-          </th>
-          <th class="select">
-            <select name="" id="FilterSemesterUN" onchange="FilterSemesterUN(this.value)">
-              <option value="All Sem" selected>Semester</option>
-              <?php
-                $sql="select * from update_sem where sem!='All Sem'";
-                $q1=mysqli_query($conn,$sql);
-                if (mysqli_num_rows($q1) > 0 ) {
-                  while ($row = mysqli_fetch_assoc($q1)) {
-                    echo '<option value='.$row['sem'].'>'.$row['sem'].'</option>';
-                  }
-                }
+                    ?>
+                  </select>
+                </th>
+                <th class="select">
+                  <select name="" id="FilterSemesterUN" onchange="FilterSemesterUN(this.value)">
+                    <option value="all" selected>Semester</option>
+                    <?php
+                      $sql="select * from update_sem where sem!='all'";
+                      $q1=mysqli_query($conn,$sql);
+                      if (mysqli_num_rows($q1) > 0 ) {
+                        while ($row = mysqli_fetch_assoc($q1)) {
+                          echo '<option value='.$row['sem'].'>'.$row['sem'].'</option>';
+                        }
+                      }
 
-              ?>
-            </select>
-          </th>
-          <th class="select">
-            <select name="" id="FilterSectionUN" onchange="FilterSectionUN(this.value)">
-              <option value="all" selected>Section</option>
-              <option value="Alpha">Alpha</option>
-              <option value="Beta">Beta</option>
-              <option value="Combined">Combined</option>
-            </select>
-          </th>
-          <th class="select">
-            <select name="" id="FilterDateUN" onchange="FilterDateUN(this.value)">
-              <option value="all" selected>Date</option>
-              <option value="week">Last Week</option>
-              <option value="month">Last Month</option>
-            </select>
-          </th>
-          <th>Topic</th>
-        </tr>
-        <?php
+                    ?>
+                  </select>
+                </th>
+                <th class="select">
+                <select name="" id="FilterSectionUN" onchange="FilterSectionUN(this.value)">
+                    <option value="all" selected>Section</option>
+                    <option value="Alpha">Alpha</option>
+                    <option value="Beta">Beta</option>
+                    <option value="Combined">Combined</option>
+                  </select>
+                </th>
+                <th class="select">
+                <select name="" id="FilterDateUN" onchange="FilterDateUN(this.value)">
+                    <option value="all" selected>Date</option>
+                    <option value="today">Today</option>
+                    <option value="yesterday">Yesterday</option>
+                    <option value="week">Last Week</option>
+                    <option value="month">Last Month</option>
+                  </select>
+                </th>
+                <th>Topic</th>
+            </tr>
+            <?php
           if (mysqli_num_rows($result) > 0 ) {
             $sl=0;
-            while ($row = mysqli_fetch_assoc($result)) {
+            while ($row1 = mysqli_fetch_assoc($result)) {
                 $sl++;
               ?>
-              <tr data-role="view" data-id="<?php echo $row['id'];?>" style="cursor:pointer;">                    
+              <tr data-role="view" data-id="<?php echo $row1['id'];?>" style="cursor:pointer;">                    
 
                 <th><?php echo $sl; ?></th>
-                <td><?php echo $row['stream']; ?></td>
-                <td><?php echo $row['sem']; ?></td>
-                <td><?php echo $row['section']; ?></td>
-                <td><?php echo $row['date']; ?></td>
-                <td><?php echo $row['topic']; ?></td>
+                <td><?php echo $row1['stream']; ?></td>
+                <td><?php echo $row1['sem']; ?></td>
+                <td><?php echo $row1['section']; ?></td>
+                <td><?php echo $row1['date']; ?></td>
+                <td><?php echo $row1['topic']; ?></td>
             </tr>
             <?php
             }
           }
         ?> 
-    </table>
-    <?php
+        </table>
+        <?php
       if (mysqli_num_rows($result) == 0 ){
         ?>
           <p class="text-center">No Records Found.</p>
@@ -139,7 +141,7 @@ $result = mysqli_query($conn,$query);
             dateget=$("#FilterDateUN").val();
             $.ajax({
               type:'post',
-              url: 'scheduleclassfilter.php',
+              url: 'uploadnotesfilter.php',
               data : { stream : streamget, date : dateget, sem : semget, section : sectionget , fun : "stream"},
               success : function(data){
                 $('#change-table-UN').html(data);
@@ -153,7 +155,7 @@ $result = mysqli_query($conn,$query);
             dateget=$("#FilterDateUN").val();
             $.ajax({
               type:'post',
-              url: 'scheduleclassfilter.php',
+              url: 'uploadnotesfilter.php',
               data : { stream : streamget, date : dateget, sem : semget, section : sectionget , fun : "sem"},
               success : function(data){
                 $('#change-table-UN').html(data);
@@ -169,7 +171,7 @@ $result = mysqli_query($conn,$query);
             dateget=$("#FilterDateUN").val();
             $.ajax({
               type:'post',
-              url: 'scheduleclassfilter.php',
+              url: 'uploadnotesfilter.php',
               data : { stream : streamget, date : dateget, sem : semget, section : sectionget , fun : "section"},
               success : function(data){
                 $('#change-table-UN').html(data);
@@ -183,14 +185,14 @@ $result = mysqli_query($conn,$query);
             sectionget=$("#FilterSectionUN").val();
             $.ajax({
               type:'post',
-              url: 'scheduleclassfilter.php',
+              url: 'uploadnotesfilter.php',
               data : { stream : streamget, date : dateget, sem : semget, section : sectionget, fun : "date"},
               success : function(data){
                 $('#change-table-UN').html(data);
               }
 
             })
-          }UN
+          }
   $(document).ready(function(){
     $('#un-new').click(function(){
             // $.get('get.html',function(data,status){

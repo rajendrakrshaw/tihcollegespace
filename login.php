@@ -1,12 +1,32 @@
 <?php
 session_start();
-$conn = mysqli_connect("localhost", "root", "", "tihcollegespace");
+// $conn = mysqli_connect("sql302.epizy.com", "epiz_30514950", "LYBnFW3UacatKl", "epiz_30514950_tihcollegespace");
+$host = 'localhost';
+$username = 'root';
+$pass = '';
+$db = 'tihcollegespace';
 
+// $db = new mysqli($host,$username,$pass,$db);
+
+$conn = mysqli_connect($host,$username,$pass,$db);
+
+if (!$conn) {
+	die("Connection failed: " . mysqli_connect_error());
+  }
+if(!$conn){
+    echo '<script> alert("Not Connected"); </script>';
+}
+else{
+     echo '<script> alert("Connected"); </script>';
+}
 if(isset($_POST['submit'])){
     $email = $_POST['email'];
-    $pass = md5($_POST['password']);
+    $pass = $_POST['password'];
     $q = "SELECT * FROM `login` WHERE email = '$email' and password = '$pass'";
     $query = mysqli_query($conn, $q);
+    if(!$query){
+        echo '<script> alert("Invalid Credentials"); </script>';
+    }
     $_SESSION['admin'] = false;
     $_SESSION['teacher'] = false;
     $_SESSION['student'] = false;
@@ -18,20 +38,26 @@ if(isset($_POST['submit'])){
         while($row = mysqli_fetch_array($query)){
             $role = $row['role'];
         }
-        $_SESSION[$role] = true;
         if($role == "admin"){
-            header("location:users/Admin/index.php");
+            $_SESSION['admin'] = true;
+            header("location:users/admin/index.php");
         }
         elseif($role == "teacher"){
+            $_SESSION['teacher'] = true;
+            $q = "SELECT * FROM `teacher` WHERE email = '$email' and password = '$pass'";
+            $query=mysqli_query($conn,$q);
+            $res=mysqli_fetch_array($query);
+            $_SESSION['user'] = $res;
             header("location:users/Teacher/index.php");
         }
         elseif($role == "student"){
+            $_SESSION['student'] = true;
             header("location:users/Student/index.php");
         }
         
     }
     else{
-        header("location:index.html");
+        echo '<script> alert("Invalid Credentials"); </script>';
     }
 }
 

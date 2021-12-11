@@ -4,13 +4,21 @@ $query = "SELECT * FROM streams";
 $result = mysqli_query($conn,$query);
 ?>
 <html>
+  <head>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  
+  </head>
 <body>    
 <div class="sc-heading">
       <div class="sc-heading-part">
         <button type="button" class="btn btn-success btn-lg btn-block" id="sc-list" onclick="ScheduleList()">List of Classes</button>
       </div>
       <div class="sc-heading-part">
-        <button type="button" class="btn btn-success btn-lg btn-block" id="sc-new" onclick="ScheduleNew()" disabled>New Class</button>
+        <button type="button" class="btn btn-success btn-lg btn-block active" id="sc-new" onclick="ScheduleNew()" disabled>New Class</button>
       </div>
 </div>
 <div class="SC-form-container">
@@ -76,7 +84,7 @@ $result = mysqli_query($conn,$query);
               <label>Date of the Class</label>
             </div>
             <div class="form-half-right">
-              <input type="date" name="dateSC"  id="date" required>
+              <input type="date" name="dateSC" class="dateSC"  id="date_picker" required>
             </div>
           </div>
           
@@ -151,7 +159,36 @@ $result = mysqli_query($conn,$query);
 
     })
   }
+  $(function(){
+          var dtToday = new Date();
+          var month = dtToday.getMonth+1;
+          var day = dtToday.getDate();
+          var year = dtToday.getFullYear();
+          if(month < 10){
+          month = "0" + month.toString();
+          }
+          if(day < 10){
+            day = "0" + day.toString();
+          }
+          var maxDate = year+'-'+month+'-'+day;
+          $('#dateSC').attr('max',maxDate);
+        })
       $(document).ready(function(){
+        $(function(){
+          var dtToday = new Date();
+          var month = dtToday.getMonth+1;
+          var day = dtToday.getDate();
+          var year = dtToday.getFullYear();
+          if(month < 10){
+          month = "0" + month.toString();
+          }
+          if(day < 10){
+            day = "0" + day.toString();
+          }
+          var maxDate = year+'-'+month+'-'+day;
+          $('#dateSC').attr('max',maxDate);
+        })
+
             $('#sc-new').click(function(){
                 // $.get('get.html',function(data,status){
                 //     $('#changehere').html(data);
@@ -171,6 +208,18 @@ $result = mysqli_query($conn,$query);
                 })
             });
         });
+      
     </script>
+     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+     <script language="javascript">
+        var today = new Date();
+        var dd = String(today.getDate()).padStart(2, '0');
+        var mm = String(today.getMonth() + 1).padStart(2, '0');
+        var yyyy = today.getFullYear();
+
+        today = yyyy + '-' + mm + '-' + dd;
+        $('#date_picker').attr('min',today);
+    </script>
+    
   </body>
 </html>

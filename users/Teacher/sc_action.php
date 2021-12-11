@@ -1,4 +1,7 @@
 <?php
+   if($_SESSION['login'] && $_SESSION['teacher']){
+    ?>
+<?php
 $viewid=$_POST['viewid'];
 ?>
 <!DOCTYPE html>
@@ -13,7 +16,12 @@ $viewid=$_POST['viewid'];
     <button type="button" class="btn btn-success" data-role="action" data-id="<?php echo $viewid; ?>" id="sc-action">Action</button>
     <button type="button" class="btn btn-success" data-role="edit" data-id="<?php echo $viewid; ?>" id="sc-edit">Edit</button>
     <a href="scheduleclass_deleteclass.php?viewid=<?php echo $viewid;?>"><button type="button" class="btn btn-success" data-role="delete" data-id="<?php echo $viewid; ?>" id="sc-delete">Delete</button></a>
-
+    <?php
+    }
+    else{
+    header("location:../../index.html");
+    }
+    ?>
     <script>
         $(document).ready(function(){
             var dataid = <?php echo $viewid;?>;

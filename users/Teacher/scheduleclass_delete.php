@@ -1,4 +1,7 @@
 <?php
+   if($_SESSION['login'] && $_SESSION['teacher']){
+    ?>
+<?php
 include 'connection.php';
 $viewid=$_POST['viewid'];
 $a="delete from schedule_class where id='$viewid'";
@@ -19,4 +22,8 @@ else{
         </script>
     <?php
 }
+   }
+   else{
+    header("location:../../index.html");
+    }
 ?>

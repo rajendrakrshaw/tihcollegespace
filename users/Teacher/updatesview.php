@@ -51,14 +51,6 @@ $row = mysqli_fetch_assoc($result);
     </style>
 </head>
 <body>
-<div class="sc-heading">
-      <div class="sc-heading-part">
-        <button type="button" class="btn btn-success btn-lg btn-block" id="updates-list" >Updates</button>
-      </div>
-      <div class="sc-heading-part">
-        <button type="button" class="btn btn-success btn-lg btn-block" id="updates-new" >New Update</button>
-      </div>
-</div>
 <div class="SC-form-container">
     <div class="sc-action d-block mr-0 ml-auto" id="update-delete">
     <a href="updates_delete.php?viewid=<?php echo $viewid;?>"><button type="button" class="btn btn-success" data-role="delete" data-id="<?php echo $viewid; ?>" id="update-delete">Delete</button></a>

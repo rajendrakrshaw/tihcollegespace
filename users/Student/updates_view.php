@@ -56,7 +56,7 @@ $row = mysqli_fetch_assoc($result);
         <p><?php echo $row['message']; ?></p>
         <?php } ?>
         <?php if($row['file']!=''){?>
-        <p><a href="<?php echo '../Teacher/'.$row['file']; ?>" target="_blank"><button class="btn btn-success">Attached File</button></a></p>
+        <p><a href="<?php echo '../Teacher/'.$row['file']; ?>" download target="_blank"><button class="btn btn-success">Attached File</button></a></p>
         <?php } ?>
     </div>
         

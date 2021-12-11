@@ -1,6 +1,6 @@
 <?php
 include 'connection.php';
-$query = "SELECT * FROM updates order by date desc";
+$query = "SELECT * FROM updates order by date,time desc";
 $result = mysqli_query($conn,$query);
 ?>
 

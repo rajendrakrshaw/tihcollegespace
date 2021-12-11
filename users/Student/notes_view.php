@@ -117,7 +117,7 @@ $row = mysqli_fetch_assoc($result);
 
                 echo '../Teacher/'.$file;
 
-                ?>" target="_blank">
+                ?>" target="_blank" download>
                 <button class="btn btn-outline-success" >
                     <?php 
                         $filename=explode("/",$file);

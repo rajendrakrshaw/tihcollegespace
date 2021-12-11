@@ -24,8 +24,8 @@ session_start();
 </head>
 <body>
 <?php
-  if($_SESSION['login']){
-?>
+   if($_SESSION['login'] && $_SESSION['teacher']){
+    ?>
     <div class="home">
         <div class="topdesign" >
         <h4 class="teh"><strong>Profile</strong></h4>

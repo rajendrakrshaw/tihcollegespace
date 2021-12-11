@@ -1,4 +1,7 @@
 <?php
+   if($_SESSION['login'] && $_SESSION['teacher']){
+    ?>
+<?php
 include 'connection.php';
 if(isset($_POST['submit'])){
 $viewid=$_GET['viewid'];
@@ -33,3 +36,9 @@ else{
   header('location:ScheduleClass.php');
 }
 ?>
+<?php
+    }
+    else{
+    header("location:../../index.html");
+    }
+    ?>

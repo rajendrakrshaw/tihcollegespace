@@ -1,6 +1,19 @@
 <?php
+  // session_start();
+   if($_SESSION['teacher']){
+    ?>
+<?php
 include 'connection.php';
-$query = "SELECT * FROM schedule_class order by date";
+
+$date=date_create(date("Y-m-d"));
+date_add($date,date_interval_create_from_date_string("0 days"));
+$dateupto=date_format($date,"Y-m-d");
+// $q = "SELECT * FROM schedule_class WHERE faculty_id='$faculty_id' and date='$dateupto' ORDER BY date desc";
+echo $dateupto;
+$query="DELETE FROM schedule_class where date<'$dateupto'";
+$result=mysqli_query($conn,$query);
+// if($result)
+$query = "SELECT * FROM schedule_class order by date,time";
 $result = mysqli_query($conn,$query);
 ?>
 <!DOCTYPE html>
@@ -11,6 +24,9 @@ $result = mysqli_query($conn,$query);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
+      .table{
+        background:transparent;
+      }
       .select select{
         background:transparent;
         width:110px;
@@ -33,8 +49,8 @@ $result = mysqli_query($conn,$query);
       </div>
       <div id="change-table">
         <!-- BCA SEM1 Alpha Date Time View -->
-        <table class="table table-hover" >
-            <tr>
+        <table class="table table-hover"  >
+            <tr class="fixed-row">
                 <th>Serial No</th>
                 <th class="select">
                   <select name="" id="FilterStream" onchange="FilterStream(this.value)">
@@ -77,6 +93,8 @@ $result = mysqli_query($conn,$query);
                 <th class="select">
                 <select name="" id="FilterDate" onchange="FilterDate(this.value)">
                     <option value="all" selected>Date</option>
+                    <option value="today">Today</option>
+                    <option value="tommorow">Tommorrow</option>
                     <option value="week">This Week</option>
                     <option value="month">This Month</option>
                   </select>
@@ -91,7 +109,7 @@ $result = mysqli_query($conn,$query);
                   ?>
                   <tr data-role="view" data-id="<?php echo $row['id'];?>" style="cursor:pointer;">                    
 
-                    <th><?php echo $sl; ?></th>
+                    <td><?php echo $sl; ?></td>
                     <td><?php echo $row['stream']; ?></td>
                     <td><?php echo $row['sem']; ?></td>
                     <td><?php echo $row['section']; ?></td>
@@ -213,5 +231,11 @@ $result = mysqli_query($conn,$query);
             });
         });
     </script>
+    <?php
+    }
+    else{
+    header("location:../../index.html");
+    }
+    ?>
 </body>
 </html>

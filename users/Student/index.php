@@ -24,23 +24,19 @@ session_start();
 
   <?php
   if ($_SESSION['login'] && $_SESSION['student']) {
-  ?>
 
-<?php
 
 if($_SESSION['login']){
   $stream="BCA";
   $sem="SEM1";
-
-if($_SESSION['login'] && $_SESSION['student']){
-
+}
 ?>
 
     <div class="home">
       <div class="topdesign">
         <h3 class="stu">STUDENT PANEL</h3>
       </div>
-      <div class="action">
+      <!-- <div class="action">
         <div class="profile" onclick="toggle();">
           <img src="images/RajendraKumarShaw.jpg" alt="">
         </div>
@@ -57,7 +53,7 @@ if($_SESSION['login'] && $_SESSION['student']){
             <li><img src="images/settings.png" alt=""><a data-target="#Settings" href="#Settings">Settings</a></li>
             <li><img src="images/question.png" alt=""><a data-target="#Help" href="#Help">Help</a></li>
             <li><a href="../../logout.php"><img src="images/log-out.png" alt="">Logout</a></li>
-          </ul>
+          </ul> -->
 
         <div class="action">
             <div class="profile" onclick="toggle();">

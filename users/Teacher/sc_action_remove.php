@@ -1,4 +1,7 @@
 <?php
+   if($_SESSION['login'] && $_SESSION['teacher']){
+    ?>
+<?php
 $viewid=$_POST['viewid'];
 ?>
 <!DOCTYPE html>
@@ -11,6 +14,12 @@ $viewid=$_POST['viewid'];
 </head>
 <body>
     <button type="button" class="btn btn-success" data-role="action" data-id="<?php echo $viewid; ?>" id="sc-action">Action</button>
+    <?php
+    }
+    else{
+    header("location:../../index.html");
+    }
+    ?>
     <script>
         $(document).ready(function(){
             // $('#sc-action').click(function(){

@@ -1,5 +1,5 @@
 <?php
 
-$conn=mysqli_connect('localhost','root','','scheduleclass');
+$conn=mysqli_connect('localhost','root','','tihcollegespace');
 
 ?>

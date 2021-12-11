@@ -26,8 +26,17 @@ session_start();
 <?php
   if($_SESSION['login'] && $_SESSION['teacher']){
 ?>
-    <div class="back">
+    <!-- <div class="back">
       <h2><a href="index.php">Go to Database</a></h2>
+    </div> -->
+
+    <div class="sc-header">
+      <div class="sc-header-logo">
+        <a href="index.php"><img src="../../images/logo.png" alt="TihCollegeSpace"></a>
+      </div>
+      <div class="sc-header-name">
+        <a href="index.php"><h2>TIH College Space</h2></a>
+      </div>
     </div>
     
     <div id="change-uploadnotes">
