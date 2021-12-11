@@ -27,7 +27,6 @@ else if($sem==5||$sem==11)
     $sem="SEM5";
 else if($sem==6||$sem==12)
     $sem="SEM6";
-
 $section=$_POST['sectionSC'];
 $subject=$_POST['subjectSC'];
 
@@ -40,14 +39,10 @@ while($result_subject=mysqli_fetch_array($query_subject)){
         break;
     }
 }
-
-
-
 $date=$_POST['dateSC'];
 $time=$_POST['timeSC'];
 $topic=$_POST['topicSC'];
 $classlink=$_POST['classlinkSC'];
-
 $check="select * from schedule_class where stream='$stream' and sem='$sem' and date='$date' and time='$time' and (section='$section' or section='Combined') ";
 // echo $check;
 $checkquery=mysqli_query($conn,$check);
@@ -56,7 +51,8 @@ $q = "INSERT INTO `schedule_class`(`faculty_id`, `faculty_name`, `stream`, `sem`
 
 $query = mysqli_query($conn,$q);
 
-if($query==1){
+if($query==1)
+{
     ?>
         <script>
             alert('Successfully Scheduled');
@@ -72,7 +68,8 @@ else{
         </script>
     <?php
 }}
-else{
+else
+{
     ?>
         <script>
             alert('<?php echo $stream.' '.$sem.' '.$section.' '.'have already a class on '.$date.' at '.$time; ?>');

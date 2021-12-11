@@ -20,9 +20,15 @@ else{
      echo '<script> alert("Connected"); </script>';
 }
 if(isset($_POST['submit'])){
+<<<<<<< HEAD
     $email = $_POST['email'];
     $pass = $_POST['password'];
     $q = "SELECT * FROM `login` WHERE email = '$email' and password = '$pass'";
+=======
+    $uid = $_POST['uid'];
+    $pass = $_POST['password'];
+    $q = "SELECT * FROM `login` WHERE uid = '$uid' and password = '$pass'";
+>>>>>>> bd03311877cbb94b8c6dc813c3495fe47c440816
     $query = mysqli_query($conn, $q);
     if(!$query){
         echo '<script> alert("Invalid Credentials"); </script>';
@@ -30,8 +36,6 @@ if(isset($_POST['submit'])){
     $_SESSION['admin'] = false;
     $_SESSION['teacher'] = false;
     $_SESSION['student'] = false;
-    
-    
     if(mysqli_num_rows($query) > 0){
         $_SESSION['uid'] = $uid;
         $_SESSION['login'] = true;
@@ -57,7 +61,11 @@ if(isset($_POST['submit'])){
         
     }
     else{
+<<<<<<< HEAD
         echo '<script> alert("Invalid Credentials"); </script>';
+=======
+        header("location:index.php");
+>>>>>>> bd03311877cbb94b8c6dc813c3495fe47c440816
     }
 }
 
